@@ -13,8 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::post('login','LoginController@login')->middleware('cors');
+Route::post('login','Api\LoginController@login')->middleware('cors');
+
+Route::group(['middleware'=>'validateToken'],function(){   
+    Route::post('getDanhSachSinhVien','Api\SinhVienController@getDanhSachSinhVien');
+    Route::post('getMonHoc','Api\MonHocController@getMonHoc');
+});

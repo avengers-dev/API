@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\GiangViens;
 
 class LoginController extends Controller
@@ -11,8 +12,8 @@ class LoginController extends Controller
     {
         if ($request->input('email') && $request->input('matkhau')) {
             $email = $request->input('email');
-            $matkhau = $request->input('matkhau');
-            $data = GiangViens::login($email,$matkhau);
+            $mat_khau = $request->input('matkhau');
+            $data = GiangViens::login($email,$mat_khau);
             if(count($data)){
                 return $this->responses($data,200,trans('messages.api_success'));
             }

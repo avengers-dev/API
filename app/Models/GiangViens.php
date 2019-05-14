@@ -9,12 +9,22 @@ class GiangViens extends Eloquent
 {
     protected $connection = 'mongodb';
     protected $collection = 'giangviens';
-    public static function login($email, $matkhau)
-    {
+
+    public static function validateToken($token){
+        if ($token != "") {
+            $flag = GiangViens::where('token', $token)->count();
+            if ($flag) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static function login($email, $mat_khau){
         $query = GiangViens::where([
             ['email', $email],
-            ['matkhau', $matkhau]
-        ]);
-        return $query->get();
+            ['matkhau', $mat_khau]
+        ])->get();
+        return $query;
     }
 }

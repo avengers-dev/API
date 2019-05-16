@@ -19,4 +19,9 @@ class MonHocController extends Controller
         }
         return $this->responses([],404,trans('messages.api_not_enough_params'));
     }
+    public function getAllMonHoc()
+    {
+        $data = Monhocs::getAllMonHoc();
+        return $this->responses($data,200,trans('messages.api_success'));
+    }
 }

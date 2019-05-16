@@ -14,4 +14,8 @@ class MonHocs extends Eloquent
         $query = Monhocs::where('mamh',$ma_mon_hoc)->select('tenmh')->get();
         return $query;
     }
+    public static function getAllMonHoc(){
+        $query = Monhocs::all();
+        return $query;
+    }
 }

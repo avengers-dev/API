@@ -22,3 +22,5 @@ Route::get('getAllMonHoc','Api\MonHocController@getAllMonHoc');
 Route::group(['middleware'=>'validateToken'],function(){   
     Route::post('getDanhSachSinhVien','Api\SinhVienController@getDanhSachSinhVien');
 });
+
+Route::post('test','Api\SinhVienController@test');

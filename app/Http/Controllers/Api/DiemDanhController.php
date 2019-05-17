@@ -22,48 +22,51 @@ class DiemDanhController extends Controller
             $data_check_diem_danh = DiemDanhs::checkDiemDanh($ngay_diem_danh);
             $flag_ngaydiemdanh = false;
             $index = 0;
-            foreach($data_check_diem_danh as $key => $value){
-                if(array_key_exists($ngay_diem_danh,$data_check_diem_danh[$key]['ngaydiemdanh'])){
+            foreach ($data_check_diem_danh as $key => $value) {
+                if (array_key_exists($ngay_diem_danh, $data_check_diem_danh[$key]['data'])) {
                     $flag_ngaydiemdanh = true;
                     $index = $key;
                 }
             }
-            if($flag_ngaydiemdanh){
+            if ($flag_ngaydiemdanh) {
                 $flag_magv = false;
-                if(array_key_exists($ma_gv,$data_check_diem_danh[$index]['ngaydiemdanh'][$ngay_diem_danh])){
+                if (array_key_exists($ma_gv, $data_check_diem_danh[$index]['data'][$ngay_diem_danh])) {
                     $flag_magv = true;
                 }
-                if($flag_magv){
+                if ($flag_magv) {
                     $flag_mamh = false;
-                    if(array_key_exists($ma_mh,$data_check_diem_danh[$index]['ngaydiemdanh'][$ngay_diem_danh][$ma_gv])){
+                    if (array_key_exists($ma_mh, $data_check_diem_danh[$index]['data'][$ngay_diem_danh][$ma_gv])) {
                         $flag_mamh = true;
                     }
-                    if($flag_mamh){
-                        $data_insert = $data_check_diem_danh[$index]['ngaydiemdanh'];
+                    if ($flag_mamh) {
+                        $data_insert = $data_check_diem_danh[$index]['data'];
                         $data_insert[$ngay_diem_danh][$ma_gv][$ma_mh] = $danh_sach_sinh_vien;
-                        DiemDanhs::where('ngay_test',$ngay_diem_danh)->update(['ngaydiemdanh'=> $data_insert]);
-                        return ;
-                    }else{
-
+                        $data = DiemDanhs::updateMaMH($ngay_diem_danh, $data_insert);
+                        $data = $data[0]['data'][$ngay_diem_danh][$ma_gv][$ma_mh];
+                        return $this->responses($data, 200, trans('messages.api_success'));
                     }
+                } else {
+                    //Insert Mamh
                 }
-                else{
-                    return "no";
-                }
+            } else {
+                //Insert GV
             }
-            else
-            {
-                DiemDanhs::insertNgayDiemDanh($ngay_diem_danh,$ma_gv,$ma_mh,$danh_sach_sinh_vien);
-                return "Da them xong";
-            }
-            
-            $data = DiemDanhs::getDanhSachSinhVienDiemDanh($ngay_diem_danh, $ma_gv, $ma_mh, 
-            $danh_sach_sinh_vien);
-            if (count($data)) {
-                return $this->responses($data, 200, trans('messages.api_success'));
-            }
-            return $this->responses([], 404, trans('messages.api_fail'));
+        } else {
+            $data = DiemDanhs::insertNgayDiemDanh($ngay_diem_danh, $ma_gv, $ma_mh, $danh_sach_sinh_vien);
+            return $this->responses($data, 200, trans('messages.api_success'));
         }
+
+        $data = DiemDanhs::getDanhSachSinhVienDiemDanh(
+            $ngay_diem_danh,
+            $ma_gv,
+            $ma_mh,
+            $danh_sach_sinh_vien
+        );
+        if (count($data)) {
+            return $this->responses($data, 200, trans('messages.api_success'));
+        }
+        return $this->responses([], 404, trans('messages.api_fail'));
+
         return $this->responses([], 404, trans('messages.api_not_enough_params'));
     }
 }

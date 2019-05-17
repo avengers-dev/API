@@ -9,7 +9,8 @@ class DiemDanhs extends Eloquent
 {
     protected $connection = 'mongodb';
     protected $collection = 'diemdanhs';
-
+    public $timestamps = false;
+    
     public static function checkDiemDanh($ngay_diem_danh)
     {
         $query = DiemDanhs::all();
@@ -18,7 +19,7 @@ class DiemDanhs extends Eloquent
     public static function insertNgayDiemDanh($ngay_diem_danh, $ma_gv, $ma_mh, $danh_sach_sinh_vien)
     {
         $result = [];
-        foreach($danh_sach_sinh_vien as $key => $value){
+        foreach ($danh_sach_sinh_vien as $key => $value) {
             $result[] = [
                 'masv' => $danh_sach_sinh_vien[$key]['masv'],
                 'check' => $danh_sach_sinh_vien[$key]['check'],
@@ -32,8 +33,13 @@ class DiemDanhs extends Eloquent
             ]
         ];
         DiemDanhs::insert(
-            [['ngaydiemdanh' => $data]]
+            [['data' => $data]]
         );
+    }
+    public static function updateMaMH($ngay_diem_danh, $data_insert)
+    {
+        DiemDanhs::where('ngaydiemdanh', $ngay_diem_danh)->update(['data' => $data_insert]);
+        return DiemDanhs::all();
     }
     public static function getDanhSachSinhVienDiemDanh()
     {

@@ -9,7 +9,7 @@ use App\Models\GiangViens;
 
 class DiemDanhController extends Controller
 {
-    public function getDanhSachSinhVienDiemDanh(Request $request)
+    public function updateOrInsertDanhSachSinhVien(Request $request)
     {
         if ($request->input('mamh') && $request->input('danhsachsvdiemdanh') && $request->input('ca')) {
             date_default_timezone_set('asia/ho_chi_minh');
@@ -40,12 +40,22 @@ class DiemDanhController extends Controller
                         $flag_mamh = true;
                     }
                     if ($flag_mamh) {
-                        $lag_ca = false;
+                        $flag_ca = false;
                         if(array_key_exists($ca,$data_check_diem_danh[$index]['data'][$ngay_diem_danh][$ma_gv][$ma_mh]))
                         {
+                            $flag_ca = true;
+                        }
+                        if($flag_ca){
                             $data_update = $data_check_diem_danh[$index]['data'];
-                            $data_update[$ngay_diem_danh][$ma_gv][$ma_mh] = $danh_sach_sinh_vien;
-                            $data = DiemDanhs::update_DS_Sinhvien_By_Ca($ngay_diem_danh, $data_update);
+                            $data_update[$ngay_diem_danh][$ma_gv][$ma_mh][$ca] = $danh_sach_sinh_vien;
+                            $data = DiemDanhs::updateOrInsertDanhSachSinhVien($ngay_diem_danh, $data_update);
+                            $data = $data[0]['data'][$ngay_diem_danh][$ma_gv][$ma_mh];
+                            return $this->responses($data, 200, trans('messages.api_success'));
+                        }
+                        else{
+                            $data_insert = $data_check_diem_danh[$index]['data'];
+                            $data_insert[$ngay_diem_danh][$ma_gv][$ma_mh][$ca] = $danh_sach_sinh_vien;
+                            $data = DiemDanhs::updateOrInsertDanhSachSinhVien($ngay_diem_danh, $data_insert);
                             $data = $data[0]['data'][$ngay_diem_danh][$ma_gv][$ma_mh];
                             return $this->responses($data, 200, trans('messages.api_success'));
                         }
@@ -53,21 +63,21 @@ class DiemDanhController extends Controller
                     }
                     else{
                         $data_insert = $data_check_diem_danh[$index]['data'];
-                        $data_insert[$ngay_diem_danh][$ma_gv][$ma_mh] = $danh_sach_sinh_vien;
-                        $data = DiemDanhs::insert_DS_Sinhvien_By_MaMH($ngay_diem_danh, $data_insert);
-                        $data = $data[0]['data'][$ngay_diem_danh][$ma_gv][$ma_mh];
+                        $data_insert[$ngay_diem_danh][$ma_gv][$ma_mh][$ca] = $danh_sach_sinh_vien;
+                        $data = DiemDanhs::updateOrInsertDanhSachSinhVien($ngay_diem_danh, $data_insert);
+                        $data = $data[0]['data'][$ngay_diem_danh][$ma_gv][$ma_mh][$ca];
                         return $this->responses($data, 200, trans('messages.api_success'));
                     }
                 } else {
                     $data_insert = $data_check_diem_danh[$index]['data'];
-                    $data_insert[$ngay_diem_danh][$ma_gv][$ma_mh] = $danh_sach_sinh_vien;
-                    $data = DiemDanhs::insert_DS_Sinhvien_By_Magv($ngay_diem_danh, $data_insert);
-                    $data = $data[0]['data'][$ngay_diem_danh][$ma_gv][$ma_mh];
+                    $data_insert[$ngay_diem_danh][$ma_gv][$ma_mh][$ca] = $danh_sach_sinh_vien;
+                    $data = DiemDanhs::updateOrInsertDanhSachSinhVien($ngay_diem_danh, $data_insert);
+                    $data = $data[0]['data'][$ngay_diem_danh][$ma_gv][$ma_mh][$ca];
                     return $this->responses($data, 200, trans('messages.api_success'));
                 }
             } 
             else {
-                $data = DiemDanhs::insertNgayDiemDanh($ngay_diem_danh, $ma_gv, $ma_mh, $danh_sach_sinh_vien);
+                $data = DiemDanhs::insertNgayDiemDanh($ngay_diem_danh, $ma_gv, $ma_mh, $danh_sach_sinh_vien,$ca,$ngay_diem_danh);
                 return $this->responses($data, 200, trans('messages.api_success'));
             }
         } 

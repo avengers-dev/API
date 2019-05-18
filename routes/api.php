@@ -23,4 +23,4 @@ Route::group(['middleware'=>'validateToken'],function(){
     Route::post('getDanhSachSinhVien','Api\SinhVienController@getDanhSachSinhVien');
     
 });
-Route::post('getDanhSachSinhVienDiemDanh','Api\DiemDanhController@getDanhSachSinhVienDiemDanh');
+Route::post('updateOrInsertDanhSachSinhVien','Api\DiemDanhController@updateOrInsertDanhSachSinhVien');

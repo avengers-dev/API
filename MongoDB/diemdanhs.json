@@ -1,0 +1,48 @@
+{ 
+    "_id" : ObjectId("5cde52607f05f412c40062f2"), 
+    "ngaydiemdanh" : "2019-05-17", 
+    "data" : {
+        "2019-05-17" : {
+            "GV001" : {
+                "CSDL" : [
+                    {
+                        "masv" : "12333", 
+                        "hoten" : "A", 
+                        "check" : NumberInt(1)
+                    }, 
+                    {
+                        "masv" : "12333", 
+                        "hoten" : "B", 
+                        "check" : NumberInt(1)
+                    }
+                ], 
+                "KTLT" : [
+                    {
+                        "masv" : "12333", 
+                        "hoten" : "C", 
+                        "check" : NumberInt(1)
+                    }, 
+                    {
+                        "masv" : "12333", 
+                        "hoten" : "D", 
+                        "check" : NumberInt(1)
+                    }
+                ]
+            }, 
+            "GV002" : {
+                "THDC" : [
+                    {
+                        "masv" : "12333", 
+                        "hoten" : "A", 
+                        "check" : NumberInt(1)
+                    }, 
+                    {
+                        "masv" : "12333", 
+                        "hoten" : "B", 
+                        "check" : NumberInt(1)
+                    }
+                ]
+            }
+        }
+    }
+}

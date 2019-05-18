@@ -1,0 +1,150 @@
+{ 
+    "_id" : ObjectId("5cd063ba138d27315c58552d"), 
+    "masv" : "123875973", 
+    "hosv" : "Nguyễn Quốc", 
+    "tensv" : "Bảo", 
+    "ngaysinh" : ISODate("1998-10-10T00:00:00.000+0000"), 
+    "malop" : [
+        "CD16KM1", 
+        "CDHLCSDL1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd063f9138d27315c58552e"), 
+    "masv" : "123932234", 
+    "hosv" : "Phạm Ngọc Thoại", 
+    "tensv" : "Kỳ", 
+    "ngaysinh" : ISODate("1992-01-05T00:00:00.000+0000"), 
+    "malop" : [
+        "CD16KM1", 
+        "CDHLCSDL1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd0647d138d27315c58552f"), 
+    "masv" : "123889128", 
+    "hosv" : "Nguyễn Phúc", 
+    "tensv" : "Thịnh", 
+    "ngaysinh" : ISODate("1998-02-02T00:00:00.000+0000"), 
+    "malop" : [
+        "CD16KM1", 
+        "CDHLCSDL1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd06577138d27315c585531"), 
+    "masv" : "123223414", 
+    "hosv" : "Tên Mẹ", 
+    "tensv" : "Đặt", 
+    "ngaysinh" : ISODate("1997-02-04T00:00:00.000+0000"), 
+    "malop" : [
+        "CD16KM1", 
+        "CDHLCSDL1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd0660c138d27315c585535"), 
+    "masv" : "123894729", 
+    "hosv" : "Tên Bố", 
+    "tensv" : "Đặt", 
+    "ngaysinh" : ISODate("1997-12-07T00:00:00.000+0000"), 
+    "malop" : [
+        "CD16KM1", 
+        "CDHLCSDL1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd06671138d27315c585539"), 
+    "masv" : "123525787", 
+    "hosv" : "Tên Đại", 
+    "tensv" : "Diện", 
+    "ngaysinh" : ISODate("1997-07-27T00:00:00.000+0000"), 
+    "malop" : [
+        "CD16KP1", 
+        "CDHLCSDL1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd067f1138d27315c58554a"), 
+    "masv" : "123333244", 
+    "hosv" : "Gia Cát", 
+    "tensv" : "Lượng", 
+    "ngaysinh" : ISODate("1995-07-07T00:00:00.000+0000"), 
+    "malop" : [
+        "CD16KP1", 
+        "CDHLCSDL1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd06837138d27315c58554e"), 
+    "masv" : "123872917", 
+    "hosv" : "Lu", 
+    "tensv" : "Bị", 
+    "ngaysinh" : ISODate("1995-02-17T00:00:00.000+0000"), 
+    "malop" : [
+        "CD16KP1", 
+        "CDHLCSDL1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd0687e138d27315c585555"), 
+    "masv" : "123872917", 
+    "hosv" : "Lữ", 
+    "tensv" : "Bố", 
+    "ngaysinh" : ISODate("1995-02-22T00:00:00.000+0000"), 
+    "malop" : [
+        "CD16KP1", 
+        "CDHLCSDL1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd068af138d27315c585559"), 
+    "masv" : "123872917", 
+    "hosv" : "Điêu", 
+    "tensv" : "Thuyền", 
+    "ngaysinh" : ISODate("1995-01-22T00:00:00.000+0000"), 
+    "malop" : [
+        "CD16KP1", 
+        "CDHLCSDL1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd06a1f138d27315c58558e"), 
+    "masv" : "123631049", 
+    "hosv" : "Đổng", 
+    "tensv" : "Trác", 
+    "ngaysinh" : ISODate("1995-03-23T00:00:00.000+0000"), 
+    "malop" : [
+        "CD17CT1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd06a77138d27315c58559a"), 
+    "masv" : "123000002", 
+    "hosv" : "Văn", 
+    "tensv" : "Ương", 
+    "ngaysinh" : ISODate("1995-03-03T00:00:00.000+0000"), 
+    "malop" : [
+        "CD17CT1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd06aa2138d27315c58559e"), 
+    "masv" : "123631049", 
+    "hosv" : "Hắng", 
+    "tensv" : "Nga", 
+    "ngaysinh" : ISODate("1996-01-23T00:00:00.000+0000"), 
+    "malop" : [
+        "CD17CT1"
+    ]
+}
+{ 
+    "_id" : ObjectId("5cd06adc138d27315c5855a2"), 
+    "masv" : "123631049", 
+    "hosv" : "Lăng", 
+    "tensv" : "Thống", 
+    "ngaysinh" : ISODate("1996-08-23T00:00:00.000+0000"), 
+    "malop" : [
+        "CD17CT1"
+    ]
+}

@@ -1,0 +1,34 @@
+{ 
+    "_id" : ObjectId("5cd024a2ac157f2580bfefe4"), 
+    "magv" : "GV001", 
+    "hoten" : "Trần Công Mua", 
+    "email" : "admin@gmail.com", 
+    "matkhau" : "admin", 
+    "token" : "vnuef022131mdfe44rf", 
+    "monday" : {
+        "1" : {
+            "KTLT" : {
+                "1" : [
+                    "CD16KM1", 
+                    "CD16KP1"
+                ], 
+                "3" : [
+                    "CD17CT1"
+                ]
+            }
+        }, 
+        "4" : {
+            "CSDL" : {
+                "2" : [
+                    "CD17CT1", 
+                    "CDHLCSDL1"
+                ]
+            }, 
+            "THDC" : {
+                "5" : [
+                    "CD17CT1"
+                ]
+            }
+        }
+    }
+}

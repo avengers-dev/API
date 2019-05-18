@@ -21,5 +21,6 @@ Route::post('login','Api\LoginController@login')->middleware('cors');
 Route::get('getAllMonHoc','Api\MonHocController@getAllMonHoc');
 Route::group(['middleware'=>'validateToken'],function(){   
     Route::post('getDanhSachSinhVien','Api\SinhVienController@getDanhSachSinhVien');
-    Route::post('getDanhSachSinhVienDiemDanh','Api\DiemDanhController@getDanhSachSinhVienDiemDanh');
+    
 });
+Route::post('getDanhSachSinhVienDiemDanh','Api\DiemDanhController@getDanhSachSinhVienDiemDanh');

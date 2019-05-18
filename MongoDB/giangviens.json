@@ -1,33 +1,56 @@
-{ 
-    "_id" : ObjectId("5cd024a2ac157f2580bfefe4"), 
-    "magv" : "GV001", 
-    "hoten" : "Trần Công Mua", 
-    "email" : "admin@gmail.com", 
-    "matkhau" : "admin", 
-    "token" : "vnuef022131mdfe44rf", 
-    "monday" : {
-        "1" : {
-            "KTLT" : {
-                "1" : [
-                    "CD16KM1", 
-                    "CD16KP1"
-                ], 
-                "3" : [
-                    "CD17CT1"
-                ]
-            }
-        }, 
-        "4" : {
-            "CSDL" : {
-                "2" : [
-                    "CD17CT1", 
-                    "CDHLCSDL1"
-                ]
+{
+    { 
+        "_id" : ObjectId("5cd024a2ac157f2580bfefe4"), 
+        "magv" : "GV001", 
+        "hoten" : "Trần Công Mua", 
+        "email" : "admin@gmail.com", 
+        "matkhau" : "admin", 
+        "token" : "vnuef022131mdfe44rf", 
+        "monday" : {
+            "1" : {
+                "KTLT" : {
+                    "1" : [
+                        "CD16KM1", 
+                        "CD16KP1"
+                    ], 
+                    "3" : [
+                        "CD17CT1"
+                    ]
+                }
             }, 
-            "THDC" : {
-                "5" : [
-                    "CD17CT1"
-                ]
+            "6" : {
+                "CSDL" : {
+                    "2" : [
+                        "CD17CT1", 
+                        "CDHLCSDL1"
+                    ]
+                }, 
+                "KTLT" : {
+                    "5" : [
+                        "CD17CT1"
+                    ]
+                }
+            }
+        }
+    },
+    { 
+        "_id" : ObjectId("5ce002a2dc16490e346e69e0"), 
+        "magv" : "GV002", 
+        "hoten" : "Võ Tấn Dũng", 
+        "email" : "tandung@gmail.com", 
+        "matkhau" : "123", 
+        "token" : "vasdasdasdas123asd", 
+        "monday" : {
+            "6" : {
+                "KTLT" : {
+                    "1" : [
+                        "CD16KM1", 
+                        "CD16KP1"
+                    ], 
+                    "3" : [
+                        "CD17CT1"
+                    ]
+                }
             }
         }
     }

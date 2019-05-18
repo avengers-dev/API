@@ -18,17 +18,10 @@ class DiemDanhs extends Eloquent
     }
     public static function insertNgayDiemDanh($ngay_diem_danh, $ma_gv, $ma_mh, $danh_sach_sinh_vien)
     {
-        $result = [];
-        foreach ($danh_sach_sinh_vien as $key => $value) {
-            $result[] = [
-                'masv' => $danh_sach_sinh_vien[$key]['masv'],
-                'check' => $danh_sach_sinh_vien[$key]['check'],
-            ];
-        }
         $data = [
             $ngay_diem_danh => [
                 $ma_gv => [
-                    $ma_mh => $result
+                    $ma_mh => $danh_sach_sinh_vien
                 ]
             ]
         ];
@@ -36,9 +29,19 @@ class DiemDanhs extends Eloquent
             [['data' => $data]]
         );
     }
-    public static function updateMaMH($ngay_diem_danh, $data_insert)
+    public static function update_DS_Sinhvien_By_MaMH($ngay_diem_danh, $data)
     {
-        DiemDanhs::where('ngaydiemdanh', $ngay_diem_danh)->update(['data' => $data_insert]);
+        DiemDanhs::where('ngaydiemdanh', $ngay_diem_danh)->update(['data' => $data]);
+        return DiemDanhs::all();
+    }
+    public static function insert_DS_Sinhvien_By_MaMH($ngay_diem_danh, $data)
+    {
+        DiemDanhs::where('ngaydiemdanh', $ngay_diem_danh)->update(['data' => $data]);
+        return DiemDanhs::all();
+    }
+    public static function insert_DS_Sinhvien_By_Magv($ngay_diem_danh, $data)
+    {
+        DiemDanhs::where('ngaydiemdanh', $ngay_diem_danh)->update(['data' => $data]);
         return DiemDanhs::all();
     }
     public static function getDanhSachSinhVienDiemDanh()

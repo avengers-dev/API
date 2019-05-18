@@ -1,45 +1,125 @@
 { 
-    "_id" : ObjectId("5cde52607f05f412c40062f2"), 
-    "ngaydiemdanh" : "2019-05-17", 
+    "_id" : ObjectId("5cd06f6c138d27315c5855bd"), 
+    "ngaydiemdanh" : "2019-05-18", 
     "data" : {
-        "2019-05-17" : {
+        "2019-05-18" : {
             "GV001" : {
                 "CSDL" : [
                     {
-                        "masv" : "12333", 
-                        "hoten" : "A", 
+                        "tensv" : "Bảo", 
+                        "masv" : "123875973", 
                         "check" : NumberInt(1)
                     }, 
                     {
-                        "masv" : "12333", 
-                        "hoten" : "B", 
+                        "tensv" : "Kỳ", 
+                        "masv" : "123932234", 
                         "check" : NumberInt(1)
+                    }, 
+                    {
+                        "tensv" : "Thịnh", 
+                        "masv" : "123889128", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Đặt", 
+                        "masv" : "123223414", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Đặt", 
+                        "masv" : "123894729", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Diện", 
+                        "masv" : "123525787", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Lượng", 
+                        "masv" : "123333244", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Bị", 
+                        "masv" : "123872917", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Bố", 
+                        "masv" : "123872917", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Thuyền", 
+                        "masv" : "123872917", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Trác", 
+                        "masv" : "123631049", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Ương", 
+                        "masv" : "123000002", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Nga", 
+                        "masv" : "123631049", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Thống", 
+                        "masv" : "123631049", 
+                        "check" : NumberInt(0)
                     }
                 ], 
                 "KTLT" : [
                     {
-                        "masv" : "12333", 
-                        "hoten" : "C", 
-                        "check" : NumberInt(1)
+                        "tensv" : "Trác", 
+                        "masv" : "123631049", 
+                        "check" : NumberInt(0)
                     }, 
                     {
-                        "masv" : "12333", 
-                        "hoten" : "D", 
-                        "check" : NumberInt(1)
+                        "tensv" : "Ương", 
+                        "masv" : "123000002", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Nga", 
+                        "masv" : "123631049", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Thống", 
+                        "masv" : "123631049", 
+                        "check" : NumberInt(0)
                     }
                 ]
             }, 
             "GV002" : {
-                "THDC" : [
+                "KTLT" : [
                     {
-                        "masv" : "12333", 
-                        "hoten" : "A", 
-                        "check" : NumberInt(1)
+                        "tensv" : "Trác", 
+                        "masv" : "123631049", 
+                        "check" : NumberInt(0)
                     }, 
                     {
-                        "masv" : "12333", 
-                        "hoten" : "B", 
-                        "check" : NumberInt(1)
+                        "tensv" : "Ương", 
+                        "masv" : "123000002", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Nga", 
+                        "masv" : "123631049", 
+                        "check" : NumberInt(0)
+                    }, 
+                    {
+                        "tensv" : "Thống", 
+                        "masv" : "123631049", 
+                        "check" : NumberInt(0)
                     }
                 ]
             }

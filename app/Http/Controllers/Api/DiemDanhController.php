@@ -9,7 +9,15 @@ use App\Models\GiangViens;
 
 class DiemDanhController extends Controller
 {
-    public function updateOrInsertDanhSachSinhVien(Request $request)
+    public function updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien)
+    {
+        $data_update = $data_check_diem_danh[$index]['data'];
+        $data_update[$ngay_diem_danh][$ma_gv][$ma_mh][$ca] = $danh_sach_sinh_vien;
+        DiemDanhs::updateOrInsertDanhSachSinhVien($ngay_diem_danh, $data_update);
+        $data = $data_update[$ngay_diem_danh][$ma_gv][$ma_mh][$ca];
+        return $this->responses($data, 200, trans('messages.api_success'));
+    }
+    public function saveDanhSachSinhVien(Request $request)
     {
         if ($request->input('mamh') && $request->input('danhsachsvdiemdanh') && $request->input('ca')) {
             date_default_timezone_set('asia/ho_chi_minh');
@@ -41,51 +49,30 @@ class DiemDanhController extends Controller
                     }
                     if ($flag_mamh) {
                         $flag_ca = false;
-                        if(array_key_exists($ca,$data_check_diem_danh[$index]['data'][$ngay_diem_danh][$ma_gv][$ma_mh]))
-                        {
+                        if (array_key_exists($ca, $data_check_diem_danh[$index]['data'][$ngay_diem_danh][$ma_gv][$ma_mh])) {
                             $flag_ca = true;
                         }
-                        if($flag_ca){
-                            $data_update = $data_check_diem_danh[$index]['data'];
-                            $data_update[$ngay_diem_danh][$ma_gv][$ma_mh][$ca] = $danh_sach_sinh_vien;
-                            DiemDanhs::updateOrInsertDanhSachSinhVien($ngay_diem_danh, $data_update);
-                            $data = $data_update[$ngay_diem_danh][$ma_gv][$ma_mh][$ca];
-                            return $this->responses($data, 200, trans('messages.api_success'));
+                        if ($flag_ca) {
+                            updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien);
+                        } else {
+                            updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien);
                         }
-                        else{
-                            $data_insert = $data_check_diem_danh[$index]['data'];
-                            $data_insert[$ngay_diem_danh][$ma_gv][$ma_mh][$ca] = $danh_sach_sinh_vien;
-                            DiemDanhs::updateOrInsertDanhSachSinhVien($ngay_diem_danh, $data_insert);
-                            $data = $data_insert[$ngay_diem_danh][$ma_gv][$ma_mh][$ca];
-                            return $this->responses($data, 200, trans('messages.api_success'));
-                        }
-                            
-                    }
-                    else{
-                        $data_insert = $data_check_diem_danh[$index]['data'];
-                        $data_insert[$ngay_diem_danh][$ma_gv][$ma_mh][$ca] = $danh_sach_sinh_vien;
-                        DiemDanhs::updateOrInsertDanhSachSinhVien($ngay_diem_danh, $data_insert);
-                        $data = $data_insert[$ngay_diem_danh][$ma_gv][$ma_mh][$ca];
-                        return $this->responses($data, 200, trans('messages.api_success'));
+                    } else {
+                        updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien);
                     }
                 } else {
-                    $data_insert = $data_check_diem_danh[$index]['data'];
-                    $data_insert[$ngay_diem_danh][$ma_gv][$ma_mh][$ca] = $danh_sach_sinh_vien;
-                    DiemDanhs::updateOrInsertDanhSachSinhVien($ngay_diem_danh, $data_insert);
-                    $data = $data_insert[$ngay_diem_danh][$ma_gv][$ma_mh][$ca];
-                    return $this->responses($data, 200, trans('messages.api_success'));
+                    updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien);
                 }
-            } 
-            else {
-                $data = DiemDanhs::insertNgayDiemDanh($ngay_diem_danh, $ma_gv, $ma_mh, $danh_sach_sinh_vien,$ca,$ngay_diem_danh);
+            } else {
+                $data = DiemDanhs::insertNgayDiemDanh($ngay_diem_danh, $ma_gv, $ma_mh, $danh_sach_sinh_vien, $ca);
                 return $this->responses($data, 200, trans('messages.api_success'));
             }
-        } 
-        else {
+        } else {
             return $this->responses([], 404, trans('messages.api_not_enough_params'));
         }
     }
-    public function getDanhSachSinhVienhCheck(Request $request){
+    public function getDanhSachSinhVienCheck(Request $request)
+    {
         if ($request->input('mamh') && $request->input('ca')) {
             date_default_timezone_set('asia/ho_chi_minh');
             $ngay_diem_danh = date("Y-m-d");
@@ -115,31 +102,25 @@ class DiemDanhController extends Controller
                     }
                     if ($flag_mamh) {
                         $flag_ca = false;
-                        if(array_key_exists($ca,$data_check_diem_danh[$index]['data'][$ngay_diem_danh][$ma_gv][$ma_mh]))
-                        {
+                        if (array_key_exists($ca, $data_check_diem_danh[$index]['data'][$ngay_diem_danh][$ma_gv][$ma_mh])) {
                             $flag_ca = true;
                         }
-                        if($flag_ca){
+                        if ($flag_ca) {
                             $data = $data_check_diem_danh[$index]['data'][$ngay_diem_danh][$ma_gv][$ma_mh][$ca];
                             return $this->responses($data, 200, trans('messages.api_success'));
-                        }
-                        else{
+                        } else {
                             return $this->responses([], 200, trans('messages.api_success'));
-                        }   
-                    }
-                    else{
+                        }
+                    } else {
                         return $this->responses([], 200, trans('messages.api_success'));
                     }
-                }
-                else{
+                } else {
                     return $this->responses([], 200, trans('messages.api_success'));
                 }
-            }
-            else{
+            } else {
                 return $this->responses([], 200, trans('messages.api_success'));
             }
-        } 
-        else {
+        } else {
             return $this->responses([], 404, trans('messages.api_not_enough_params'));
         }
     }

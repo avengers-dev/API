@@ -16,7 +16,7 @@ class DiemDanhs extends Eloquent
         $query = DiemDanhs::all();
         return $query;
     }
-    public static function insertNgayDiemDanh($ngay_diem_danh, $ma_gv, $ma_mh, $danh_sach_sinh_vien ,$ca)
+    public static function insertNgayDiemDanh($ngay_diem_danh, $ma_gv, $ma_mh, $danh_sach_sinh_vien,$ca)
     {
         $data = [
             $ngay_diem_danh => [

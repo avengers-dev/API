@@ -35,7 +35,7 @@ class DiemDanhs extends Eloquent
     public static function updateOrInsertDanhSachSinhVien($ngay_diem_danh, $data)
     {
         DiemDanhs::where('ngaydiemdanh', $ngay_diem_danh)->update(['data' => $data]);
-        return DiemDanhs::all();
+        // return DiemDanhs::all();
     }
     public static function getDanhSachSinhVienDiemDanh()
     {

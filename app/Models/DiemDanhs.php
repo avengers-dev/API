@@ -37,9 +37,4 @@ class DiemDanhs extends Eloquent
         DiemDanhs::where('ngaydiemdanh', $ngay_diem_danh)->update(['data' => $data]);
         // return DiemDanhs::all();
     }
-    public static function getDanhSachSinhVienDiemDanh()
-    {
-        $query = DiemDanhs::select('ngaydiemdanh.')->get()[0];
-        return $query;
-    }
 }

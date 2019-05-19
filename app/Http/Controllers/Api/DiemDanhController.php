@@ -53,15 +53,15 @@ class DiemDanhController extends Controller
                             $flag_ca = true;
                         }
                         if ($flag_ca) {
-                            updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien);
+                            return $this->updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien);
                         } else {
-                            updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien);
+                            return $this->updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien);
                         }
                     } else {
-                        updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien);
+                        return $this->updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien);
                     }
                 } else {
-                    updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien);
+                    return $this->updateOrInsertDanhSachSinhVien($data_check_diem_danh, $index, $ngay_diem_danh, $ma_gv, $ma_mh, $ca, $danh_sach_sinh_vien);
                 }
             } else {
                 $data = DiemDanhs::insertNgayDiemDanh($ngay_diem_danh, $ma_gv, $ma_mh, $danh_sach_sinh_vien, $ca);

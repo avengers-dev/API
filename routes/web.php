@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+Route::get('template-table',function(){
+    return view('template-table');
+})->name('template-table');

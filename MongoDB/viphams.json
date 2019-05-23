@@ -1,0 +1,7 @@
+{ 
+    "_id" : ObjectId("5ce685dafc5ba5281c8869a9"), 
+    "mamh" : "KP1", 
+    "masv" : "123", 
+    "solanvipham" : NumberInt(1), 
+    "ca" : NumberInt(1)
+}

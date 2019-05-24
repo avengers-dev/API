@@ -7688,7 +7688,8 @@ fieldset[disabled] .form-control {
         .sidebar .menu .list .ml-menu span {
           font-weight: normal;
           font-size: 14px;
-          margin: 3px 0 1px 6px; }
+          margin: 3px 0 1px 6px; 
+          padding-top: 4px;}
         .sidebar .menu .list .ml-menu li a {
           padding-left: 55px;
           padding-top: 7px;
@@ -7702,7 +7703,7 @@ fieldset[disabled] .form-control {
             position: relative;
             font-size: 21px;
             height: 20px;
-            top: -5px;
+            top: 2px;
             right: 0px; }
         .sidebar .menu .list .ml-menu li .ml-menu li a {
           padding-left: 80px; }

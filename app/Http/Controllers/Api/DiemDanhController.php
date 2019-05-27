@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\DiemDanhs;
 use App\Models\GiangViens;
+use App\Models\ViPhams;
 
 class DiemDanhController extends Controller
 {
@@ -15,6 +16,7 @@ class DiemDanhController extends Controller
         $data_update[$ngay_diem_danh][$ma_gv][$ma_mh][$ca] = $danh_sach_sinh_vien;
         DiemDanhs::updateOrInsertDanhSachSinhVien($ngay_diem_danh, $data_update);
         $data = $data_update[$ngay_diem_danh][$ma_gv][$ma_mh][$ca];
+        
         return $this->responses($data, 200, trans('messages.api_success'));
     }
     public function saveDanhSachSinhVien(Request $request)

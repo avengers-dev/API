@@ -1,9 +1,7 @@
 <?php
 
-
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class ViPhams extends Eloquent
@@ -18,39 +16,39 @@ class ViPhams extends Eloquent
             if ($value['check'] == 0) {
                 $sv = ViPhams::where([
                     [
-                        'masv', $value['masv']
+                        'masv', $value['masv'],
                     ],
                     [
-                        'mamh', $ma_mh
-                    ]
+                        'mamh', $ma_mh,
+                    ],
                 ])->get();
                 if (count($sv)) {
-                    $flag = false;
-                    foreach($sv[0]['ngay_cup_hoc'] as $k => $v){
-                        if($ngay_diem_danh == $v){
-                            $flag = true;
+                    $flag = true;
+                    foreach ($sv[0]['ngay_cup_hoc'] as $k => $v) {
+                        if ($ngay_diem_danh == $v) {
+                            $flag = false;
                         }
                     }
-                    if($flag){
+                    if ($flag) {
                         $arr = $sv[0]['ngay_cup_hoc'];
                         array_push($arr, $ngay_diem_danh);
                         Viphams::where([
                             [
-                                'masv', $danh_sach_sinh_vien[$key]['masv']
+                                'masv', $danh_sach_sinh_vien[$key]['masv'],
                             ],
                             [
-                                'mamh', $ma_mh
-                            ]
+                                'mamh', $ma_mh,
+                            ],
                         ])->update(['ngay_cup_hoc' => $arr]);
-                    }
-                } else {
+                    }                       
+                } else                          {
                     ViPhams::insert([
                         [
-                            'mamh' => $ma_mh,
+                            'mamh' =>                          $ma_mh,
                             'tensv' => $value['tensv'],
                             'masv' => $value['masv'],
-                            'ngay_cup_hoc' => [
-                                $ngay_diem_danh
+                            'ngay_cup_hoc'                => [
+                                $ngay_diem_danh,
                             ],
                         ],
                     ]);
@@ -58,20 +56,39 @@ class ViPhams extends Eloquent
             } else {
                 $sv = ViPhams::where([
                     [
-                        'masv', $value['masv']
+                        'masv', $value['masv'],
                     ],
                     [
-                        'mamh', $ma_mh
-                    ]
+                        'mamh', $ma_mh,
+                    ],
                 ])->get();
                 if (count($sv)) {
-                    if (array_key_exists($ngay_diem_danh, $sv[0]['ngay_cup_hoc'])){
-                        foreach($sv[0]['ngay_cup_hoc'] as $k => $v){
-                            if($v == $ngay_diem_danh){
-                                unset($sv[0]['ngay_cup_hoc'][$k]);
+                    $data = $sv[0]['ngay_cup_hoc'];
+                    if (count($data)) {
+                        Viphams::where([
+                            [
+                                'masv', $sv[0]['masv'],
+                            ],
+                            [
+                                'mamh', $ma_mh,
+                            ],
+                        ])->delete();
+                    } else {
+                        foreach ($data as $k => $v) {
+                            if ($ngay_diem_danh == $v) {
+                                unset($data[$k]);
+                                Viphams::where([
+                                    [
+                                        'masv', $sv[0]['masv'],
+                                    ],
+                                    [
+                                        'mamh', $ma_mh,
+                                    ],
+                                ])->update(['ngay_cup_hoc' => $data]);
                             }
                         }
                     }
+
                 }
             }
         }

@@ -6,7 +6,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
-                    <h2>
+                    <h2 id="ten_lophoc_search">
                         Sinh Viên Vi Phạm Toàn Trường
                     </h2>
                     
@@ -17,7 +17,7 @@
                             </a>
                             <ul class="dropdown-menu pull-right" style="width:250px;">
                                 @foreach($lops as $lop)
-                                <li><a href="">{{$lop->tenlop}}</a></li>
+                                <li><a class="lop" data-malop="{{$lop->malop}}">{{$lop->tenlop}}</a></li>
                                 @endforeach
                             </ul>
                         </li>
@@ -34,9 +34,9 @@
                                     <th>Số Ngày Vắng</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="danhsach_sinhvien_vipham">
                                 @foreach($ds_sinhvien_vipham as $item)
-                                <tr @if(count($item->ngay_cup_hoc) >= 3) class="vi_pham_lan_3" @endif>
+                                <tr @if(count($item->ngay_cup_hoc) > 2) class="vi_pham_lan_3" @endif>
                                     <td>{{$item->masv}}</td>
                                     <td>{{$item->tensv}}</td>
                                     <td>
@@ -46,7 +46,7 @@
                                             @endif
                                         @endforeach
                                     </td>
-                                    <td @if(count($item->ngay_cup_hoc) >= 3) style="color:red" @endif >
+                                    <td @if(count($item->ngay_cup_hoc) > 2) style="color:red" @endif >
                                         {{count($item->ngay_cup_hoc)}}
                                     </td>
                                 </tr>

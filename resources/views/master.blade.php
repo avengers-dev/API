@@ -70,6 +70,22 @@
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
+    <script>
+    $(function(){
+        $('body').on('click','.lop',function(){
+            const ten_lophoc = $(this).html();
+            $.ajax({
+                url : '/search-danh-sach-sinh-vien-vi-pham-theo-malop/'+$(this).attr('data-malop'),
+                data : {malop : $(this).attr('data-malop') },
+                type: 'GET',  
+                success:function(result){
+                    $('#danhsach_sinhvien_vipham').html(result);
+                    $('#ten_lophoc_search').html('Lớp : '+ ten_lophoc);
+                }
+            })
+        })
+    })
+</script>
 </body>
 
 </html>

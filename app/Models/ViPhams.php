@@ -44,10 +44,11 @@ class ViPhams extends Eloquent
                 } else                          {
                     ViPhams::insert([
                         [
-                            'mamh' =>                          $ma_mh,
-                            'tensv' => $value['tensv'],
-                            'masv' => $value['masv'],
-                            'ngay_cup_hoc'                => [
+                            'mamh'          => $ma_mh,
+                            'tensv'         => $value['tensv'],
+                            'masv'          => $value['masv'],
+                            'malop'         => $value['malop'],
+                            'ngay_cup_hoc'  => [
                                 $ngay_diem_danh,
                             ],
                         ],
@@ -64,7 +65,7 @@ class ViPhams extends Eloquent
                 ])->get();
                 if (count($sv)) {
                     $data = $sv[0]['ngay_cup_hoc'];
-                    if (count($data)) {
+                    if (count($data) == 1) {
                         Viphams::where([
                             [
                                 'masv', $sv[0]['masv'],

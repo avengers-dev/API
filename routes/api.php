@@ -25,6 +25,7 @@ Route::group(['middleware'=>'validateToken'],function(){
     Route::post('saveDanhSachSinhVien','Api\DiemDanhController@saveDanhSachSinhVien');
 
     Route::post('getDanhSachSinhVienCheck','Api\DiemDanhController@getDanhSachSinhVienCheck');
+
+    Route::post('saveDanhSachViPham','Api\ViphamController@saveDanhSachViPham');
 });
 
-Route::post('saveDanhSachViPham','Api\ViphamController@saveDanhSachViPham');

@@ -8215,3 +8215,6 @@ html.ie11 .bs-searchbox .form-control {
 .vi_pham_lan_3{
   background:rgba(255,222,173,0.3);color:black;font-weight:bold;
 }
+tr:hover{
+  cursor: pointer;
+}

@@ -94,18 +94,14 @@
                                 <span>Lớp</span>
                             </a>
                             <ul class="ml-menu">
+                                @foreach($lops as $lop)
                                 <li>
-                                    <a href="template-table">
+                                    <a class="lop" data-malop="{{$lop->malop}}">
                                         <i class="material-icons">school</i>
-                                        <span>CD16KM1</span>
+                                        <span style="font-size:12px;">{{$lop->tenlop}}</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="template-table">
-                                        <i class="material-icons">school</i>
-                                        <span>CD16KP1</span>
-                                    </a>
-                                </li>
+                                @endforeach
                             </ul>
                         </li>
                     </ul>

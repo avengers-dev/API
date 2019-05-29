@@ -40,8 +40,8 @@ class ViPhams extends Eloquent
                                 'mamh', $ma_mh,
                             ],
                         ])->update(['ngay_cup_hoc' => $arr]);
-                    }                       
-                } else                          {
+                    }
+                } else {
                     ViPhams::insert([
                         [
                             'mamh'          => $ma_mh,
@@ -89,7 +89,6 @@ class ViPhams extends Eloquent
                             }
                         }
                     }
-
                 }
             }
         }

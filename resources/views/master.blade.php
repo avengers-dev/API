@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Admin ITC</title>
     <!-- Favicon-->
@@ -37,7 +37,7 @@
     <section class="content">
         @yield('content')
     </section>
-    
+
     <!-- Jquery Core Js -->
     <script src="plugins/jquery/jquery.min.js"></script>
 
@@ -71,21 +71,27 @@
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
     <script>
-    $(function(){
-        $('body').on('click','.lop',function(){
-            const ten_lophoc = $(this).html();
-            $.ajax({
-                url : '/search-danh-sach-sinh-vien-vi-pham-theo-malop/'+$(this).attr('data-malop'),
-                data : {malop : $(this).attr('data-malop') },
-                type: 'GET',  
-                success:function(result){
-                    $('#danhsach_sinhvien_vipham').html(result);
-                    $('#ten_lophoc_search').html('Lớp : '+ ten_lophoc);
-                }
+        $(function() {
+            $('body').on('click', '.lop', function() {
+                const ten_lophoc = $(this).html();
+                $.ajax({
+                    url: '/search-danh-sach-sinh-vien-vi-pham-theo-malop/' + $(this).attr('data-malop'),
+                    data: {
+                        malop: $(this).attr('data-malop')
+                    },
+                    type: 'GET',
+                    success: function(result) {
+                        $('#danhsach_sinhvien_vipham').html(result);
+                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc);
+                    }
+                })
+            })
+            $('body').on('click', '#toggle_chitiet_sv_vipham', function() {
+                $('.thontin_sinhvien_vipham_cha').show(10);
+                $('.thontin_sinhvien_vipham').slideToggle();
             })
         })
-    })
-</script>
+    </script>
 </body>
 
 </html>

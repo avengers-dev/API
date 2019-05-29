@@ -26,37 +26,39 @@
                         <table class="table display table-bordered table-hover js-basic-example dataTable">
                             <thead>
                                 <tr>
-                                    <th>Mã Số Sinh Viên</th>
-                                    <th>Tên Sinh Viên</th>
-                                    <th>Môn Học</th>
-                                    <th>Số Ngày Vắng</th>
+                                    <th style="width:20%;">Số Thứ Tự</th>
+                                    <th style="width:20%;">Mã Số Sinh Viên</th>
+                                    <th style="width:30%;">Họ Sinh Viên</th>
+                                    <th style="width:15%;">Tên Sinh Viên</th>
+                                    <th style="width:15%;">Số Điện Thoại</th>
                                 </tr>
                             </thead>
                             <tbody id="danhsach_sinhvien_vipham">
+                                <?php $stt = 0;?>
                                 @foreach($ds_sinhvien_vipham as $item)
-                                <tr id='toggle_chitiet_sv_vipham' @if(count($item->ngay_cup_hoc) > 2) class="vi_pham_lan_3" @endif>
-                                    <td>{{$item->masv}}</td>
-                                    <td>{{$item->tensv}}</td>
-                                    <td>
-                                        @foreach($monhocs as $monhoc)
-                                        @if($item->mamh == $monhoc->mamh)
-                                        {{$monhoc->tenmh}}
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                    <td @if(count($item->ngay_cup_hoc) > 2) style="color:red" @endif >
-                                        {{count($item->ngay_cup_hoc)}}
-                                    </td>
+                                <?php $stt++;?>
+                                <tr class='toggle_chitiet_sv_vipham' data-masv="{{$item->masv}}" style="font-weight:bold;" @if(count($item->ngay_cup_hoc) > 2) class="vi_pham_lan_3" @endif>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$stt}}</td>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->masv}}</td>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->hosv}}</td>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->tensv}}</td>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->sdt}}</td>
                                 </tr>
-                               
-                                <tr class="thontin_sinhvien_vipham_cha" style="display:none;">
-                                    <td>
-                                        Môn học: LTLT
-                                    </td>
-                                    <td>Số buổi vắng : 3</td>
-                                    <td>Ngày vắng: 2019-05-19 , 2019-05-19</td>
-                                    <td></td>
-                                </tr>
+                                <?php 
+                                    foreach($item['mamh'] as $key => $value){
+                                ?>
+                                    <tr class="toogle toogle_chitiet_{{$item->masv}}" style="background:rgba(243, 224, 224, 0.68);display:none;">
+                                        <td style="border:0;">
+                                            Môn học: <?php echo $key?>
+                                        </td>
+                                        <td  style="border:0;">Số buổi vắng : <?php echo count($value )?></td>
+                                        <td  style="border:0;">Ngày vắng: <?php foreach($value as $k) {echo $k." , ";} ?></td>
+                                        <td  style="border:0;"></td>
+                                        <td  style="border:0;"></td>
+                                    </tr>
+                                <?php }  ?>
+                                
+                                
                                 @endforeach
                             </tbody>
                         </table>

@@ -86,9 +86,14 @@
                     }
                 })
             })
-            $('body').on('click', '#toggle_chitiet_sv_vipham', function() {
-                $('.thontin_sinhvien_vipham_cha').show(10);
-                $('.thontin_sinhvien_vipham').slideToggle();
+            $('body').on('click', '.toggle_chitiet_sv_vipham', function() {
+                const masv = $(this).attr('data-masv');
+                $('.toogle').slideUp(1);
+                
+                $('.toggle_chitiet_sv_vipham').css({'background':'white'})
+                $(this).css({'background':'rgba(247, 91, 91, 0.38)'});
+                $('.toogle_chitiet_'+masv).slideToggle();
+                
             })
         })
     </script>

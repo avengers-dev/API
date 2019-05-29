@@ -1,7 +1,25 @@
 { 
-    "_id" : ObjectId("5ce685dafc5ba5281c8869a9"), 
-    "mamh" : "KP1", 
-    "masv" : "123", 
-    "solanvipham" : NumberInt(1), 
-    "ca" : NumberInt(1)
+    "_id" : ObjectId("5cee84c4f587ce1078006392"), 
+    "mamh" : {
+        "CSDL" : [
+            "2019-05-29", 
+            "2019-05-23", 
+            "2019-05-23", 
+            "2019-05-23"
+        ], 
+        "KTLT" : [
+            "2019-05-29"
+        ]
+    }, 
+    "tensv" : "Bảo", 
+    "masv" : "123123", 
+    "hosv" : "Nguyễn Quốc", 
+    "sdt" : NumberLong(12345678943546), 
+    "malop" : [
+        "CD16KM1", 
+        "CDHLCSDL1"
+    ], 
+    "ngay_cup_hoc" : [
+        "2019-05-29"
+    ]
 }

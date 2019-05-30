@@ -62,6 +62,32 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <table class="table display table-bordered table-hover testt dataTable">
+                            <thead style="display: none">
+                                <tr>
+                                    <th style="width:20%;">Số Thứ Tự</th>
+                                    <th style="width:20%;">Mã Số Sinh Viên</th>
+                                    <th style="width:30%;">Họ Sinh Viên</th>
+                                    <th style="width:15%;">Tên Sinh Viên</th>
+                                    <th style="width:15%;">Số Điện Thoại</th>
+                                </tr>
+                            </thead>
+                            <tbody style="display: none" id="danhsach_sinhvien_vipham">
+                                <?php $stt = 0;?>
+                                @foreach($ds_sinhvien_vipham as $item)
+                                <?php $stt++;?>
+                                <tr class='toggle_chitiet_sv_vipham' data-masv="{{$item->masv}}" >
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$stt}}</td>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->masv}}</td>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->hosv}}</td>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->tensv}}</td>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->sdt}}</td>
+                                </tr>
+                                
+                                
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

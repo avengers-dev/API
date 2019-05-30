@@ -88,7 +88,7 @@
             })
             $('body').on('click', '.toggle_chitiet_sv_vipham', function() {
                 const masv = $(this).attr('data-masv');
-                $('.toogle').slideUp(1);
+                // $('.toogle').slideUp(1);
                 
                 $('.toggle_chitiet_sv_vipham').css({'background':'white'})
                 $('.toggle_chitiet_sv_vipham').css({'font-weight':'normal'})

@@ -4,12 +4,24 @@ $(function () {
         ordering: false,
         dom: 'Bfrtip',
         responsive: true,
-        lengthMenu:[length],
+        lengthMenu: [length],
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
-        ]   
+        ]
     });
-
+    $('.testt').DataTable({
+        dom: 'Bfrtip',
+        "paging":   false,
+        "ordering": false,
+        "info":     false,
+        "searching": false,
+        buttons: [
+            {
+                extend: 'print',
+                text: 'Print all'
+            }
+        ]
+    })
     //Exportable table
     $('.js-exportable').DataTable({
         dom: 'Bfrtip',

@@ -83,7 +83,7 @@
                     </a>
                     <ul class="ml-menu">
                         <li class="menu_itc active">
-                            <a  class="menu-toggle" href="{{ route('index') }}" >
+                            <a href="{{ route('index') }}" >
                                 <i class="material-icons">view_list</i>
                                 <span>Tất cả</span>
                             </a>

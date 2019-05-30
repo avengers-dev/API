@@ -8219,10 +8219,15 @@ tr:hover{
   cursor: pointer;
 }
 #DataTables_Table_1_wrapper >.dt-buttons > a.buttons-print {
-  margin: -286px 0px 0px 281px !important;
   position: absolute !important;
   height: 25px !important;
   padding: 1px !important;
   width: 60px !important;
   text-align: center !important;
+}
+
+#DataTables_Table_1_wrapper{
+  position: absolute;
+  top: 80px;
+  left: 301px;
 }

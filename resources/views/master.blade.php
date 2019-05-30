@@ -91,10 +91,16 @@
                 $('.toogle').slideUp(1);
                 
                 $('.toggle_chitiet_sv_vipham').css({'background':'white'})
+                $('.toggle_chitiet_sv_vipham').css({'font-weight':'normal'})
                 $(this).css({'background':'rgba(247, 91, 91, 0.38)'});
+                $(this).css({'font-weight':'bold'});
                 $('.toogle_chitiet_'+masv).slideToggle();
                 
-            })
+            });
+            $('body').on('click','.menu_itc',function(){
+                $('.menu_itc').removeClass('active');
+                $(this).addClass('active');
+            });
         })
     </script>
 </body>

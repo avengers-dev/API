@@ -37,7 +37,7 @@
                                 <?php $stt = 0;?>
                                 @foreach($ds_sinhvien_vipham as $item)
                                 <?php $stt++;?>
-                                <tr class='toggle_chitiet_sv_vipham' data-masv="{{$item->masv}}" style="font-weight:bold;" @if(count($item->ngay_cup_hoc) > 2) class="vi_pham_lan_3" @endif>
+                                <tr class='toggle_chitiet_sv_vipham' data-masv="{{$item->masv}}" >
                                     <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$stt}}</td>
                                     <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->masv}}</td>
                                     <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->hosv}}</td>

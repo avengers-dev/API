@@ -1,8 +1,9 @@
 { 
     "_id" : ObjectId("5cd063ba138d27315c58552d"), 
-    "masv" : "123875973", 
+    "masv" : "123123", 
     "hosv" : "Nguyễn Quốc", 
     "tensv" : "Bảo", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1998-10-10T00:00:00.000+0000"), 
     "malop" : [
         "CD16KM1", 
@@ -14,6 +15,7 @@
     "masv" : "123932234", 
     "hosv" : "Phạm Ngọc Thoại", 
     "tensv" : "Kỳ", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1992-01-05T00:00:00.000+0000"), 
     "malop" : [
         "CD16KM1", 
@@ -22,9 +24,10 @@
 }
 { 
     "_id" : ObjectId("5cd0647d138d27315c58552f"), 
-    "masv" : "123889128", 
+    "masv" : "345345123", 
     "hosv" : "Nguyễn Phúc", 
     "tensv" : "Thịnh", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1998-02-02T00:00:00.000+0000"), 
     "malop" : [
         "CD16KM1", 
@@ -33,9 +36,10 @@
 }
 { 
     "_id" : ObjectId("5cd06577138d27315c585531"), 
-    "masv" : "123223414", 
+    "masv" : "456452341", 
     "hosv" : "Tên Mẹ", 
     "tensv" : "Đặt", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1997-02-04T00:00:00.000+0000"), 
     "malop" : [
         "CD16KM1", 
@@ -44,9 +48,10 @@
 }
 { 
     "_id" : ObjectId("5cd0660c138d27315c585535"), 
-    "masv" : "123894729", 
+    "masv" : "95563251", 
     "hosv" : "Tên Bố", 
     "tensv" : "Đặt", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1997-12-07T00:00:00.000+0000"), 
     "malop" : [
         "CD16KM1", 
@@ -55,9 +60,10 @@
 }
 { 
     "_id" : ObjectId("5cd06671138d27315c585539"), 
-    "masv" : "123525787", 
+    "masv" : "987634345346456", 
     "hosv" : "Tên Đại", 
     "tensv" : "Diện", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1997-07-27T00:00:00.000+0000"), 
     "malop" : [
         "CD16KP1", 
@@ -66,9 +72,10 @@
 }
 { 
     "_id" : ObjectId("5cd067f1138d27315c58554a"), 
-    "masv" : "123333244", 
+    "masv" : "11234354999", 
     "hosv" : "Gia Cát", 
     "tensv" : "Lượng", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1995-07-07T00:00:00.000+0000"), 
     "malop" : [
         "CD16KP1", 
@@ -77,9 +84,10 @@
 }
 { 
     "_id" : ObjectId("5cd06837138d27315c58554e"), 
-    "masv" : "123872917", 
+    "masv" : "333333333", 
     "hosv" : "Lu", 
     "tensv" : "Bị", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1995-02-17T00:00:00.000+0000"), 
     "malop" : [
         "CD16KP1", 
@@ -88,9 +96,10 @@
 }
 { 
     "_id" : ObjectId("5cd0687e138d27315c585555"), 
-    "masv" : "123872917", 
+    "masv" : "44444444", 
     "hosv" : "Lữ", 
     "tensv" : "Bố", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1995-02-22T00:00:00.000+0000"), 
     "malop" : [
         "CD16KP1", 
@@ -99,9 +108,10 @@
 }
 { 
     "_id" : ObjectId("5cd068af138d27315c585559"), 
-    "masv" : "123872917", 
+    "masv" : "5445555555", 
     "hosv" : "Điêu", 
     "tensv" : "Thuyền", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1995-01-22T00:00:00.000+0000"), 
     "malop" : [
         "CD16KP1", 
@@ -110,9 +120,10 @@
 }
 { 
     "_id" : ObjectId("5cd06a1f138d27315c58558e"), 
-    "masv" : "123631049", 
+    "masv" : "6666634234234", 
     "hosv" : "Đổng", 
     "tensv" : "Trác", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1995-03-23T00:00:00.000+0000"), 
     "malop" : [
         "CD17CT1"
@@ -123,6 +134,7 @@
     "masv" : "123000002", 
     "hosv" : "Văn", 
     "tensv" : "Ương", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1995-03-03T00:00:00.000+0000"), 
     "malop" : [
         "CD17CT1"
@@ -130,9 +142,10 @@
 }
 { 
     "_id" : ObjectId("5cd06aa2138d27315c58559e"), 
-    "masv" : "123631049", 
+    "masv" : "0000000000234234", 
     "hosv" : "Hắng", 
     "tensv" : "Nga", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1996-01-23T00:00:00.000+0000"), 
     "malop" : [
         "CD17CT1"
@@ -140,9 +153,10 @@
 }
 { 
     "_id" : ObjectId("5cd06adc138d27315c5855a2"), 
-    "masv" : "123631049", 
+    "masv" : "11112388888435", 
     "hosv" : "Lăng", 
     "tensv" : "Thống", 
+    "sdt" : NumberInt(123456789), 
     "ngaysinh" : ISODate("1996-08-23T00:00:00.000+0000"), 
     "malop" : [
         "CD17CT1"

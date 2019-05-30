@@ -82,13 +82,13 @@
                         <span>Warning</span>
                     </a>
                     <ul class="ml-menu">
-                        <li class="active">
-                            <a href="{{ route('index') }}" >
-                                <i class="material-icons">school</i>
+                        <li class="menu_itc active">
+                            <a  class="menu-toggle" href="{{ route('index') }}" >
+                                <i class="material-icons">view_list</i>
                                 <span>Tất cả</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="menu_itc">
                             <a class="menu-toggle">
                                 <i class="material-icons">view_list</i>
                                 <span>Lớp</span>

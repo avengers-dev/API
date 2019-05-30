@@ -29,3 +29,4 @@ Route::group(['middleware'=>'validateToken'],function(){
     Route::post('saveDanhSachViPham','Api\ViphamController@saveDanhSachViPham');
 });
 
+

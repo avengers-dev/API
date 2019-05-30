@@ -6,7 +6,15 @@ $(function () {
         responsive: true,
         lengthMenu: [length],
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            'copy', 
+            {
+                extend: 'excel',
+                text: 'Excel all'
+            },
+            {
+                extend: 'print',
+                text: 'Print all'
+            }
         ]
     });
     $('.testt').DataTable({
@@ -17,8 +25,10 @@ $(function () {
         "searching": false,
         buttons: [
             {
+                extend: 'excel',
+            },
+            {
                 extend: 'print',
-                text: 'Print all'
             }
         ]
     })

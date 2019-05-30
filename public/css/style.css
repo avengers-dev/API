@@ -7698,7 +7698,6 @@ fieldset[disabled] .form-control {
           font-weight: 600;
           margin-left: 5px; }
           .sidebar .menu .list .ml-menu li.active a.toggled:not(.menu-toggle):before {
-            content: '\E315';
             font-family: 'Material Icons';
             position: relative;
             font-size: 21px;
@@ -8220,14 +8219,22 @@ tr:hover{
 }
 #DataTables_Table_1_wrapper >.dt-buttons > a.buttons-print {
   position: absolute !important;
-  height: 25px !important;
+  height: 24px !important;
+  padding: 1px !important;
+  width: 60px !important;
+  text-align: center !important;
+  left: 66px;
+}
+
+#DataTables_Table_1_wrapper >.dt-buttons > a.buttons-excel {
+  position: absolute !important;
+  height: 24px !important;
   padding: 1px !important;
   width: 60px !important;
   text-align: center !important;
 }
-
 #DataTables_Table_1_wrapper{
   position: absolute;
   top: 80px;
-  left: 301px;
+  left: 228px;
 }

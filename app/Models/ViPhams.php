@@ -20,20 +20,29 @@ class ViPhams extends Eloquent
                     ],
                 ])->get();
                 if (count($sv)) {
-                    $flag = false;
+                    $flag_ma_monhoc = false;
                     foreach ($sv[0]['mamh'] as $k => $v) {
                         if ($ma_mh == $k) {
-                            $flag = true;
+                            $flag_ma_monhoc = true;
                         }
                     }
-                    if ($flag) {
-                        $arr = $sv[0]['mamh'];
-                        array_push($arr[$ma_mh], $ngay_diem_danh);
-                        Viphams::where([
-                            [
-                                'masv', $danh_sach_sinh_vien[$key]['masv'],
-                            ],
-                        ])->update(['mamh' => $arr]);
+                    if ($flag_ma_monhoc) {
+                        $flag_ngay = false;
+                        foreach($sv[0]['mamh'][$ma_mh] as $vt => $ngay)
+                        {
+                            if($ngay_diem_danh == $ngay){
+                                $flag_ngay = true;
+                            }
+                        }
+                        if($flag_ngay == false){
+                            $arr = $sv[0]['mamh'];
+                            array_push($arr[$ma_mh], $ngay_diem_danh);
+                            Viphams::where([
+                                [
+                                    'masv', $danh_sach_sinh_vien[$key]['masv'],
+                                ],
+                            ])->update(['mamh' => $arr]);
+                        }
                     }
                     else{
                         $arr = $sv[0]['mamh'];

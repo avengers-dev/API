@@ -73,12 +73,11 @@
     <script>
         $(function() {
             $('body').on('click', '.lop', function() {
-                const ten_lophoc = $(this).html();
+                $('.lop').removeClass('active');
+                $(this).addClass('active');
+                const ten_lophoc = $(this).find('span').html();
                 $.ajax({
                     url: '/search-danh-sach-sinh-vien-vi-pham-theo-malop/' + $(this).attr('data-malop'),
-                    data: {
-                        malop: $(this).attr('data-malop')
-                    },
                     type: 'GET',
                     success: function(result) {
                         $('#danhsach_sinhvien_vipham').html(result);
@@ -101,6 +100,20 @@
                 $('.menu_itc').removeClass('active');
                 $(this).addClass('active');
             });
+            $('body').on('keyup','.search_ngay_vang',function(event){
+                var so_ngay_vang = $(this).val();
+                if(so_ngay_vang == ''){
+                    Number(so_ngay_vang);
+                    so_ngay_vang = 0;
+                }
+                $.ajax({
+                    url : '/search-danh-sach-sinh-vien-vi-pham-theo-so-ngay-vang/'+so_ngay_vang,
+                    type:'GET',
+                    success:function(result){
+                        $('#danhsach_sinhvien_vipham').html(result);
+                    }
+                })
+            })
         })
     </script>
 </body>

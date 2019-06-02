@@ -9,16 +9,15 @@
                     <h2 id="ten_lophoc_search">
                         Sinh Viên Vi Phạm Toàn Trường
                     </h2>
-
+                    <script>
+                        function isNumber(event){
+                            if(event.which < 46 || event.which > 57)
+                                return false;
+                            return true;
+                        }
+                    </script>
                     <ul class="header-dropdown m-r--5">
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                Chọn Lớp
-                            </a>
-                            <ul class="dropdown-menu pull-right" style="width:250px;">
-                                <li><a>aaaa</a></li>
-                            </ul>
-                        </li>
+                        <input maxlength="2" type="text" onkeypress="return isNumber(event)" class='search_ngay_vang form-control' placeholder="mời nhập số ngày vắng ...">
                     </ul>
                 </div>
                 <div class="body">

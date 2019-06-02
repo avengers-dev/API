@@ -83,8 +83,8 @@
                     </a>
                     <ul class="ml-menu">
                         <li class="menu_itc active">
-                            <a href="{{ route('index') }}" >
-                                <i class="material-icons">view_list</i>
+                            <a  href="{{ route('index') }}" >
+                                <i class="material-icons" style="margin-left:-5px;">view_list</i>
                                 <span>Tất cả</span>
                             </a>
                         </li>
@@ -95,8 +95,8 @@
                             </a>
                             <ul class="ml-menu">
                                 @foreach($lops as $lop)
-                                <li>
-                                    <a class="lop" data-malop="{{$lop->malop}}">
+                                <li  class="lop" data-malop="{{$lop->malop}}">
+                                    <a>
                                         <i class="material-icons">school</i>
                                         <span style="font-size:12px;">{{$lop->tenlop}}</span>
                                     </a>

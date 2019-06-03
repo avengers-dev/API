@@ -80,36 +80,77 @@
                     url: '/search-danh-sach-sinh-vien-vi-pham-theo-malop/' + $(this).attr('data-malop'),
                     type: 'GET',
                     success: function(result) {
-                        $('#danhsach_sinhvien_vipham').html(result);
+                        $('.table-responsive').html(result);
                         $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc);
+                        var length = 100000;
+                        $('.js-basic-example').DataTable({
+                            ordering: false,
+                            dom: 'Bfrtip',
+                            responsive: true,
+                            lengthMenu: [length],
+                            buttons: [
+                                'copy',
+                                {
+                                    extend: 'excel',
+                                    text: 'Excel all'
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print all'
+                                }
+                            ]
+                        });
+                        $('.testt').DataTable({
+                            dom: 'Bfrtip',
+                            "paging": false,
+                            "ordering": false,
+                            lengthMenu: [length],
+                            "info": false,
+                            "searching": false,
+                            buttons: [{
+                                    extend: 'excel',
+                                },
+                                {
+                                    extend: 'print',
+                                }
+                            ]
+                        })
                     }
                 })
             })
             $('body').on('click', '.toggle_chitiet_sv_vipham', function() {
                 const masv = $(this).attr('data-masv');
                 // $('.toogle').slideUp(1);
-                
-                $('.toggle_chitiet_sv_vipham').css({'background':'white'})
-                $('.toggle_chitiet_sv_vipham').css({'font-weight':'normal'})
-                $(this).css({'background':'rgba(247, 91, 91, 0.38)'});
-                $(this).css({'font-weight':'bold'});
-                $('.toogle_chitiet_'+masv).slideToggle();
-                
+
+                $('.toggle_chitiet_sv_vipham').css({
+                    'background': 'white'
+                })
+                $('.toggle_chitiet_sv_vipham').css({
+                    'font-weight': 'normal'
+                })
+                $(this).css({
+                    'background': 'rgba(247, 91, 91, 0.38)'
+                });
+                $(this).css({
+                    'font-weight': 'bold'
+                });
+                $('.toogle_chitiet_' + masv).slideToggle();
+
             });
-            $('body').on('click','.menu_itc',function(){
+            $('body').on('click', '.menu_itc', function() {
                 $('.menu_itc').removeClass('active');
                 $(this).addClass('active');
             });
-            $('body').on('keyup','.search_ngay_vang',function(event){
+            $('body').on('keyup', '.search_ngay_vang', function(event) {
                 var so_ngay_vang = $(this).val();
-                if(so_ngay_vang == ''){
+                if (so_ngay_vang == '') {
                     Number(so_ngay_vang);
                     so_ngay_vang = 0;
                 }
                 $.ajax({
-                    url : '/search-danh-sach-sinh-vien-vi-pham-theo-so-ngay-vang/'+so_ngay_vang,
-                    type:'GET',
-                    success:function(result){
+                    url: '/search-danh-sach-sinh-vien-vi-pham-theo-so-ngay-vang/' + so_ngay_vang,
+                    type: 'GET',
+                    success: function(result) {
                         $('#danhsach_sinhvien_vipham').html(result);
                     }
                 })

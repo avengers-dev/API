@@ -32,6 +32,17 @@ class AdminController extends Controller
         }
         $stt = 0;
         $string = '';
+        $string .= "<table class='table display table-bordered table-hover js-basic-example dataTable'>"
+            . "<thead>"
+            . " <tr>"
+            . " <th style='width:20%;'>Số Thứ Tự</th>"
+            . " <th style='width:20%;'>Mã Số Sinh Viên</th>"
+            . " <th style='width:30%;'>Họ Sinh Viên</th>"
+            . "<th style='width:15%;'>Tên Sinh Viên</th>"
+            . " <th style='width:15%;'>Số Điện Thoại</th>"
+            . " </tr>"
+            . "</thead>"
+            ."<tbody id='danhsach_sinhvien_vipham'>";
         foreach ($data as $key => $value) {
             $stt++;
             $string .= "<tr class='toggle_chitiet_sv_vipham' data-masv='" . $value['masv'] . "' >"
@@ -47,16 +58,17 @@ class AdminController extends Controller
                     $ngay_vang .= $ngay . " , ";
                 }
                 $string .= "<tr class='toogle toogle_chitiet_" . $value['masv'] . "' style='background:rgba(243, 224, 224, 0.68);display:none;'>"
-                . "<td style='border:0;'>"
-                . "Môn học: $k"
-                . "</td>"
-                . "<td  style='border:0;'>Số buổi vắng : " . count($v) . "</td>"
+                    . "<td style='border:0;'>"
+                    . "Môn học: $k"
+                    . "</td>"
+                    . "<td  style='border:0;'>Số buổi vắng : " . count($v) . "</td>"
                     . "<td  style='border:0;'>Ngày vắng: $ngay_vang</td>"
                     . "<td  style='border:0;'></td>"
                     . "<td  style='border:0;'></td>"
                     . "</tr>";
             }
         }
+        $string .= "</tbody></table>";
         echo $string;
     }
     public function searchDanhSachSinhVienViPhamTheoSoNgayVang($so_ngay_vang)
@@ -83,9 +95,9 @@ class AdminController extends Controller
                             $flag = true;
                         }
                     }
-                    if($flag){
+                    if ($flag) {
                         $result[] = $data[$key];
-                    } 
+                    }
                 }
                 foreach ($result as $key => $value) {
                     $stt++;
@@ -102,10 +114,10 @@ class AdminController extends Controller
                             $ngay_vang .= $ngay . " , ";
                         }
                         $string .= "<tr class='toogle toogle_chitiet_" . $value['masv'] . "' style='background:rgba(243, 224, 224, 0.68);display:none;'>"
-                        . "<td style='border:0;'>"
-                        . "Môn học: $k"
-                        . "</td>"
-                        . "<td  style='border:0;'>Số buổi vắng : " . count($v) . "</td>"
+                            . "<td style='border:0;'>"
+                            . "Môn học: $k"
+                            . "</td>"
+                            . "<td  style='border:0;'>Số buổi vắng : " . count($v) . "</td>"
                             . "<td  style='border:0;'>Ngày vắng: $ngay_vang</td>"
                             . "<td  style='border:0;'></td>"
                             . "<td  style='border:0;'></td>"
@@ -113,7 +125,6 @@ class AdminController extends Controller
                     }
                 }
                 echo $string;
-
             } else {
                 $ds_sinhvien_vipham = ViPhams::all()->toArray();
                 $stt = 0;
@@ -126,9 +137,9 @@ class AdminController extends Controller
                             $flag = true;
                         }
                     }
-                    if($flag){
+                    if ($flag) {
                         $result[] = $ds_sinhvien_vipham[$key];
-                    } 
+                    }
                 }
                 foreach ($result as $key => $value) {
                     $stt++;
@@ -145,10 +156,10 @@ class AdminController extends Controller
                             $ngay_vang .= $ngay . " , ";
                         }
                         $string .= "<tr class='toogle toogle_chitiet_" . $value['masv'] . "' style='background:rgba(243, 224, 224, 0.68);display:none;'>"
-                        . "<td style='border:0;'>"
-                        . "Môn học: $k"
-                        . "</td>"
-                        . "<td  style='border:0;'>Số buổi vắng : " . count($v) . "</td>"
+                            . "<td style='border:0;'>"
+                            . "Môn học: $k"
+                            . "</td>"
+                            . "<td  style='border:0;'>Số buổi vắng : " . count($v) . "</td>"
                             . "<td  style='border:0;'>Ngày vắng: $ngay_vang</td>"
                             . "<td  style='border:0;'></td>"
                             . "<td  style='border:0;'></td>"

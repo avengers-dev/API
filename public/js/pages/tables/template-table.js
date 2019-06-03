@@ -1,5 +1,5 @@
 $(function () {
-    var length = 20;
+    var length = 100000;
     $('.js-basic-example').DataTable({
         ordering: false,
         dom: 'Bfrtip',
@@ -21,6 +21,7 @@ $(function () {
         dom: 'Bfrtip',
         "paging":   false,
         "ordering": false,
+        lengthMenu: [length],
         "info":     false,
         "searching": false,
         buttons: [

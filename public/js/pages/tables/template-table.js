@@ -5,6 +5,10 @@ $(function () {
         dom: 'Bfrtip',
         responsive: true,
         lengthMenu: [length],
+        "bInfo" : false,
+        language: {
+            searchPlaceholder: "Ký tự đầu tiên của tên ..."
+        },
         buttons: [
             'copy', 
             {

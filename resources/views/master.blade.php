@@ -71,7 +71,13 @@
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
     <script>
-        $(function() {
+        $(document).ready(function() {
+            var table = $('table').DataTable();
+
+            $('.dataTables_filter input').attr('maxLength', 1)
+        });
+
+        $(document).ready(function() {
             $('body').on('click', '.lop', function() {
                 $('.lop').removeClass('active');
                 $(this).addClass('active');
@@ -80,6 +86,7 @@
                     url: '/search-danh-sach-sinh-vien-vi-pham-theo-malop/' + $(this).attr('data-malop'),
                     type: 'GET',
                     success: function(result) {
+
                         $('.table-responsive').html(result);
                         $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc);
                         var length = 100000;
@@ -88,6 +95,7 @@
                             dom: 'Bfrtip',
                             responsive: true,
                             lengthMenu: [length],
+                            "bInfo": false,
                             buttons: [
                                 'copy',
                                 {
@@ -129,7 +137,7 @@
                     'font-weight': 'normal'
                 })
                 $(this).css({
-                    'background': 'rgba(247, 91, 91, 0.38)'
+                    'background': 'rgba(80,172,244,0.5)'
                 });
                 $(this).css({
                     'font-weight': 'bold'

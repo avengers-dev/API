@@ -10,18 +10,23 @@
                         Sinh Viên Vi Phạm Toàn Trường
                     </h2>
                     <script>
-                        function isNumber(event) {
-                            if (event.which < 46 || event.which > 57)
-                                return false;
-                            return true;
-                        }
+                    function isNumber(event) {
+                        if (event.which < 46 || event.which > 57)
+                            return false;
+                        return true;
+                    }
                     </script>
                     <ul class="header-dropdown m-r--5">
-                        <input maxlength="2" type="text" onkeypress="return isNumber(event)" class='search_ngay_vang form-control' placeholder="Số ngày vắng tối thiểu ...">
+                        <input maxlength="2" type="text" onkeypress="return isNumber(event)"
+                            class='search_ngay_vang form-control' placeholder="Số ngày vắng tối thiểu ...">
+                    </ul>
+                    <ul class="header-dropdown m-r--5" style="margin-right:200px;">
+                        <input maxlength="20" type="text" onkeypress="return isNumber(event)"
+                            class='search_mssv form-control' placeholder="Nhập mã số sinh viên ...">
                     </ul>
                 </div>
                 <div class="body">
-                    <div class="table-responsive">
+                    <div class="table-responsive get_data_sinhvien">
                         <table class="table display table-bordered table-hover js-basic-example dataTable">
                             <thead>
                                 <tr>
@@ -37,18 +42,18 @@
                                 foreach ($ds_sinhvien_vipham as $item) {
                                     $stt++; 
                                     ?>
-                                    <tr class='toggle_chitiet_sv_vipham' data-masv="{{$item->masv}}">
-                                        <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$stt}}</td>
-                                        <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->masv}}</td>
-                                        <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->hosv}}</td>
-                                        <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->tensv}}</td>
-                                        <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->sdt}}</td>
-                                    </tr>
+                                <tr class='toggle_chitiet_sv_vipham' data-masv="{{$item->masv}}">
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$stt}}</td>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->masv}}</td>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->hosv}}</td>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->tensv}}</td>
+                                    <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->sdt}}</td>
+                                </tr>
 
-                                    <?php
+                                <?php
                                     foreach ($item['mamh'] as $key => $value) {
                                         ?>
-                                        <tr class="toogle toogle_chitiet_{{$item->masv}}" style="background:
+                                <tr class="toogle toogle_chitiet_{{$item->masv}}" style="background:
                                                         <?php
                                                         if (count($value) >= 3) {
                                                             echo 'rgba(255,48,48);
@@ -59,17 +64,17 @@
                                                         }
                                                         ?>
                                                         ;display:none;">
-                                            <td style="border:0;">
-                                                Môn học: <?php echo $key ?>
-                                            </td>
-                                            <td style="border:0;">Số buổi vắng : <?php echo count($value) ?></td>
-                                            <td style="border:0;">Ngày vắng: <?php foreach ($value as $k) {
+                                    <td style="border:0;">
+                                        Môn học: <?php echo $key ?>
+                                    </td>
+                                    <td style="border:0;">Số buổi vắng : <?php echo count($value) ?></td>
+                                    <td style="border:0;">Ngày vắng: <?php foreach ($value as $k) {
                                                                                     echo $k . " , ";
                                                                                 } ?></td>
-                                            <td style="border:0;"></td>
-                                            <td style="border:0;"></td>
-                                        </tr>
-                                    <?php }
+                                    <td style="border:0;"></td>
+                                    <td style="border:0;"></td>
+                                </tr>
+                                <?php }
                             } ?>
 
                             </tbody>
@@ -96,8 +101,6 @@
                                     <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->tensv}}</td>
                                     <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->sdt}}</td>
                                 </tr>
-
-
                                 @endforeach
                             </tbody>
                         </table>
@@ -108,4 +111,5 @@
     </div>
     <!-- #END# Basic Examples -->
 </div>
+
 @endsection

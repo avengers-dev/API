@@ -9,8 +9,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
-        type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
@@ -72,112 +71,112 @@
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
     <script>
-    $(document).ready(function() {
-        var table = $('table').DataTable();
+        $(document).ready(function() {
+            $('body').on('click', '.lop', function() {
+                $('.lop').removeClass('active');
+                $(this).addClass('active');
+                const ten_lophoc = $(this).find('span').html();
+                $.ajax({
+                    url: '/search-danh-sach-sinh-vien-vi-pham-theo-malop/' + $(this).attr(
+                        'data-malop'),
+                    type: 'GET',
+                    success: function(result) {
 
-        $('.dataTables_filter input').attr('maxLength', 1)
-    });
-
-    $(document).ready(function() {
-        $('body').on('click', '.lop', function() {
-            $('.lop').removeClass('active');
-            $(this).addClass('active');
-            const ten_lophoc = $(this).find('span').html();
-            $.ajax({
-                url: '/search-danh-sach-sinh-vien-vi-pham-theo-malop/' + $(this).attr(
-                    'data-malop'),
-                type: 'GET',
-                success: function(result) {
-
-                    $('.table-responsive').html(result);
-                    $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc);
-                    var length = 100000;
-                    $('.js-basic-example').DataTable({
-                        ordering: false,
-                        dom: 'Bfrtip',
-                        responsive: true,
-                        lengthMenu: [length],
-                        "bInfo": false,
-                        buttons: [
-                            'copy',
-                            {
-                                extend: 'excel',
-                                text: 'Excel all'
-                            },
-                            {
-                                extend: 'print',
-                                text: 'Print all'
-                            }
-                        ]
-                    });
-                    $('.testt').DataTable({
-                        dom: 'Bfrtip',
-                        "paging": false,
-                        "ordering": false,
-                        lengthMenu: [length],
-                        "info": false,
-                        "searching": false,
-                        buttons: [{
-                                extend: 'excel',
-                            },
-                            {
-                                extend: 'print',
-                            }
-                        ]
-                    })
-                }
+                        $('.table-responsive').html(result);
+                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc);
+                        $('.js-basic-example').DataTable({
+                            ordering: false,
+                            dom: 'Bfrtip',
+                            responsive: true,
+                            "paging": false,
+                            "bInfo": false,
+                            "searching": false,
+                            buttons: [
+                                'copy',
+                                {
+                                    extend: 'excel',
+                                    text: 'Excel all',
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print all',
+                                    exportOptions: {
+                                        stripHtml: false,
+                                        stripNewlines: false,
+                                    }
+                                }
+                            ],
+                        });
+                        $('.testt').DataTable({
+                            dom: 'Bfrtip',
+                            "paging": false,
+                            "ordering": false,
+                            "paging": false,
+                            "info": false,
+                            "searching": false,
+                            buttons: [{
+                                    extend: 'excel',
+                                },
+                                {
+                                    extend: 'print',
+                                }
+                            ],
+                        })
+                    }
+                })
             })
-        })
-        $('body').on('click', '.toggle_chitiet_sv_vipham', function() {
-            const masv = $(this).attr('data-masv');
-            // $('.toogle').slideUp(1);
+            $('body').on('click', '.toggle_chitiet_sv_vipham', function() {
+                const masv = $(this).attr('data-masv');
+                // $('.toogle').slideUp(1);
 
-            $('.toggle_chitiet_sv_vipham').css({
-                'background': 'white'
-            })
-            $('.toggle_chitiet_sv_vipham').css({
-                'font-weight': 'normal'
-            })
-            $(this).css({
-                'background': 'rgba(80,172,244,0.5)'
+                // $('.toggle_chitiet_sv_vipham').css({
+                //     'background': 'white'
+                // })
+                $('.toggle_chitiet_sv_vipham').css({
+                    'font-weight': 'normal'
+                })
+                $(this).css({
+                    'background': 'rgba(80,172,244,0.5)'
+                });
+                $(this).css({
+                    'font-weight': 'bold'
+                });
+                $('.toogle_chitiet_' + masv).slideToggle();
+
             });
-            $(this).css({
-                'font-weight': 'bold'
+            $('body').on('click', '.menu_itc', function() {
+                $('.menu_itc').removeClass('active');
+                $(this).addClass('active');
             });
-            $('.toogle_chitiet_' + masv).slideToggle();
-
-        });
-        $('body').on('click', '.menu_itc', function() {
-            $('.menu_itc').removeClass('active');
-            $(this).addClass('active');
-        });
-        $(document).on('keyup', '.search_ngay_vang', function(event) {
-            var so_ngay_vang = $(this).val();
-            if (so_ngay_vang == '') {
-                Number(so_ngay_vang);
-                so_ngay_vang = 0;
-            }
-            $.ajax({
-                url: '/search-danh-sach-sinh-vien-vi-pham-theo-so-ngay-vang/' + so_ngay_vang,
-                type: 'GET',
-                success: function(result) {
-                    $('#danhsach_sinhvien_vipham').html(result);
+            $(document).on('keyup', '.search_ngay_vang', function(event) {
+                var so_ngay_vang = $(this).val();
+                if (so_ngay_vang == '') {
+                    Number(so_ngay_vang);
+                    so_ngay_vang = 0;
                 }
+                $.ajax({
+                    url: '/search-danh-sach-sinh-vien-vi-pham-theo-so-ngay-vang/' + so_ngay_vang,
+                    type: 'GET',
+                    success: function(result) {
+                        $('#danhsach_sinhvien_vipham').html(result);
+                    }
+                })
             })
+            $(document).on('keyup', '.search_mssv', function() {
+                const mssv = $(this).val();
+                const url = "{{route('search_msv')}}";
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        mssv
+                    },
+                    success: function(data) {
+                        $('#danhsach_sinhvien_vipham').html(data);
+                    }
+                })
+            });
         })
-        $(document).on('keyup', '.search_mssv', function() {
-            const mssv = $(this).val();
-            const url = "{{route('search_msv')}}";
-            $.ajax({
-                url: url,
-                type: 'GET',
-                data: {mssv},
-                success: function(data) {
-                    $('#danhsach_sinhvien_vipham').html(data);
-                }
-            })
-        });
-    })
     </script>
 </body>
 

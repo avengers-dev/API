@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/Admin','Api\AdminController@index')->name('index');
+Route::get('/ctsv','Api\AdminController@index')->name('index');
 Route::get('/search-danh-sach-sinh-vien-vi-pham-theo-malop/{malop}','Api\AdminController@searchDanhSachSinhVienViPhamTheoMalop');
 Route::get('/search-danh-sach-sinh-vien-vi-pham-theo-so-ngay-vang/{so_ngay_vang}','Api\AdminController@searchDanhSachSinhVienViPhamTheoSoNgayVang');
 Route::get('template-table',function(){

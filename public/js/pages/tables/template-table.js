@@ -1,31 +1,52 @@
 $(function () {
-    var length = 100000;
     $('.js-basic-example').DataTable({
         ordering: false,
         dom: 'Bfrtip',
         responsive: true,
-        lengthMenu: [length],
+        "paging": false,
         "bInfo" : false,
-        language: {
-            searchPlaceholder: "Ký tự đầu tiên của tên ..."
-        },
+        "searching": false,
+        // columnDefs: [
+        //     {
+        //        targets: '_all',
+        //     //    data: null,
+        //        render: function ( data, type, row, meta ) {
+        //           if(type === 'abc')
+        //               return "abc";
+                
+        //           return data;
+        //        }
+        //     }
+        //   ],
         buttons: [
             'copy', 
             {
                 extend: 'excel',
-                text: 'Excel all'
+                text: 'Excel all',
             },
             {
                 extend: 'print',
-                text: 'Print all'
+                text: 'Print all',
+                exportOptions: {
+                    stripHtml: false,
+                    stripNewlines: false,
+                    // orthogonal: 'abc'
+                }
             }
-        ]
+        ],
+        // "columns": [
+        //     null,
+        //     null,
+        //     { "width": "10%" },
+        //     null,
+        //     null
+        //   ]
     });
     $('.testt').DataTable({
         dom: 'Bfrtip',
         "paging":   false,
         "ordering": false,
-        lengthMenu: [length],
+        "paging": false,
         "info":     false,
         "searching": false,
         buttons: [
@@ -35,7 +56,7 @@ $(function () {
             {
                 extend: 'print',
             }
-        ]
+        ],
     })
     //Exportable table
     $('.js-exportable').DataTable({

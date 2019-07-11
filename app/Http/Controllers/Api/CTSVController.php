@@ -8,7 +8,7 @@ use App\Models\Monhocs;
 use App\Models\Viphams;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class CTSVController extends Controller
 {
     public function index()
     {
@@ -163,7 +163,7 @@ class AdminController extends Controller
                 }
                 echo $string;
             } else {
-                $ds_sinhvien_vipham = ViPhams::where('masv', 'like', '%' . $mssv . '%')->get()->toArray();
+                $ds_sinhvien_vipham = ViPhams::where('masv', 'like', '%' . $mssv . '%')->orderBy('tensv')->get()->toArray();
                 if ($mssv == '')
                     $ds_sinhvien_vipham =  ViPhams::orderBy('tensv')->get()->toArray();
                 $stt = 0;

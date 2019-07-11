@@ -1,5 +1,5 @@
 $(function () {
-    $('.js-basic-example').DataTable({
+    $('.main-table').DataTable({
         ordering: false,
         dom: 'Bfrtip',
         responsive: true,

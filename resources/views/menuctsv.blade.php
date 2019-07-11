@@ -32,7 +32,20 @@
         <div class="navbar-header">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="/">Phòng Đào Tạo - ITC</a>
+            <a class="navbar-brand" href="/">
+                <?php
+                if (Session::has('taikhoan')) {
+                    $taikhoan = Session::get('taikhoan');
+                    if($taikhoan['chucvu'] == "CTSV"){
+                        echo "Phòng Công Tác Sinh Viên ";
+                    }
+                    else{
+                        echo "Phòng Quản Lí Đào Tạo ";
+                    }
+                }
+                ?>
+                - ITC
+            </a>
         </div>
     </div>
 </nav>
@@ -46,9 +59,22 @@
                     <img src="images/user.png" width="48" height="48" alt="User" />
                 </div> -->
             <div class="info-container">
-                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:110%">Trần Công Mua
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:110%">
+                    <?php
+                    if (Session::has('taikhoan')) {
+                        $taikhoan = Session::get('taikhoan');
+                        echo $taikhoan['hoten'];
+                    }
+                    ?>
                 </div>
-                <div class="email" style="font-size:110%">muatc@itc.edu.vn</div>
+                <div class="email" style="font-size:110%">
+                    <?php
+                    if (Session::has('taikhoan')) {
+                        $taikhoan = Session::get('taikhoan');
+                        echo $taikhoan['taikhoan'];
+                    }
+                    ?>
+                </div>
                 <div class="btn-group user-helper-dropdown">
                     <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                     <ul class="dropdown-menu pull-right">
@@ -58,7 +84,7 @@
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                             <li role="separator" class="divider"></li> -->
-                        <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        <li><a href="{{ route('post_logout_admin') }}"><i class="material-icons">input</i>Sign Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -74,7 +100,7 @@
                     </a>
                     <ul class="ml-menu">
                         <li class="menu_itc active">
-                            <a  href="{{ route('index') }}" >
+                            <a href="{{ route('ctsv') }}">
                                 <i class="material-icons" style="margin-left:-5px;">view_list</i>
                                 <span>Tất cả</span>
                             </a>
@@ -86,7 +112,7 @@
                             </a>
                             <ul class="ml-menu">
                                 @foreach($lops as $lop)
-                                <li  class="lop" data-malop="{{$lop->malop}}">
+                                <li class="lop" data-malop="{{$lop->malop}}">
                                     <a>
                                         <i class="material-icons">school</i>
                                         <span style="font-size:12px;">{{$lop->tenlop}}</span>

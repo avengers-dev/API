@@ -4,7 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Admin ITC</title>
+    <title>
+        <?php
+        if (Session::has('taikhoan')) {
+            $taikhoan = Session::get('taikhoan');
+            if ($taikhoan['chucvu'] == "CTSV") {
+                echo "Phòng Công Tác Sinh Viên ";
+            } else {
+                echo "Phòng Quản Lí Đào Tạo ";
+            }
+        }
+        ?>
+        ITC</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -32,7 +43,7 @@
 </head>
 
 <body class="theme-blue">
-    @include('menu')
+    @include('menuctsv')
 
     <section class="content">
         @yield('content')

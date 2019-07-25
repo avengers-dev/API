@@ -9,6 +9,6 @@ use Illuminate\Auth\Middleware\Authenticate;
 class Admins extends Authenticate
 {
     protected $connection = 'mongodb';
-    protected $collection = 'admin';
+    protected $collection = 'admins';
    
 }

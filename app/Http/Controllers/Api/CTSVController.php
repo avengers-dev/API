@@ -34,7 +34,7 @@ class CTSVController extends Controller
         }
         $stt = 0;
         $string = '';
-        $string .= "<table class='table display table-bordered table-hover js-basic-example dataTable'>"
+        $string .= "<table class='table display table-bordered table-hover main-table dataTable'>"
             . "<thead>"
             . " <tr>"
             . " <th style='width:20%;'>Số Thứ Tự</th>"
@@ -139,7 +139,7 @@ class CTSVController extends Controller
                         $ngay_vang = "<br>";
                         $i = 1;
                         foreach ($v as $ngay) {
-                            $ngay_vang .= "$i. " . $ngay . " |<br> ";
+                            $ngay_vang .= "$i. " . $ngay . " <br> ";
                             $i += 1;
                         }
                         $string .= "<tr class='toogle toogle_chitiet_" . $value['masv'] . "' style='background:";
@@ -181,7 +181,7 @@ class CTSVController extends Controller
                         $ngay_vang = "<br>";
                         $i = 1;
                         foreach ($v as $ngay) {
-                            $ngay_vang .= "$i. " . $ngay . " |<br> ";
+                            $ngay_vang .= "$i. " . $ngay . " <br> ";
                             $i += 1;
                         }
                         $string .= "<tr class='toogle toogle_chitiet_" . $value['masv'] . "' style='background:";
@@ -248,7 +248,7 @@ class CTSVController extends Controller
                         $ngay_vang = "<br>";
                         $i = 1;
                         foreach ($v as $ngay) {
-                            $ngay_vang .= "$i. " . $ngay . " |<br> ";
+                            $ngay_vang .= "$i. " . $ngay . " <br> ";
                             $i += 1;
                         }
                         $string .= "<tr class='toogle toogle_chitiet_" . $value['masv'] . "' style='background:";
@@ -300,7 +300,7 @@ class CTSVController extends Controller
                         $ngay_vang = "<br>";
                         $i = 1;
                         foreach ($v as $ngay) {
-                            $ngay_vang .= "$i. " . $ngay . " |<br> ";
+                            $ngay_vang .= "$i. " . $ngay . " <br> ";
                             $i += 1;
                         }
                         $string .= "<tr class='toogle toogle_chitiet_" . $value['masv'] . "' style='background:";

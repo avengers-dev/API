@@ -32,6 +32,9 @@
     <!-- Animation Css -->
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
 
+    <!-- Sweet Alert Css -->
+    <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
     <!-- JQuery DataTable Css -->
     <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
@@ -43,7 +46,8 @@
 </head>
 
 <body class="theme-blue">
-    @include('menuctsv')
+
+    @include('menu')
 
     <section class="content">
         @yield('content')
@@ -61,8 +65,17 @@
     <!-- Slimscroll Plugin Js -->
     <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
+    <!-- Jquery Validation Plugin Css -->
+    <script src="plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- JQuery Steps Plugin Js -->
+    <script src="plugins/jquery-steps/jquery.steps.js"></script>
+
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
+
+    <!-- Sweet Alert Plugin Js -->
+    <script src="plugins/sweetalert/sweetalert.min.js"></script>
 
     <!-- Jquery DataTable Plugin Js -->
     <script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
@@ -78,11 +91,178 @@
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
     <script src="js/pages/tables/template-table.js"></script>
+    <script src="js/pages/forms/form-validation.js"></script>
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
     <script>
         $(document).ready(function() {
+            $(document).on('click', '.reset-pass-gv', function() {
+                $.ajax({
+                    url: '/reset-pass-gv/' + $(this).attr('data-magv'),
+                    type: 'GET',
+                    success: function(result) {
+                        swal({
+                            title: "Mật khẩu đặt lại thành công!",
+                            text: " Mật khẩu: Kí tự đầu tên giảng viên in hoa + mã giảng viên",
+                            type: "success"
+                        }, function() {
+                            window.location.href = '/dt';
+                        });
+                    }
+                });
+            })
+            $(document).on('click', '.edit-gv', function() {
+                $.ajax({
+                    url: '/edit-gv/' + $(this).attr('data-magv'),
+                    type: 'GET',
+                    success: function(result) {
+                        $('.clearfix').html(result);
+                    }
+                });
+            })
+            $(document).on('click', '.delete-gv', function() {
+                $.ajax({
+                    url: '/delete-gv/' + $(this).attr('data-magv'),
+                    type: 'GET',
+                    success: function(result) {
+                        $('.table-responsive').html(result);
+                        $('.main2-table').DataTable({
+                            ordering: false,
+                            dom: 'Bfrtip',
+                            responsive: true,
+                            "paging": false,
+                            "bInfo": false,
+                            "searching": true,
+                            language: {
+                                searchPlaceholder: "Tìm kiếm . . .",
+                                search: '' /*Empty to remove the label*/
+                            },
+                            buttons: [
+                                'copy',
+                                {
+                                    extend: 'excel',
+                                    text: 'Excel all',
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print all',
+                                    exportOptions: {
+                                        stripHtml: false,
+                                        stripNewlines: false,
+                                    }
+                                }
+                            ],
+                            "columns": [{
+                                    "width": "1%"
+                                },
+                                null,
+                                {
+                                    "width": "20%"
+                                },
+                                {
+                                    "width": "5%"
+                                },
+                                {
+                                    "width": "15%"
+                                },
+                                {
+                                    "width": "15%"
+                                },
+                                {
+                                    "width": "15%"
+                                },
+                                {
+                                    "width": "5%"
+                                },
+                            ]
+                        });
+                    }
+                });
+            })
+            $(document).on('click', '.monhoc', function() {
+                $.get('/load-danh-sach-mon-hoc', function(data) {
+                    $('.table-responsive').html(data);
+                    $('.main4-table').DataTable({
+                        ordering: false,
+                        dom: 'Bfrtip',
+                        responsive: true,
+                        "paging": false,
+                        "bInfo": false,
+                        "searching": true,
+                        language: {
+                            searchPlaceholder: "Tìm kiếm . . .",
+                            search: '' /*Empty to remove the label*/
+                        },
+                        buttons: [
+                            'copy',
+                            {
+                                extend: 'excel',
+                                text: 'Excel all',
+                            },
+                            {
+                                extend: 'print',
+                                text: 'Print all',
+                                exportOptions: {
+                                    stripHtml: false,
+                                    stripNewlines: false,
+                                }
+                            }
+                        ],
+                    });
+                })
+            })
+            $('body').on('click', '.malop', function() {
+                $('.malop').removeClass('active');
+                $(this).addClass('active');
+                const ten_lophoc = $(this).find('span').html();
+                $.ajax({
+                    url: '/search-danh-sach-sinh-vien-theo-malop/' + $(this).attr(
+                        'data-malop'),
+                    type: 'GET',
+                    success: function(result) {
+
+                        $('.table-responsive').html(result);
+                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc);
+                        $('.main3-table').DataTable({
+                            ordering: false,
+                            dom: 'Bfrtip',
+                            responsive: true,
+                            "paging": false,
+                            "bInfo": false,
+                            "searching": true,
+                            language: {
+                                searchPlaceholder: "Tìm kiếm . . .",
+                                search: '' /*Empty to remove the label*/
+                            },
+                            buttons: [
+                                'copy',
+                                {
+                                    extend: 'excel',
+                                    text: 'Excel all',
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print all',
+                                    exportOptions: {
+                                        stripHtml: false,
+                                        stripNewlines: false,
+                                    }
+                                }
+                            ],
+                            "columns": [{
+                                    "width": "5%"
+                                },
+                                null,
+                                null,
+                                null,
+                                null,
+                                null,
+                            ]
+                        });
+                    }
+                })
+            })
             $('body').on('click', '.lop', function() {
                 $('.lop').removeClass('active');
                 $(this).addClass('active');
@@ -95,7 +275,7 @@
 
                         $('.table-responsive').html(result);
                         $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc);
-                        $('.js-basic-example').DataTable({
+                        $('.main-table').DataTable({
                             ordering: false,
                             dom: 'Bfrtip',
                             responsive: true,

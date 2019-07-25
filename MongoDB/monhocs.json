@@ -1,15 +1,4 @@
-{ 
-    "_id" : ObjectId("5cd0623e138d27315c585518"), 
-    "mamh" : "KTLT", 
-    "tenmh" : "Kỹ thuật lập trình"
-}
-{ 
-    "_id" : ObjectId("5cd0624b138d27315c585519"), 
-    "mamh" : "THDC", 
-    "tenmh" : "Tin học đại cương"
-}
-{ 
-    "_id" : ObjectId("5cd06250138d27315c58551d"), 
-    "mamh" : "CSDL", 
-    "tenmh" : "Cơ sở dữ liệu"
-}
+{"_id":{"$oid":"5cd0623e138d27315c585518"},"mamh":"KTLT","tenmh":"Kỹ thuật lập trình"}
+{"_id":{"$oid":"5cd0624b138d27315c585519"},"mamh":"THDC","tenmh":"Tin học đại cương"}
+{"_id":{"$oid":"5cd06250138d27315c58551d"},"mamh":"CSDL","tenmh":"Cơ sở dữ liệu"}
+{"_id":{"$oid":"5d21edca5c34a70e8c32f47f"},"mamh":"KTLTNC","tenmh":"Kỹ thuật lập trình nâng cao"}

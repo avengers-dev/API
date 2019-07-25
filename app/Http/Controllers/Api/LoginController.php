@@ -24,10 +24,12 @@ class LoginController extends Controller
     }
     public function post_login_admin(Request $request)
     {
-        $taikhoan = DB::table('admin')->where(['taikhoan' => $request->email, 'matkhau' => $request->matkhau])->get();
-
+        $taikhoan = DB::table('admins')->where(['taikhoan' => $request->email, 'matkhau' => $request->matkhau])->get();
+           
         if (count($taikhoan)) {
+            
             session()->put('taikhoan', $taikhoan[0]);
+            // dd(session()->get('taikhoan'));
             if ($taikhoan[0]['chucvu'] == 'CTSV')
                 return redirect()->route('ctsv');
             else

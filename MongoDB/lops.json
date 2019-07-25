@@ -1,24 +1,4 @@
-{ 
-    "_id" : ObjectId("5cd060f9138d27315c5854fb"), 
-    "malop" : "CD16KM1", 
-    "tenlop" : "Kỹ thuật thương mại điện tử 1", 
-    "status" : NumberInt(0)
-}
-{ 
-    "_id" : ObjectId("5cd06130138d27315c585500"), 
-    "malop" : "CD16KP1", 
-    "tenlop" : "Kỹ thuật phần mềm 1", 
-    "status" : NumberInt(0)
-}
-{ 
-    "_id" : ObjectId("5cd06178138d27315c585507"), 
-    "malop" : "CD17CT1", 
-    "tenlop" : "Công nghệ thông tin 1", 
-    "status" : NumberInt(0)
-}
-{ 
-    "_id" : ObjectId("5cd062a8138d27315c585525"), 
-    "malop" : "CDHLCSDL1", 
-    "tenlop" : "Học lại cơ sở dữ liệu 1", 
-    "status" : NumberInt(1)
-}
+{"_id":{"$oid":"5cd060f9138d27315c5854fb"},"malop":"CD16KM1","tenlop":"Kỹ thuật thương mại điện tử 1","status":{"$numberInt":"0"}}
+{"_id":{"$oid":"5cd06130138d27315c585500"},"malop":"CD16KP1","tenlop":"Kỹ thuật phần mềm 1","status":{"$numberInt":"0"}}
+{"_id":{"$oid":"5cd06178138d27315c585507"},"malop":"CD17CT1","tenlop":"Công nghệ thông tin 1","status":{"$numberInt":"0"}}
+{"_id":{"$oid":"5cd062a8138d27315c585525"},"malop":"CDHLCSDL1","tenlop":"Học lại cơ sở dữ liệu 1","status":{"$numberInt":"1"}}

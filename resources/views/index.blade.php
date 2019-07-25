@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>React App</title>
+    <title>Login Admin</title>
     <style type="text/css">
         body {
             margin: 0;
@@ -77,10 +77,15 @@
                         <div class="row">
                             <div class="col-12">
                                 <div>
-                                    <div class="form-group"><label for="formGroupExampleInput">Email</label><input id="email" type="email" name="email" class="form-control" value=""></div>
-                                    <div class="form-group"><label for="formGroupExampleInput2">Mật Khẩu</label><input type="password" name="matkhau" class="form-control" value="">
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Email</label>
+                                        <input style="border: 1px solid #ced4da;" id="email" type="email" name="email" class="form-control" value="">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput2">Mật Khẩu</label>
+                                        <input style="border: 1px solid #ced4da;" type="password" name="matkhau" class="form-control" value="">
+                                    </div>
+                                    <button style="border: 1px solid #ced4da;" type="submit" class="btn btn-primary">Đăng nhập</button>
                                 </div>
                             </div>
                         </div>

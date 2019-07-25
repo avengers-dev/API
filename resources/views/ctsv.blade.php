@@ -28,7 +28,7 @@
                         <table class="table display table-bordered table-hover main-table dataTable">
                             <thead>
                                 <tr>
-                                    <th style="width:20%;">Số Thứ Tự</th>
+                                    <th style="width:20%;">STT</th>
                                     <th style="width:20%;">Mã Số Sinh Viên</th>
                                     <th style="width:30%;">Họ Sinh Viên</th>
                                     <th style="width:15%;">Tên Sinh Viên</th>
@@ -87,7 +87,7 @@
                         <table class="table display table-bordered table-hover testt dataTable">
                             <thead style="display: none">
                                 <tr>
-                                    <th style="width:20%;">Số Thứ Tự</th>
+                                    <th style="width:20%;">STT</th>
                                     <th style="width:20%;">Mã Số Sinh Viên</th>
                                     <th style="width:30%;">Họ Sinh Viên</th>
                                     <th style="width:15%;">Tên Sinh Viên</th>

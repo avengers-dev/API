@@ -36,10 +36,9 @@
                 <?php
                 if (Session::has('taikhoan')) {
                     $taikhoan = Session::get('taikhoan');
-                    if($taikhoan['chucvu'] == "CTSV"){
+                    if ($taikhoan['chucvu'] == "CTSV") {
                         echo "Phòng Công Tác Sinh Viên ";
-                    }
-                    else{
+                    } else {
                         echo "Phòng Quản Lí Đào Tạo ";
                     }
                 }
@@ -63,7 +62,7 @@
                     <?php
                     if (Session::has('taikhoan')) {
                         $taikhoan = Session::get('taikhoan');
-                        echo $taikhoan['hoten'];
+                        echo $taikhoan['hogv']." ".$taikhoan['tengv'];
                     }
                     ?>
                 </div>
@@ -92,38 +91,88 @@
         <!-- #User Info -->
         <!-- Menu -->
         <div class="menu">
-            <ul class="list">
-                <li class="active">
-                    <a class="menu-toggle">
-                        <i class="material-icons col-red">donut_large</i>
-                        <span>Warning</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li class="menu_itc active">
-                            <a href="{{ route('ctsv') }}">
-                                <i class="material-icons" style="margin-left:-5px;">view_list</i>
-                                <span>Tất cả</span>
-                            </a>
-                        </li>
-                        <li class="menu_itc">
+            <?php
+            if (Session::has('taikhoan')) {
+                $taikhoan = Session::get('taikhoan');
+                if ($taikhoan['chucvu'] == "CTSV") {
+                    ?>
+                    <ul class="list">
+                        <li class="active">
                             <a class="menu-toggle">
-                                <i class="material-icons">view_list</i>
-                                <span>Lớp</span>
+                                <i class="material-icons col-red">donut_large</i>
+                                <span>Warning</span>
                             </a>
                             <ul class="ml-menu">
-                                @foreach($lops as $lop)
-                                <li class="lop" data-malop="{{$lop->malop}}">
-                                    <a>
-                                        <i class="material-icons">school</i>
-                                        <span style="font-size:12px;">{{$lop->tenlop}}</span>
+                                <li class="menu_itc active">
+                                    <a href="{{ route('ctsv') }}">
+                                        <i class="material-icons" style="margin-left:-5px;">view_list</i>
+                                        <span>Tất cả</span>
                                     </a>
                                 </li>
-                                @endforeach
+                                <li class="menu_itc">
+                                    <a class="menu-toggle">
+                                        <i class="material-icons">view_list</i>
+                                        <span>Lớp</span>
+                                    </a>
+                                    <ul class="ml-menu">
+                                        @foreach($lops as $lop)
+                                        <li class="lop" data-malop="{{$lop->malop}}">
+                                            <a>
+                                                <i class="material-icons">school</i>
+                                                <span style="font-size:12px;">{{$lop->tenlop}}</span>
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                     </ul>
-                </li>
-            </ul>
+                <?php
+                } else {
+                    ?>
+                    <ul class="list">
+                        <li class="active">
+                            <a class="menu-toggle">
+                                <i class="material-icons col-blue">donut_large</i>
+                                <span>Danh sách</span>
+                            </a>
+                            <ul class="ml-menu">
+                                <li class="menu_itc active">
+                                    <a href="{{ route('dt') }}">
+                                        <i class="material-icons">view_list</i>
+                                        <span>Giảng viên</span>
+                                    </a>
+                                </li>
+                                <li class="menu_itc">
+                                    <a class="menu-toggle">
+                                        <i class="material-icons">view_list</i>
+                                        <span>Lớp</span>
+                                    </a>
+                                    <ul class="ml-menu">
+                                        @foreach($lops as $lop)
+                                        <li class="malop" data-malop="{{$lop->malop}}">
+                                            <a>
+                                                <i class="material-icons">school</i>
+                                                <span style="font-size:12px;">{{$lop->tenlop}}</span>
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                <li class="monhoc menu_itc">
+                                    <a>
+                                        <i class="material-icons">view_list</i>
+                                        <span>Môn học</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                <?php
+                }
+            }
+            ?>
         </div>
         <!-- #Menu -->
 

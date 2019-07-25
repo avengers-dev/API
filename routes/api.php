@@ -17,16 +17,15 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::post('login','Api\LoginController@login')->middleware('cors');
-Route::get('getAllMonHoc','Api\MonHocController@getAllMonHoc');
-Route::group(['middleware'=>'validateToken'],function(){   
-    Route::post('getDanhSachSinhVien','Api\SinhVienController@getDanhSachSinhVien');
+Route::post('login', 'Api\LoginController@login')->middleware('cors');
+Route::get('getAllMonHoc', 'Api\MonHocController@getAllMonHoc');
 
-    Route::post('saveDanhSachSinhVien','Api\DiemDanhController@saveDanhSachSinhVien');
+Route::group(['middleware' => 'validateToken'], function () {
+    Route::post('getDanhSachSinhVien', 'Api\SinhVienController@getDanhSachSinhVien');
 
-    Route::post('getDanhSachSinhVienCheck','Api\DiemDanhController@getDanhSachSinhVienCheck');
+    Route::post('saveDanhSachSinhVien', 'Api\DiemDanhController@saveDanhSachSinhVien');
 
-    Route::post('saveDanhSachViPham','Api\ViphamController@saveDanhSachViPham');
+    Route::post('getDanhSachSinhVienCheck', 'Api\DiemDanhController@getDanhSachSinhVienCheck');
+
+    Route::post('saveDanhSachViPham', 'Api\ViphamController@saveDanhSachViPham');
 });
-
-

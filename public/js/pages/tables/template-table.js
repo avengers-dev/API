@@ -141,6 +141,38 @@ $(function () {
             }
         ],
     });
+    $('.main5-table').DataTable({
+        ordering: false,
+        dom: 'Bfrtip',
+        responsive: true,
+        "paging": false,
+        "bInfo": false,
+        "searching": false,
+        "columns": [
+            { "width": "5%" },
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+          ],
+          buttons: [
+            'copy',
+            {
+                extend: 'excel',
+                text: 'Excel all',
+            },
+            {
+                extend: 'print',
+                text: 'Print all',
+                exportOptions: {
+                    stripHtml: false,
+                    stripNewlines: false,
+                }
+            }
+        ],
+    });
     $('.testt').DataTable({
         dom: 'Bfrtip',
         "paging":   false,

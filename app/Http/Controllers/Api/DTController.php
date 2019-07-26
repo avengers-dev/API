@@ -95,7 +95,7 @@ class DTController extends Controller
         $temp = 'qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM';
         $token = "";
         for ($i = 0; $i < 10; $i++) {
-            $token.=$temp[rand(0,strlen($temp))];
+            $token .= $temp[rand(0, strlen($temp))];
         }
         GiangViens::insert(
             [
@@ -219,6 +219,54 @@ class DTController extends Controller
                                 <input type='number' class='form-control' value='"
             . $giangvien['sdt'] . "'name='sdt' required>
                             </div>
+                        </div>
+                        <div class=\"container-fluid\">
+                            <h4>
+                              Danh Sách Môn Dạy Giảng Viên: <h3>" . $giangvien['hogv'] . " " . $giangvien['tengv'] ."</h3>
+                            </h4>
+                            <table class=\"table display table-bordered table-hover main5-table dataTable\">
+                                <thead>
+                                    <tr>
+                                        <th>Thứ</th>";
+                                for ($i = 1; $i <= 5; $i++) {
+                                    $string .= "<th>Ca $i</th>";
+                                }
+                                $string .= "<th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id=\"danhsach_quanli\">
+                                    ";
+                                        if ($giangvien['monday'] != "") {
+                                            foreach ($giangvien->monday as $thuday => $value) {
+                                                $thuday+=1;
+                                                $string.= "<tr><td style=\"border:0.1px solid rgba(0,0,0,0.1);\"><b>$thuday</b></td>";
+                                                for($ca = 1 ; $ca <= 5 ; $ca++){
+                                                $flag=false;
+                                                    foreach ($value as $tenmon => $v) {
+                                                        foreach ($v as $caday => $x) {
+                                                            if($caday==$ca){
+                                                                $flag=true;
+                                                                $string.= "<td style=\"border:0.1px solid rgba(0,0,0,0.1);\">
+                                                                <b> $tenmon  </b>:<br>";
+                                                                foreach ($x as $lopday) {
+                                                                    $string.= "&rsaquo; $lopday <br>";
+                                                                }
+                                                                $string.= "</td>";
+                                                            }
+                                                        }
+                                                    } 
+                                                    if(!$flag){
+                                                        $string.= "<td style=\"border:0.1px solid rgba(0,0,0,0.1);\"> </td>";
+                                                    }
+                                                }
+                                            $string.= "<td style=\"text-align: center;border:0.1px solid rgba(0,0,0,0.1);\">
+                                            <a class=\"delete-buoiday\"><i class=\"material-icons\">delete</i></a>
+                                            </td></tr>";
+                                            }
+                                        }
+                                $string.="
+                                </tbody>
+                            </table>
                         </div>
                         <button class='btn btn-primary waves-effect' type='submit'>Lưu</button>
                     </form>

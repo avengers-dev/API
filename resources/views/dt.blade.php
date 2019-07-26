@@ -23,7 +23,7 @@
                                     <th>Email</th>
                                     <th>SĐT</th>
                                     <th>Lịch</th>
-                                    <th>Quản lí</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody id="danhsach_quanli">
@@ -41,15 +41,15 @@
                                         <td style="border:0.1px solid rgba(0,0,0,0.1);">
                                             <?php
                                             if ($item->monday != "") {
-                                                foreach ($item->monday as $key => $value) {
-                                                    echo "<b>Thứ " . ($key + 1) . " :</b> <br>";
+                                                foreach ($item->monday as $thuday => $value) {
+                                                    echo "<b>Thứ " . ($thuday + 1) . " :</b> <br>";
                                                     $st = 0;
-                                                    foreach ($value as $k => $v) {
-                                                        echo "<b>" . ($st += 1) . ". " . $k . "</b>" . " :<br>";
-                                                        foreach ($v as $i => $x) {
-                                                            echo "&diams; Ca " . $i . " :<br>";
-                                                            foreach ($x as $y) {
-                                                                echo "&rsaquo; " . $y . "<br>";
+                                                    foreach ($value as $tenmon => $v) {
+                                                        echo "<b>" . ($st += 1) . ". " . $tenmon . "</b>" . " :<br>";
+                                                        foreach ($v as $caday => $x) {
+                                                            echo "&diams; Ca " . $caday . " :<br>";
+                                                            foreach ($x as $lopday) {
+                                                                echo "&rsaquo; " . $lopday . "<br>";
                                                             }
                                                         }
                                                     }
@@ -57,8 +57,9 @@
                                             }
                                             ?>
                                         </td>
-                                        <td style="border:0.1px solid rgba(0,0,0,0.1);">
-                                            <a data-magv="{{$item->magv}}" class="edit-gv"><i class="material-icons">edit</i></a>
+                                        <td style="text-align: center;border:0.1px solid rgba(0,0,0,0.1);">
+                                            <a data-hogv="{{$item->hogv}}" data-tengv="{{$item->tengv}}" data-magv="{{$item->magv}}" class="edit-gv"><i class="material-icons">edit</i></a>
+                                            <br>
                                             <a data-magv="{{$item->magv}}" class="delete-gv"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>

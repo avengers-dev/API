@@ -38,3 +38,6 @@ Route::get('/add-gv',function(){
     return view('add-gv');
 })->name('add-gv');
 Route::post('/addGV', 'Api\DTController@addGV')->name('addGV');
+Route::get('/t',function(){
+    return view('t');
+})->name('t');

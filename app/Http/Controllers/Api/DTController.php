@@ -26,9 +26,11 @@ class DTController extends Controller
         $ds_sinhvien =  SinhViens::orderBy('tensv')->get()->toArray();
         $data = [];
         foreach ($ds_sinhvien as $key => $value) {
-            foreach ($value['malop'] as $k) {
-                if ($malop == $k) {
-                    $data[] = $ds_sinhvien[$key];
+            if($value['malop']!=""){
+                foreach ($value['malop'] as $k) {
+                    if ($malop == $k) {
+                        $data[] = $ds_sinhvien[$key];
+                    }
                 }
             }
         }
@@ -37,12 +39,13 @@ class DTController extends Controller
         $string .= "<table class='table display table-bordered table-hover main3-table dataTable'>"
             . "<thead>"
             . " <tr>"
-            . " <th style='width:20%;'>STT</th>"
-            . " <th style='width:20%;'>Mã</th>"
-            . " <th style='width:30%;'>Họ</th>"
-            . "<th style='width:15%;'>Tên</th>"
-            . " <th style='width:15%;'>Ngày Sinh</th>"
-            . " <th style='width:15%;'>SĐT</th>"
+            . " <th>STT</th>"
+            . " <th>Mã</th>"
+            . " <th>Họ</th>"
+            . " <th>Tên</th>"
+            . " <th>Ngày Sinh</th>"
+            . " <th>SĐT</th>"
+            . " <th></th>"
             . " </tr>"
             . "</thead>"
             . "<tbody id='danhsach_quanli'>";
@@ -55,6 +58,9 @@ class DTController extends Controller
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['tensv'] . "</td>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . date($value['ngaysinh']) . "</td>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['sdt'] . "</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>
+                <a data-malop='" . $malop . "' data-masv='" . $value['masv'] . "' class='delete-sv'><i class='material-icons'>delete</i></a>
+                </td>"
                 . "</tr>";
         }
         $string .= "</tbody></table>";
@@ -72,9 +78,10 @@ class DTController extends Controller
         $string .= "<table class='table display table-bordered table-hover main4-table dataTable'>"
             . "<thead>"
             . " <tr>"
-            . " <th style='width:20%;'>STT</th>"
-            . " <th style='width:20%;'>Mã</th>"
-            . " <th style='width:30%;'>Tên</th>"
+            . " <th>STT</th>"
+            . " <th>Mã</th>"
+            . " <th>Tên</th>"
+            . " <th></th>"
             . " </tr>"
             . "</thead>"
             . "<tbody id='danhsach_quanli'>";
@@ -84,6 +91,9 @@ class DTController extends Controller
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>$stt</td>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['mamh'] . "</td>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['tenmh'] . "</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>
+                <a data-mamh='" . $value['mamh'] . "' class='delete-mh'><i class='material-icons'>delete</i></a>
+                </td>"
                 . "</tr>";
         }
         $string .= "</tbody></table>";
@@ -95,7 +105,7 @@ class DTController extends Controller
         $temp = 'qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM';
         $token = "";
         for ($i = 0; $i < 10; $i++) {
-            $token .= $temp[rand(0, strlen($temp))];
+            $token .= $temp[rand(0, strlen($temp)-1)];
         }
         GiangViens::insert(
             [
@@ -109,11 +119,7 @@ class DTController extends Controller
                 'monday' => ''
             ]
         );
-        $ds_giangvien = GiangViens::orderBy('tengv')->get();
-        $lops = Lops::all();
-        $monhocs = Monhocs::all();
-        session()->put('chon_lop_hoc', "");
-        return view('dt', compact('ds_giangvien', 'lops', 'monhocs'));
+        return redirect()->route('dt');
     }
     public function deleteGV($magv)
     {
@@ -128,14 +134,14 @@ class DTController extends Controller
         $string .= "<table class='table display table-bordered table-hover main2-table dataTable'>"
             . "<thead>"
             . " <tr>"
-            . " <th style='width:20%;'>STTT</th>"
+            . " <th style='width:20%;'>STT</th>"
             . " <th style='width:20%;'>Mã</th>"
             . " <th style='width:30%;'>Họ</th>"
             . "<th style='width:15%;'>Tên</th>"
             . " <th style='width:15%;'>Email</th>"
             . " <th style='width:15%;'>SĐT</th>"
             . " <th style='width:15%;'>Lịch</th>"
-            . " <th style='width:15%;'>Quản lí</th>"
+            . " <th style='width:15%;'></th>"
             . " </tr>"
             . "</thead>"
             . "<tbody id='danhsach_quanli'>";
@@ -150,22 +156,24 @@ class DTController extends Controller
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['email'] . "</td>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['sdt'] . "</td>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>";
-            foreach ($value['monday'] as $t => $p) {
-                $string .= "<b>Thứ " . ($t + 1) . " :</b> <br>";
-                $st = 0;
-                foreach ($p as $k => $v) {
-                    $string .= "<b>" . ($st += 1) . ". " . $k . "</b>" . " :<br>";
-                    foreach ($v as $i => $x) {
-                        $string .= "&diams; Ca " . $i . " :<br>";
-                        foreach ($x as $y) {
-                            $string .= "&rsaquo; " . $y . "<br>";
+                if($value['monday']!=""){
+                    foreach ($value['monday'] as $thu => $p) {
+                        $string .= "<b>Thứ " . ($thu + 1) . " :</b> <br>";
+                        $st = 0;
+                        foreach ($p as $tenmon => $v) {
+                            $string .= "<b>" . ($st += 1) . ". " . $tenmon . "</b>" . " :<br>";
+                            foreach ($v as $ca => $x) {
+                                $string .= "&diams; Ca " . $ca . " :<br>";
+                                foreach ($x as $tenlop) {
+                                    $string .= "&rsaquo; " . $tenlop . "<br>";
+                                }
+                            }
                         }
                     }
                 }
-            }
             $string .= "</td>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>
-                <a data-magv=\"" . $value['magv'] . "\" class=\"edit-gv\"><i class=\"material-icons\">edit</i></a>
+                <a data-hogv=\"".$value['hogv']."\" data-tengv=\"" .$value['tengv']. "\" data-magv=\"" . $value['magv'] . "\" class=\"edit-gv\"><i class=\"material-icons\">edit</i></a>
                 <a data-magv='" . $value['magv'] . "' class='delete-gv'><i class='material-icons'>delete</i></a>
                 </td>"
                 . "</tr>";
@@ -269,6 +277,7 @@ class DTController extends Controller
                             </table>
                         </div>
                         <button class='btn btn-primary waves-effect' type='submit'>Lưu</button>
+                        <button onclick=\"window.location.href='".route('dt')."'\" class='btn btn-danger waves-effect' type='button'>Hủy</button>
                     </form>
                    </div>
                  </div>
@@ -286,11 +295,7 @@ class DTController extends Controller
             'email' => $request->email,
             'sdt' => $request->sdt,
         ]);
-        $ds_giangvien = GiangViens::orderBy('tengv')->get();
-        $lops = Lops::all();
-        $monhocs = Monhocs::all();
-        session()->put('chon_lop_hoc', "");
-        return view('dt', compact('ds_giangvien', 'lops', 'monhocs'));
+        return redirect()->route('dt');
     }
     public function resetPassGV($magv)
     {
@@ -299,5 +304,92 @@ class DTController extends Controller
         GiangViens::where('magv', $magv)->update([
             'matkhau' => $pass
         ]);
+    }
+    public function deleteSV($malop,$masv)
+    {
+        $sv = SinhViens::where('masv',$masv)->first();
+        $ds_lop = [];
+        foreach($sv['malop'] as $key => $value){
+            if($value!=$malop){
+                $ds_lop[] = $value;
+            }
+        }
+        SinhViens::where('masv',$masv)->update(['malop'=>$ds_lop]);
+        $ds_sinhvien =  SinhViens::orderBy('tensv')->get()->toArray();
+        $data = [];
+        foreach ($ds_sinhvien as $key => $value) {
+            if($value['malop']!=""){
+                foreach ($value['malop'] as $k) {
+                    if ($malop == $k) {
+                        $data[] = $ds_sinhvien[$key];
+                    }
+                }
+            }
+        }
+        $stt = 0;
+        $string = '';
+        $string .= "<table class='table display table-bordered table-hover main3-table dataTable'>"
+            . "<thead>"
+            . " <tr>"
+            . " <th>STT</th>"
+            . " <th>Mã</th>"
+            . " <th>Họ</th>"
+            . " <th>Tên</th>"
+            . " <th>Ngày Sinh</th>"
+            . " <th>SĐT</th>"
+            . " <th></th>"
+            . " </tr>"
+            . "</thead>"
+            . "<tbody id='danhsach_quanli'>";
+        foreach ($data as $key => $value) {
+            $stt++;
+            $string .= "<tr>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>$stt</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['masv'] . "</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['hosv'] . "</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['tensv'] . "</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . date($value['ngaysinh']) . "</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['sdt'] . "</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>
+                <a data-malop='" . $malop . "' data-masv='" . $value['masv'] . "' class='delete-sv'><i class='material-icons'>delete</i></a>
+                </td>"
+                . "</tr>";
+        }
+        $string .= "</tbody></table>";
+        echo $string;
+    }
+    public function deleteMonHoc($mamh)
+    {
+        MonHocs::where('mamh',$mamh)->delete();
+        $ds_monhoc =  MonHocs::orderBy('tenmh')->get()->toArray();
+        $data = [];
+        foreach ($ds_monhoc as $key => $value) {
+            $data[] = $ds_monhoc[$key];
+        }
+        $stt = 0;
+        $string = '';
+        $string .= "<table class='table display table-bordered table-hover main4-table dataTable'>"
+            . "<thead>"
+            . " <tr>"
+            . " <th>STT</th>"
+            . " <th>Mã</th>"
+            . " <th>Tên</th>"
+            . " <th></th>"
+            . " </tr>"
+            . "</thead>"
+            . "<tbody id='danhsach_quanli'>";
+        foreach ($data as $key => $value) {
+            $stt++;
+            $string .= "<tr>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>$stt</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['mamh'] . "</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['tenmh'] . "</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>
+                <a data-mamh='" . $value['mamh'] . "' class='delete-mh'><i class='material-icons'>delete</i></a>
+                </td>"
+                . "</tr>";
+        }
+        $string .= "</tbody></table>";
+        echo $string;
     }
 }

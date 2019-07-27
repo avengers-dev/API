@@ -48,6 +48,7 @@
                                 </div>
                             </div>
                             <button class='btn btn-primary waves-effect' type='submit'>Lưu</button>
+                            <button onclick="window.location.href='{{route('dt')}}'" class='btn btn-danger waves-effect' type='button'>Hủy</button>
                         </form>
                     </div>
                 </div>

@@ -109,6 +109,101 @@
     <script src="js/demo.js"></script>
     <script>
         $(document).ready(function() {
+            $(document).on('click', '.delete-mh', function() {
+                $.ajax({
+                    url: '/delete-mh/' + $(this).attr('data-mamh'),
+                    type: 'GET',
+                    success: function(result) {
+                        $('.table-responsive').html(result);
+                        $('.main4-table').DataTable({
+                            ordering: false,
+                            dom: 'Bfrtip',
+                            responsive: true,
+                            "paging": false,
+                            "bInfo": false,
+                            "searching": true,
+                            language: {
+                                searchPlaceholder: "Tìm kiếm . . .",
+                                search: '' /*Empty to remove the label*/
+                            },
+                            buttons: [
+                                'copy',
+                                {
+                                    extend: 'excel',
+                                    text: 'Excel all',
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print all',
+                                    exportOptions: {
+                                        stripHtml: false,
+                                        stripNewlines: false,
+                                    },
+                                    title: "Danh Sách Các Môn"
+                                }
+                            ],
+                            "columns": [{
+                                    "width": "5%"
+                                },
+                                null,
+                                null,
+                                {
+                                    "width": "5%"
+                                },
+                            ]
+                        });
+                    }
+                });
+            })
+            $(document).on('click', '.delete-sv', function() {
+                $.ajax({
+                    url: '/delete-sv/' + $(this).attr('data-malop') + '/' + $(this).attr('data-masv'),
+                    type: 'GET',
+                    success: function(result) {
+                        $('.table-responsive').html(result);
+                        $('.main3-table').DataTable({
+                            ordering: false,
+                            dom: 'Bfrtip',
+                            responsive: true,
+                            "paging": false,
+                            "bInfo": false,
+                            "searching": true,
+                            language: {
+                                searchPlaceholder: "Tìm kiếm . . .",
+                                search: '' /*Empty to remove the label*/
+                            },
+                            buttons: [
+                                'copy',
+                                {
+                                    extend: 'excel',
+                                    text: 'Excel all',
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print all',
+                                    exportOptions: {
+                                        stripHtml: false,
+                                        stripNewlines: false,
+                                    },
+                                    title: "tên lớp"
+                                }
+                            ],
+                            "columns": [{
+                                    "width": "5%"
+                                },
+                                null,
+                                null,
+                                null,
+                                null,
+                                null,
+                                {
+                                    "width": "5%"
+                                },
+                            ]
+                        });
+                    }
+                });
+            })
             $(document).on('click', '.reset-pass-gv', function() {
                 $.ajax({
                     url: '/reset-pass-gv/' + $(this).attr('data-magv'),
@@ -125,7 +220,7 @@
                 });
             })
             $(document).on('click', '.edit-gv', function() {
-                $title = $(this).attr('data-hogv')+" "+$(this).attr('data-tengv');
+                $title = $(this).attr('data-hogv') + " " + $(this).attr('data-tengv');
                 $.ajax({
                     url: '/edit-gv/' + $(this).attr('data-magv'),
                     type: 'GET',
@@ -197,7 +292,8 @@
                                     exportOptions: {
                                         stripHtml: false,
                                         stripNewlines: false,
-                                    }
+                                    },
+                                    title: "Danh Sách Giảng Viên"
                                 }
                             ],
                             "columns": [{
@@ -253,9 +349,19 @@
                                 exportOptions: {
                                     stripHtml: false,
                                     stripNewlines: false,
-                                }
+                                },
+                                title: "Danh Sách Các Môn"
                             }
                         ],
+                        "columns": [{
+                                "width": "5%"
+                            },
+                            null,
+                            null,
+                            {
+                                "width": "5%"
+                            },
+                        ]
                     });
                 })
             })
@@ -294,7 +400,8 @@
                                     exportOptions: {
                                         stripHtml: false,
                                         stripNewlines: false,
-                                    }
+                                    },
+                                    title: "Lớp: " + ten_lophoc
                                 }
                             ],
                             "columns": [{
@@ -305,6 +412,9 @@
                                 null,
                                 null,
                                 null,
+                                {
+                                    "width": "5%"
+                                },
                             ]
                         });
                     }

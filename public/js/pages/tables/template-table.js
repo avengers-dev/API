@@ -65,7 +65,8 @@ $(function () {
                 exportOptions: {
                     stripHtml: false,
                     stripNewlines: false,
-                }
+                },
+                title: "Danh Sách Giảng Viên"
             }
         ],
         "columns": [
@@ -102,7 +103,8 @@ $(function () {
                 exportOptions: {
                     stripHtml: false,
                     stripNewlines: false,
-                }
+                },
+                title: "tên lớp"
             }
         ],
         "columns": [
@@ -112,6 +114,7 @@ $(function () {
             null,
             null,
             null,
+            { "width": "5%" },
           ]
     });
     $('.main4-table').DataTable({
@@ -137,9 +140,16 @@ $(function () {
                 exportOptions: {
                     stripHtml: false,
                     stripNewlines: false,
-                }
+                },
+                title: "Danh Sách Các Môn"
             }
         ],
+        "columns": [
+            { "width": "5%" },
+            null,
+            null,
+            { "width": "5%" },
+          ]
     });
     $('.main5-table').DataTable({
         ordering: false,
@@ -169,7 +179,8 @@ $(function () {
                 exportOptions: {
                     stripHtml: false,
                     stripNewlines: false,
-                }
+                },
+                title: "Họ Tên Giảng Viên"
             }
         ],
     });

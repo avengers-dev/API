@@ -31,7 +31,8 @@ $(function () {
                     stripHtml: false,
                     stripNewlines: false,
                     // orthogonal: 'abc'
-                }
+                },
+                title: "Sinh Viên Vi Phạm Toàn Trường"
             }
         ],
         "columns": [
@@ -68,17 +69,7 @@ $(function () {
                 },
                 title: "Danh Sách Giảng Viên"
             }
-        ],
-        "columns": [
-            { "width": "1%" },
-            null,
-            { "width": "20%" },
-            { "width": "5%" },
-            { "width": "15%" },
-            { "width": "15%" },
-            { "width": "15%" },
-            { "width": "5%" },
-          ]
+        ]
     });
     $('.main3-table').DataTable({
         ordering: false,
@@ -107,15 +98,6 @@ $(function () {
                 title: "tên lớp"
             }
         ],
-        "columns": [
-            { "width": "5%" },
-            null,
-            null,
-            null,
-            null,
-            null,
-            { "width": "5%" },
-          ]
     });
     $('.main4-table').DataTable({
         ordering: false,
@@ -197,6 +179,7 @@ $(function () {
             },
             {
                 extend: 'print',
+                title: "Sinh Viên Vi Phạm Toàn Trường"
             }
         ],
     })

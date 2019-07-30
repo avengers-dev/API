@@ -1,2 +1,7 @@
 {"_id":{"$oid":"5d31c5930c83b70ec06607fd"},"magv":"vwd2rrf0s","hogv":"Nguyễn Thị Minh","tengv":"Tiến","email":"tienntm@gmail.com","matkhau":"tienntm","sdt":"0378293433343","token":"dfvbnm345thb3f","monday":{"1":{"CSDL":{"2":["CD17CT1","CDHLCSDL1"]},"KTLTNC":{"1":["CD16KP1"]}}}}
 {"_id":{"$oid":"5d31c7500c83b70ec06607fe"},"magv":"b84mf2cv","hogv":"Trần Công","tengv":"Mua","email":"muatc@gmail.com","matkhau":"muatc","sdt":"0682916301335","token":"mc9s6n02ncpd","monday":{"1":{"KTLT":{"1":["CD17CT1"],"3":["CD16KP1"]},"KTLTNC":{"4":["CD16KM1","CD17CT1"]}},"6":{"THDC":{"2":["CD17CT1"]}}}}
+{"_id":{"$oid":"5d402e4327151d2420004e62"},"magv":"a","hogv":"a","tengv":"a","email":"a@gmail.com","matkhau":"aa","sdt":"1","token":"HP8rOlo3jv","monday":""}
+{"_id":{"$oid":"5d402f3627151d2420004e63"},"magv":"b","hogv":"b","tengv":"b","email":"b@gmail.com","matkhau":"bb","sdt":"2","token":"MzjCn7VBJd","monday":""}
+{"_id":{"$oid":"5d402fb927151d2420004e64"},"magv":"c","hogv":"c","tengv":"c","email":"c@gmail.com","matkhau":"cc","sdt":"3","token":"QVBUEOnOma","monday":""}
+{"_id":{"$oid":"5d402fcc27151d2420004e65"},"magv":"d","hogv":"d","tengv":"d","email":"d@gmail.com","matkhau":"dd","sdt":"4","token":"OpNcASInmK","monday":""}
+{"_id":{"$oid":"5d402fe027151d2420004e66"},"magv":"e","hogv":"e","tengv":"e","email":"e@gmail.com","matkhau":"ee","sdt":"5","token":"TBYFE3nFP0","monday":""}

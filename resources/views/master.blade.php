@@ -188,18 +188,6 @@
                                     title: "tên lớp"
                                 }
                             ],
-                            "columns": [{
-                                    "width": "5%"
-                                },
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                {
-                                    "width": "5%"
-                                },
-                            ]
                         });
                     }
                 });
@@ -295,29 +283,6 @@
                                     },
                                     title: "Danh Sách Giảng Viên"
                                 }
-                            ],
-                            "columns": [{
-                                    "width": "1%"
-                                },
-                                null,
-                                {
-                                    "width": "20%"
-                                },
-                                {
-                                    "width": "5%"
-                                },
-                                {
-                                    "width": "15%"
-                                },
-                                {
-                                    "width": "15%"
-                                },
-                                {
-                                    "width": "15%"
-                                },
-                                {
-                                    "width": "5%"
-                                },
                             ]
                         });
                     }
@@ -404,18 +369,6 @@
                                     title: "Lớp: " + ten_lophoc
                                 }
                             ],
-                            "columns": [{
-                                    "width": "5%"
-                                },
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                {
-                                    "width": "5%"
-                                },
-                            ]
                         });
                     }
                 })
@@ -424,54 +377,57 @@
                 $('.lop').removeClass('active');
                 $(this).addClass('active');
                 const ten_lophoc = $(this).find('span').html();
-                $.ajax({
-                    url: '/search-danh-sach-sinh-vien-vi-pham-theo-malop/' + $(this).attr(
-                        'data-malop'),
-                    type: 'GET',
-                    success: function(result) {
+                const title = "Lớp: " + ten_lophoc;
+                    $.ajax({
+                        url: '/search-danh-sach-sinh-vien-vi-pham-theo-malop/' + $(this).attr(
+                            'data-malop'),
+                        type: 'GET',
+                        success: function(result) {
 
-                        $('.table-responsive').html(result);
-                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc);
-                        $('.main-table').DataTable({
-                            ordering: false,
-                            dom: 'Bfrtip',
-                            responsive: true,
-                            "paging": false,
-                            "bInfo": false,
-                            "searching": false,
-                            buttons: [
-                                'copy',
-                                {
-                                    extend: 'excel',
-                                    text: 'Excel all',
-                                },
-                                {
-                                    extend: 'print',
-                                    text: 'Print all',
-                                    exportOptions: {
-                                        stripHtml: false,
-                                        stripNewlines: false,
+                            $('.table-responsive').html(result);
+                            $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc);
+                            $('.main-table').DataTable({
+                                ordering: false,
+                                dom: 'Bfrtip',
+                                responsive: true,
+                                "paging": false,
+                                "bInfo": false,
+                                "searching": false,
+                                buttons: [
+                                    'copy',
+                                    {
+                                        extend: 'excel',
+                                        text: 'Excel all',
+                                    },
+                                    {
+                                        extend: 'print',
+                                        text: 'Print all',
+                                        exportOptions: {
+                                            stripHtml: false,
+                                            stripNewlines: false,
+                                        },
+                                        title: title
                                     }
-                                }
-                            ],
-                        });
-                        $('.testt').DataTable({
-                            dom: 'Bfrtip',
-                            "paging": false,
-                            "ordering": false,
-                            "paging": false,
-                            "info": false,
-                            "searching": false,
-                            buttons: [{
-                                    extend: 'excel',
-                                },
-                                {
-                                    extend: 'print',
-                                }
-                            ],
-                        })
-                    }
-                })
+                                ],
+                            });
+                            $('.testt').DataTable({
+                                dom: 'Bfrtip',
+                                "paging": false,
+                                "ordering": false,
+                                "paging": false,
+                                "info": false,
+                                "searching": false,
+                                buttons: [{
+                                        extend: 'excel',
+                                    },
+                                    {
+                                        extend: 'print',
+                                        title: title
+                                    }
+                                ],
+                            })
+                        }
+                    })
             })
             $('body').on('click', '.toggle_chitiet_sv_vipham', function() {
                 const masv = $(this).attr('data-masv');

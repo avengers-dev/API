@@ -124,7 +124,7 @@ class DTController extends Controller
     public function deleteGV($magv)
     {
         GiangViens::where('magv', $magv)->delete();
-        $ds_gv =  GiangViens::orderBy('tengv', 'desc')->get()->toArray();
+        $ds_gv =  GiangViens::orderBy('tengv')->get()->toArray();
         $data = [];
         foreach ($ds_gv as $key => $value) {
             $data[] = $ds_gv[$key];

@@ -22,7 +22,6 @@
                                     <th>Tên</th>
                                     <th>Email</th>
                                     <th>SĐT</th>
-                                    <th>Lịch</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -38,29 +37,12 @@
                                         <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->tengv}}</td>
                                         <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->email}}</td>
                                         <td style="border:0.1px solid rgba(0,0,0,0.1);">{{$item->sdt}}</td>
-                                        <td style="border:0.1px solid rgba(0,0,0,0.1);">
-                                            <?php
-                                            if ($item->monday != "") {
-                                                foreach ($item->monday as $thuday => $value) {
-                                                    echo "<b>Thứ " . ($thuday + 1) . " :</b> <br>";
-                                                    $st = 0;
-                                                    foreach ($value as $tenmon => $v) {
-                                                        echo "<b>" . ($st += 1) . ". " . $tenmon . "</b>" . " :<br>";
-                                                        foreach ($v as $caday => $x) {
-                                                            echo "&diams; Ca " . $caday . " :<br>";
-                                                            foreach ($x as $lopday) {
-                                                                echo "&rsaquo; " . $lopday . "<br>";
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            ?>
-                                        </td>
                                         <td style="text-align: center;border:0.1px solid rgba(0,0,0,0.1);">
                                             <a data-hogv="{{$item->hogv}}" data-tengv="{{$item->tengv}}" data-magv="{{$item->magv}}" class="edit-gv"><i class="material-icons">edit</i></a>
                                             <br>
                                             <a data-magv="{{$item->magv}}" class="delete-gv"><i class="material-icons">delete</i></a>
+                                            <br>
+                                            <a data-hogv="{{$item->hogv}}" data-tengv="{{$item->tengv}}" data-magv="{{$item->magv}}" class="add-mon-day"><i class="material-icons">playlist_add</i> <span class="icon-name"></span></a>
                                         </td>
                                     </tr>
                                 <?php
@@ -69,8 +51,12 @@
                         </table>
                     </div>
                 </div>
+                <div class="select-multiple">
+                
+                </div>
             </div>
         </div>
+        
     </div>
     <!-- #END# Basic Examples -->
 </div>

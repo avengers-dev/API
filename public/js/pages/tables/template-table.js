@@ -23,6 +23,7 @@ $(function () {
             {
                 extend: 'excel',
                 text: 'Excel all',
+                filename: 'Sinh Viên Vi Phạm Toàn Trường'
             },
             {
                 extend: 'print',
@@ -59,6 +60,7 @@ $(function () {
             {
                 extend: 'excel',
                 text: 'Excel all',
+                filename: 'Danh Sách Giảng Viên'
             },
             {
                 extend: 'print',
@@ -87,6 +89,7 @@ $(function () {
             {
                 extend: 'excel',
                 text: 'Excel all',
+                filename: 'Danh sách lớp -  Tên Lớp'
             },
             {
                 extend: 'print',
@@ -95,7 +98,7 @@ $(function () {
                     stripHtml: false,
                     stripNewlines: false,
                 },
-                title: "tên lớp"
+                title: "Danh sách lớp: Tên Lớp"
             }
         ],
     });
@@ -115,6 +118,7 @@ $(function () {
             {
                 extend: 'excel',
                 text: 'Excel all',
+                filename: 'Danh Sách Môn Học'
             },
             {
                 extend: 'print',
@@ -123,15 +127,9 @@ $(function () {
                     stripHtml: false,
                     stripNewlines: false,
                 },
-                title: "Danh Sách Các Môn"
+                title: "Danh Sách Môn Học"
             }
         ],
-        "columns": [
-            { "width": "5%" },
-            null,
-            null,
-            { "width": "5%" },
-          ]
     });
     $('.main5-table').DataTable({
         ordering: false,
@@ -140,20 +138,12 @@ $(function () {
         "paging": false,
         "bInfo": false,
         "searching": false,
-        "columns": [
-            { "width": "5%" },
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-          ],
           buttons: [
             'copy',
             {
                 extend: 'excel',
                 text: 'Excel all',
+                filename: 'Lịch dạy - Họ Tên Giảng Viên - Mã Giảng Viên'
             },
             {
                 extend: 'print',
@@ -162,7 +152,36 @@ $(function () {
                     stripHtml: false,
                     stripNewlines: false,
                 },
-                title: "Họ Tên Giảng Viên"
+                title: "Lịch dạy - Họ Tên Giảng Viên - Mã Giảng Viên"
+            }
+        ],
+    });
+    $('.main6-table').DataTable({
+        ordering: false,
+        dom: 'Bfrtip',
+        responsive: true,
+        "paging": false,
+        "bInfo": false,
+        "searching": true,
+        language: {
+            searchPlaceholder: "Tìm kiếm . . .",
+            search : '' /*Empty to remove the label*/
+        },
+        buttons: [
+            'copy',
+            {
+                extend: 'excel',
+                text: 'Excel all',
+                filename: 'Danh Sách Quản Trị Viên'
+            },
+            {
+                extend: 'print',
+                text: 'Print all',
+                exportOptions: {
+                    stripHtml: false,
+                    stripNewlines: false,
+                },
+                title: "Danh Sách Quản Trị Viên"
             }
         ],
     });
@@ -176,6 +195,7 @@ $(function () {
         buttons: [
             {
                 extend: 'excel',
+                filename: 'Sinh Viên Vi Phạm Toàn Trường'
             },
             {
                 extend: 'print',

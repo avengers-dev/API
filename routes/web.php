@@ -40,3 +40,16 @@ Route::get('/add-gv',function(){
 Route::post('/addGV', 'Api\DTController@addGV')->name('addGV');
 Route::get('/delete-sv/{malop}/{magv}', 'Api\DTController@deleteSV');
 Route::get('/delete-mh/{mamh}', 'Api\DTController@deleteMonHoc');
+Route::get('/add-monhoc',function(){
+    return view('add-monhoc');
+})->name('add-monhoc');
+Route::post('/addMH', 'Api\DTController@addMH')->name('addMH');
+Route::get('/delete-buoiday/{magv}/{buoiday}', 'Api\DTController@deleteBuoiDay');
+Route::get('/add-mon-day/{magv}','Api\DTController@addMonDay')->name('add-mon-day');
+Route::post('/save-mon-day','Api\DTController@saveMonDay')->name('save-mon-day');
+Route::get('/quan-tri-vien',function(){
+    return view('quan-tri-vien');
+})->name('quan-tri-vien');
+Route::post('/addQTV','Api\DTController@addQTV')->name('addQTV');
+Route::get('/load-quan-tri','Api\DTController@loadQuanTri')->name('load-quan-tri');
+Route::get('/delete-quan-tri/{taikhoan}','Api\DTController@deleteQuanTri')->name('delete-quan-tri');

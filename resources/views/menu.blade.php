@@ -32,14 +32,18 @@
         <div class="navbar-header">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand">
                 <?php
                 if (Session::has('taikhoan')) {
                     $taikhoan = Session::get('taikhoan');
                     if ($taikhoan['chucvu'] == "CTSV") {
                         echo "Phòng Công Tác Sinh Viên ";
                     } else {
-                        echo "Phòng Quản Lí Đào Tạo ";
+                        if ($taikhoan['chucvu'] == "DT") {
+                            echo "Phòng Quản Lí Đào Tạo ";
+                        } else {
+                            echo "Admin - Phòng Quản Lí Đào Tạo ";
+                        }
                     }
                 }
                 ?>
@@ -62,7 +66,7 @@
                     <?php
                     if (Session::has('taikhoan')) {
                         $taikhoan = Session::get('taikhoan');
-                        echo $taikhoan['hogv']." ".$taikhoan['tengv'];
+                        echo $taikhoan['hogv'] . " " . $taikhoan['tengv'];
                     }
                     ?>
                 </div>
@@ -166,6 +170,18 @@
                                         <span>Môn học</span>
                                     </a>
                                 </li>
+                                <?php
+                                    if ($taikhoan['chucvu'] == "AD") {
+                                ?>
+                                <li class="quan-tri-vien menu_itc">
+                                    <a>
+                                        <i class="material-icons">view_list</i>
+                                        <span>Quản trị viên</span>
+                                    </a>
+                                </li>
+                                <?php
+                                    }
+                                ?>
                             </ul>
                         </li>
                     </ul>

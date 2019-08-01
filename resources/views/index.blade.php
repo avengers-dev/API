@@ -78,8 +78,8 @@
                             <div class="col-12">
                                 <div>
                                     <div class="form-group">
-                                        <label for="formGroupExampleInput">Email</label>
-                                        <input style="border: 1px solid #ced4da;" id="email" type="email" name="email" class="form-control" value="">
+                                        <label for="formGroupExampleInput">Tài khoản</label>
+                                        <input style="border: 1px solid #ced4da;" id="email" type="text" name="email" class="form-control" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="formGroupExampleInput2">Mật Khẩu</label>

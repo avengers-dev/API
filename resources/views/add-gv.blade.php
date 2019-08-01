@@ -19,7 +19,7 @@
                                 - Mã giảng viên: 123 <br>
                                 <h5> => Mật khẩu: A123 </h5>
                             </div>
-                        <div class='form-group form-float'>
+                            <div class='form-group form-float'>
                                 <div class='form-line'>
                                     <input type='hidden' class='form-control' name='magv' required>
                                 </div>
@@ -54,7 +54,7 @@
                                     <label class='form-label'>Số Điện Thoại</label>
                                 </div>
                             </div>
-                            <button class='add-gv btn btn-primary waves-effect' type='submit'>Thêm</button>
+                            <button class='btn btn-primary waves-effect' type='submit'>Thêm</button>
                             <button onclick="window.location.href='{{route('dt')}}'" class='btn btn-danger waves-effect' type='button'>Hủy</button>
                         </form>
                     </div>

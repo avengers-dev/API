@@ -16,6 +16,8 @@
         }
         ?>
         ITC</title>
+
+
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -86,6 +88,18 @@
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
 
+    <!-- Autosize Plugin Js -->
+    <script src="plugins/autosize/autosize.js"></script>
+
+    <!-- Moment Plugin Js -->
+    <script src="plugins/momentjs/moment.js"></script>
+
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+    <!-- Bootstrap Datepicker Plugin Js -->
+    <script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
     <!-- Sweet Alert Plugin Js -->
     <script src="plugins/sweetalert/sweetalert.min.js"></script>
 
@@ -104,11 +118,82 @@
     <script src="js/admin.js"></script>
     <script src="js/pages/tables/template-table.js"></script>
     <script src="js/pages/forms/form-validation.js"></script>
+    <script src="js/pages/forms/basic-form-elements.js"></script>
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
     <script>
         $(document).ready(function() {
+            $(document).on('click', '.add-mon-day', function() {
+                title = $(this).attr('data-hogv') + " " + $(this).attr('data-tengv') + " - " + $(this).attr('data-magv');
+                $.ajax({
+                    url: '/add-mon-day/' + $(this).attr('data-magv'),
+                    type: 'GET',
+                    success: function(result) {
+                        $('.clearfix').html(result);
+                        $('.main5-table').DataTable({
+                            ordering: false,
+                            dom: 'Bfrtip',
+                            responsive: true,
+                            "paging": false,
+                            "bInfo": false,
+                            "searching": false,
+                            buttons: [
+                                'copy',
+                                {
+                                    extend: 'excel',
+                                    text: 'Excel all',
+                                    filename: 'Lịch dạy - ' + title
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print all',
+                                    exportOptions: {
+                                        stripHtml: false,
+                                        stripNewlines: false,
+                                    },
+                                    title: 'Lịch dạy - ' + title
+                                }
+                            ],
+                        });
+                    }
+                });
+            })
+            $(document).on('click', '.delete-buoiday', function() {
+                title = $(this).attr('data-hogv') + " " + $(this).attr('data-tengv') + " - " + $(this).attr('data-ma-gv');
+                $.ajax({
+                    url: '/delete-buoiday/' + $(this).attr('data-ma-gv') + '/' + $(this).attr('data-buoi-day'),
+                    type: 'GET',
+                    success: function(result) {
+                        $('.lich-day-giang-vien').html(result);
+                        $('.main5-table').DataTable({
+                            ordering: false,
+                            dom: 'Bfrtip',
+                            responsive: true,
+                            "paging": false,
+                            "bInfo": false,
+                            "searching": false,
+                            buttons: [
+                                'copy',
+                                {
+                                    extend: 'excel',
+                                    text: 'Excel all',
+                                    filename: 'Lịch dạy - ' + title
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print all',
+                                    exportOptions: {
+                                        stripHtml: false,
+                                        stripNewlines: false,
+                                    },
+                                    title: 'Lịch dạy - ' + title
+                                }
+                            ],
+                        });
+                    }
+                });
+            })
             $(document).on('click', '.delete-mh', function() {
                 $.ajax({
                     url: '/delete-mh/' + $(this).attr('data-mamh'),
@@ -131,6 +216,7 @@
                                 {
                                     extend: 'excel',
                                     text: 'Excel all',
+                                    filename: 'Danh Sách Môn Học'
                                 },
                                 {
                                     extend: 'print',
@@ -139,23 +225,15 @@
                                         stripHtml: false,
                                         stripNewlines: false,
                                     },
-                                    title: "Danh Sách Các Môn"
+                                    title: "Danh Sách Môn Học"
                                 }
                             ],
-                            "columns": [{
-                                    "width": "5%"
-                                },
-                                null,
-                                null,
-                                {
-                                    "width": "5%"
-                                },
-                            ]
                         });
                     }
                 });
             })
             $(document).on('click', '.delete-sv', function() {
+                const ten_lophoc = $('.malop').find('span').html();
                 $.ajax({
                     url: '/delete-sv/' + $(this).attr('data-malop') + '/' + $(this).attr('data-masv'),
                     type: 'GET',
@@ -177,6 +255,7 @@
                                 {
                                     extend: 'excel',
                                     text: 'Excel all',
+                                    filename: "Danh sách lớp - " + ten_lophoc
                                 },
                                 {
                                     extend: 'print',
@@ -185,7 +264,45 @@
                                         stripHtml: false,
                                         stripNewlines: false,
                                     },
-                                    title: "tên lớp"
+                                    title: "Danh sách lớp: " + ten_lophoc
+                                }
+                            ],
+                        });
+                    }
+                });
+            })
+            $(document).on('click', '.delete-taikhoan', function() {
+                $.ajax({
+                    url: '/delete-quan-tri/' + $(this).attr('data-taikhoan'),
+                    type: 'GET',
+                    success: function(result) {
+                        $('.table-responsive').html(result);
+                        $('.main6-table').DataTable({
+                            ordering: false,
+                            dom: 'Bfrtip',
+                            responsive: true,
+                            "paging": false,
+                            "bInfo": false,
+                            "searching": true,
+                            language: {
+                                searchPlaceholder: "Tìm kiếm . . .",
+                                search: '' /*Empty to remove the label*/
+                            },
+                            buttons: [
+                                'copy',
+                                {
+                                    extend: 'excel',
+                                    text: 'Excel all',
+                                    filename: 'Danh Sách Quản Trị Viên'
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print all',
+                                    exportOptions: {
+                                        stripHtml: false,
+                                        stripNewlines: false,
+                                    },
+                                    title: "Danh Sách Quản Trị Viên"
                                 }
                             ],
                         });
@@ -208,7 +325,7 @@
                 });
             })
             $(document).on('click', '.edit-gv', function() {
-                $title = $(this).attr('data-hogv') + " " + $(this).attr('data-tengv');
+                title = $(this).attr('data-hogv') + " " + $(this).attr('data-tengv') + " - " + $(this).attr('data-magv');
                 $.ajax({
                     url: '/edit-gv/' + $(this).attr('data-magv'),
                     type: 'GET',
@@ -221,21 +338,12 @@
                             "paging": false,
                             "bInfo": false,
                             "searching": false,
-                            "columns": [{
-                                    "width": "5%"
-                                },
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                                null,
-                            ],
                             buttons: [
                                 'copy',
                                 {
                                     extend: 'excel',
                                     text: 'Excel all',
+                                    filename: 'Lịch dạy - ' + title
                                 },
                                 {
                                     extend: 'print',
@@ -244,7 +352,7 @@
                                         stripHtml: false,
                                         stripNewlines: false,
                                     },
-                                    title: $title
+                                    title: 'Lịch dạy - ' + title
                                 }
                             ],
                         });
@@ -273,6 +381,7 @@
                                 {
                                     extend: 'excel',
                                     text: 'Excel all',
+                                    filename: 'Danh Sách Giảng Viên'
                                 },
                                 {
                                     extend: 'print',
@@ -288,7 +397,43 @@
                     }
                 });
             })
+            $(document).on('click', '.quan-tri-vien', function() {
+                $('#ten_lophoc_search').html("Danh Sách Quản Trị Viên <a href='{{ route('quan-tri-vien') }}'><button style='float:right' type='button' class='btn btn-primary waves-effect'>Thêm Quản Trị Viên</button></a>");
+                $.get('/load-quan-tri', function(data) {
+                    $('.table-responsive').html(data);
+                    $('.main6-table').DataTable({
+                        ordering: false,
+                        dom: 'Bfrtip',
+                        responsive: true,
+                        "paging": false,
+                        "bInfo": false,
+                        "searching": true,
+                        language: {
+                            searchPlaceholder: "Tìm kiếm . . .",
+                            search: '' /*Empty to remove the label*/
+                        },
+                        buttons: [
+                            'copy',
+                            {
+                                extend: 'excel',
+                                text: 'Excel all',
+                                filename: 'Danh Sách Quản Trị Viên'
+                            },
+                            {
+                                extend: 'print',
+                                text: 'Print all',
+                                exportOptions: {
+                                    stripHtml: false,
+                                    stripNewlines: false,
+                                },
+                                title: "Danh Sách Quản Trị Viên"
+                            }
+                        ],
+                    });
+                })
+            })
             $(document).on('click', '.monhoc', function() {
+                $('#ten_lophoc_search').html("Danh Sách Môn Học <a href='{{route('add-monhoc')}}'><button style='float:right' type='button' class='btn btn-primary waves-effect'>Thêm Môn Học</button></a>");
                 $.get('/load-danh-sach-mon-hoc', function(data) {
                     $('.table-responsive').html(data);
                     $('.main4-table').DataTable({
@@ -307,6 +452,7 @@
                             {
                                 extend: 'excel',
                                 text: 'Excel all',
+                                filename: 'Danh Sách Môn Học'
                             },
                             {
                                 extend: 'print',
@@ -315,18 +461,9 @@
                                     stripHtml: false,
                                     stripNewlines: false,
                                 },
-                                title: "Danh Sách Các Môn"
+                                title: "Danh Sách Môn Học"
                             }
                         ],
-                        "columns": [{
-                                "width": "5%"
-                            },
-                            null,
-                            null,
-                            {
-                                "width": "5%"
-                            },
-                        ]
                     });
                 })
             })
@@ -341,7 +478,7 @@
                     success: function(result) {
 
                         $('.table-responsive').html(result);
-                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc);
+                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc + "<a href=\"{{route('add-gv')}}\"><button style=\"float:right\" type=\"button\" class=\"btn btn-primary waves-effect\">Thêm Sinh Viên</button></a>");
                         $('.main3-table').DataTable({
                             ordering: false,
                             dom: 'Bfrtip',
@@ -358,6 +495,7 @@
                                 {
                                     extend: 'excel',
                                     text: 'Excel all',
+                                    filename: "Danh sách lớp - " + ten_lophoc
                                 },
                                 {
                                     extend: 'print',
@@ -366,7 +504,7 @@
                                         stripHtml: false,
                                         stripNewlines: false,
                                     },
-                                    title: "Lớp: " + ten_lophoc
+                                    title: "Danh sách lớp: " + ten_lophoc
                                 }
                             ],
                         });
@@ -378,56 +516,57 @@
                 $(this).addClass('active');
                 const ten_lophoc = $(this).find('span').html();
                 const title = "Lớp: " + ten_lophoc;
-                    $.ajax({
-                        url: '/search-danh-sach-sinh-vien-vi-pham-theo-malop/' + $(this).attr(
-                            'data-malop'),
-                        type: 'GET',
-                        success: function(result) {
+                $.ajax({
+                    url: '/search-danh-sach-sinh-vien-vi-pham-theo-malop/' + $(this).attr(
+                        'data-malop'),
+                    type: 'GET',
+                    success: function(result) {
 
-                            $('.table-responsive').html(result);
-                            $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc);
-                            $('.main-table').DataTable({
-                                ordering: false,
-                                dom: 'Bfrtip',
-                                responsive: true,
-                                "paging": false,
-                                "bInfo": false,
-                                "searching": false,
-                                buttons: [
-                                    'copy',
-                                    {
-                                        extend: 'excel',
-                                        text: 'Excel all',
+                        $('.table-responsive').html(result);
+                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc);
+                        $('.main-table').DataTable({
+                            ordering: false,
+                            dom: 'Bfrtip',
+                            responsive: true,
+                            "paging": false,
+                            "bInfo": false,
+                            "searching": false,
+                            buttons: [
+                                'copy',
+                                {
+                                    extend: 'excel',
+                                    text: 'Excel all',
+                                    filename: title
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print all',
+                                    exportOptions: {
+                                        stripHtml: false,
+                                        stripNewlines: false,
                                     },
-                                    {
-                                        extend: 'print',
-                                        text: 'Print all',
-                                        exportOptions: {
-                                            stripHtml: false,
-                                            stripNewlines: false,
-                                        },
-                                        title: title
-                                    }
-                                ],
-                            });
-                            $('.testt').DataTable({
-                                dom: 'Bfrtip',
-                                "paging": false,
-                                "ordering": false,
-                                "paging": false,
-                                "info": false,
-                                "searching": false,
-                                buttons: [{
-                                        extend: 'excel',
-                                    },
-                                    {
-                                        extend: 'print',
-                                        title: title
-                                    }
-                                ],
-                            })
-                        }
-                    })
+                                    title: title
+                                }
+                            ],
+                        });
+                        $('.testt').DataTable({
+                            dom: 'Bfrtip',
+                            "paging": false,
+                            "ordering": false,
+                            "paging": false,
+                            "info": false,
+                            "searching": false,
+                            buttons: [{
+                                    extend: 'excel',
+                                },
+                                {
+                                    extend: 'print',
+                                    title: title
+                                }
+                            ],
+                        })
+                    }
+                })
             })
             $('body').on('click', '.toggle_chitiet_sv_vipham', function() {
                 const masv = $(this).attr('data-masv');

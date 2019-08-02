@@ -59,3 +59,5 @@ Route::get('/add-lop',function(){
 Route::post('/addLop','Api\DTController@addLop')->name('addLop');
 Route::get('/load-danh-sach-cac-lop','Api\DTController@loadDanhSachCacLop')->name('load-danh-sach-cac-lop');
 Route::get('/delete-lop/{malop}','Api\DTController@deleteLop')->name('delete-lop');
+
+Route::post('/import-excel','Api\DTController@importExcel');

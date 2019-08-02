@@ -10,6 +10,8 @@ use App\Models\MonHocs;
 use App\Models\SinhViens;
 use DB;
 use App\Models\Admins;
+use Excel;
+use ImportExcel;
 
 class DTController extends Controller
 {
@@ -261,12 +263,15 @@ class DTController extends Controller
         $ds_sinhvien =  SinhViens::orderBy('tensv')->get()->toArray();
         $data = [];
         foreach ($ds_sinhvien as $key => $value) {
-            if($value['malop']!=""){
+            if(count($value['malop'])){
                 foreach ($value['malop'] as $k) {
                     if ($malop == $k) {
                         $data[] = $ds_sinhvien[$key];
                     }
                 }
+            }
+            else{
+                SinhViens::where('masv',$value['masv'])->delete();
             }
         }
         $stt = 0;
@@ -715,6 +720,24 @@ class DTController extends Controller
         foreach ($ds_lop as $key => $value) {
             $data[] = $ds_lop[$key];
         }
+        $sv = SinhViens::get()->toArray();
+        foreach($sv as $key => $value){
+            if(count($value['malop'])){  
+                $data_sv = [];
+                foreach($value['malop'] as $k =>$v){
+                    if($v != $malop)
+                    {
+                        $data_sv[] = $v;
+                    }
+                }
+                SinhViens::where('masv',$value['masv'])->update([
+                    'malop' => $data_sv,
+                ]);
+            }
+            else{
+                SinhViens::where('masv',$value['masv'])->delete();
+            }
+        }
         $stt = 0;
         $string = '';
         $string .= "<table class='table display table-bordered table-hover main7-table dataTable'>"
@@ -742,5 +765,66 @@ class DTController extends Controller
     }
     $string .= "</tbody></table>";
     echo $string;
+    }
+    public function importExcel(Request $request){
+        if($request->hasFile('file')){
+            $data = $request->file('file');
+            $reader = ImportExcel::createReader('Xlsx');
+            $spreadSheet = $reader->load($data);
+            $workSheet = $spreadSheet->getActiveSheet();
+            // echo "<pre>";
+            // print_r($workSheet->toArray());
+            $flag = 0;
+            foreach ($workSheet->toArray() as $key => $value) {
+                if($flag > 0){
+                    // $sinhvien = new Sinhviens();
+                    // $sinhvien->masv = $value[1]."";
+                    // $sinhvien->hosv = $value[2];
+                    // $sinhvien->tensv = $value[3];
+                    // $sinhvien->sdt = $value[5];
+                    // $sinhvien->ngaysinh = $value[4];
+                    // $sinhvien->malop = [session()->get('chon_lop_hoc')];
+                    // $sinhvien->save();
+                    $masv = $value[1]."";
+                    $sv = SinhViens::where('masv',$masv)->get()->toArray();
+                    $check = true;
+                    if(count($sv)){
+                        $data = [];
+                        foreach($sv as $key => $value){
+                            if(count($value['malop'])){
+                                foreach($value['malop'] as $k =>$v){
+                                    if($v == session()->get('chon_lop_hoc'))
+                                    {
+                                        $check = false;
+                                    }
+                                    $data[] = $v;
+                                }
+                            }
+                            else{
+                                SinhViens::where('masv',$value['masv'])->delete();
+                            }
+                        }
+                        if($check){
+                            $data[] = session()->get('chon_lop_hoc');
+                        }
+                        SinhViens::where('masv',$masv)->update([
+                            'malop' => $data,
+                        ]);
+                    }
+                    else{
+                        SinhViens::insert([
+                            'masv' => $value[1]."",
+                            'hosv' => $value[2],
+                            'tensv' => $value[3],
+                            'sdt' => $value[5]."",
+                            'ngaysinh' => $value[4],
+                            'malop' => [session()->get('chon_lop_hoc')],
+                        ]);
+                    }
+                }
+                $flag++;
+            }
+            // echo json_encode($workSheet->toArray());
+        }
     }
 }

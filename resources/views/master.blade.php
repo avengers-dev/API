@@ -542,7 +542,8 @@
                     });
                 })
             })
-            $('body').on('click', '.malop', function() {
+            
+            $(document).on('click', '.malop', function() {
                 $('.malop').removeClass('active');
                 $('.danh-sach-cac-lop').removeClass('active');
                 $(this).addClass('active');
@@ -554,7 +555,7 @@
                     success: function(result) {
 
                         $('.table-responsive').html(result);
-                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc + "<a href=\"{{route('add-gv')}}\"><button style=\"float:right\" type=\"button\" class=\"btn btn-primary waves-effect\">Thêm Sinh Viên</button></a> <a href=\"{{route('add-lop')}}\"><button style=\"float:right; margin-right:10px;\" type=\"button\" class=\"btn btn-primary waves-effect\">Thêm Lớp</button></a>");
+                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc + "<a href='javascript:void(0)'><button style=\"float:right\" type=\"button\" class=\"add-sv btn btn-primary waves-effect\">Thêm Sinh Viên</button></a> <a href=\"{{route('add-lop')}}\"><button style=\"float:right; margin-right:10px;\" type=\"button\" class=\"btn btn-primary waves-effect\">Thêm Lớp</button></a>");
                         $('.main3-table').DataTable({
                             ordering: false,
                             dom: 'Bfrtip',
@@ -584,6 +585,27 @@
                                 }
                             ],
                         });
+                    }
+                })
+            })
+            $(document).on('click','.add-sv',function(){
+                $('#file-excel').trigger('click');
+            })
+            $(document).on('change','#file-excel',function(){
+                const ten_lophoc = $('.malop').find('span').html();
+                var fileData = $('#file-excel')[0].files[0];
+                console.log(fileData)
+                var formData = new FormData();
+                formData.append('file',fileData);
+                $.ajax({
+                    url : '/import-excel',
+                    type : 'POST',
+                    processData : false,
+                    contentType : false,
+                    data : formData,
+                    // dataType :'json',
+                    success : function(result){
+                        window.location.href='/dt';
                     }
                 })
             })

@@ -12,6 +12,11 @@
                     </h2>
                 </div>
                 <div class="body">
+                    <div>
+                    <form method="POST" enctype="multipart/form-data">
+                        <input type="file" id="file-excel" name="file" style="display:none;">
+                    </form>
+                    </div>
                     <div class="table-responsive get_data_sinhvien">
                         <table class="table display table-bordered table-hover main2-table dataTable">
                             <thead>

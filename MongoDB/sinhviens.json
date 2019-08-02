@@ -1,14 +1,15 @@
-{"_id":{"$oid":"5cd063ba138d27315c58552d"},"masv":"123123","hosv":"Nguyễn Quốc","tensv":"Bảo","sdt":{"$numberInt":"123456789"},"ngaysinh":"1998-10-10","malop":["CD16KM1","CDHLCSDL1"]}
-{"_id":{"$oid":"5cd063f9138d27315c58552e"},"masv":"123932234","hosv":"Phạm Ngọc Thoại","tensv":"Kỳ","sdt":{"$numberInt":"123456789"},"ngaysinh":"1992-01-05","malop":["CD16KM1","CDHLCSDL1"]}
-{"_id":{"$oid":"5cd0647d138d27315c58552f"},"masv":"345345123","hosv":"Nguyễn Phúc","tensv":"Thịnh","sdt":{"$numberInt":"123456789"},"ngaysinh":"1998-02-04","malop":["CD16KM1","CDHLCSDL1"]}
-{"_id":{"$oid":"5cd06577138d27315c585531"},"masv":"456452341","hosv":"Tên Mẹ","tensv":"Đặt","sdt":{"$numberInt":"123456789"},"ngaysinh":"1997-02-02","malop":["CD16KM1","CDHLCSDL1"]}
-{"_id":{"$oid":"5cd0660c138d27315c585535"},"masv":"95563251","hosv":"Tên Bố","tensv":"Đặt","sdt":{"$numberInt":"123456789"},"ngaysinh":"1997-12-07","malop":["CD16KM1","CDHLCSDL1"]}
-{"_id":{"$oid":"5cd06671138d27315c585539"},"masv":"987634345346456","hosv":"Tên Đại","tensv":"Diện","sdt":{"$numberInt":"123456789"},"ngaysinh":"1997-07-27","malop":["CD16KP1","CDHLCSDL1"]}
-{"_id":{"$oid":"5cd067f1138d27315c58554a"},"masv":"11234354999","hosv":"Gia Cát","tensv":"Lượng","sdt":{"$numberInt":"123456789"},"ngaysinh":"1995-07-07","malop":["CD16KP1","CDHLCSDL1"]}
-{"_id":{"$oid":"5cd06837138d27315c58554e"},"masv":"333333333","hosv":"Lu","tensv":"Bị","sdt":{"$numberInt":"123456789"},"ngaysinh":"1995-02-14","malop":["CD16KP1","CDHLCSDL1"]}
-{"_id":{"$oid":"5cd0687e138d27315c585555"},"masv":"44444444","hosv":"Lữ","tensv":"Bố","sdt":{"$numberInt":"123456789"},"ngaysinh":"1995-02-22","malop":["CD16KP1","CDHLCSDL1"]}
-{"_id":{"$oid":"5cd068af138d27315c585559"},"masv":"5445555555","hosv":"Điêu","tensv":"Thuyền","sdt":{"$numberInt":"123456789"},"ngaysinh":"1995-01-22","malop":["CD16KP1","CDHLCSDL1"]}
-{"_id":{"$oid":"5cd06a1f138d27315c58558e"},"masv":"6666634234234","hosv":"Đổng","tensv":"Trác","sdt":{"$numberInt":"123456789"},"ngaysinh":"1995-03-23","malop":["CD17CT1"]}
-{"_id":{"$oid":"5cd06a77138d27315c58559a"},"masv":"123000002","hosv":"Văn","tensv":"Ương","sdt":{"$numberInt":"123456789"},"ngaysinh":"1995-03-03","malop":["CD17CT1"]}
-{"_id":{"$oid":"5cd06aa2138d27315c58559e"},"masv":"0000000000234234","hosv":"Hắng","tensv":"Nga","sdt":{"$numberInt":"123456789"},"ngaysinh":"1996-01-20","malop":["CD17CT1"]}
-{"_id":{"$oid":"5cd06adc138d27315c5855a2"},"masv":"11112388888435","hosv":"Lăng","tensv":"Thống","sdt":{"$numberInt":"123456789"},"ngaysinh":"1996-08-23","malop":["CD17CT1"]}
+{"_id":{"$oid":"5d44785027151d83800079b0"},"masv":"8907654789","hosv":"Hắng","tensv":"Nga","sdt":"0907534268","ngaysinh":"1996-01-20","malop":["CD17CT1"]}
+{"_id":{"$oid":"5d44785027151d83800079b1"},"masv":"8907654423","hosv":"Lăng","tensv":"Thống","sdt":"0241412421","ngaysinh":"1996-08-23","malop":["CD17CT1"]}
+{"_id":{"$oid":"5d44785027151d83800079b2"},"masv":"8907654245","hosv":"Đổng","tensv":"Trác","sdt":"0897682713","ngaysinh":"1995-03-23","malop":["CD17CT1"]}
+{"_id":{"$oid":"5d44785027151d83800079b3"},"masv":"8907654797","hosv":"Văn","tensv":"Ương","sdt":"0281943721","ngaysinh":"1995-03-03","malop":["CD17CT1"]}
+{"_id":{"$oid":"5d44795e27151d83800079b4"},"masv":"8907651412","hosv":"Nguyễn Quốc","tensv":"Bảo","sdt":"0907534268","ngaysinh":"1998-10-10","malop":["CD16KM1","CDHLCSDL1"]}
+{"_id":{"$oid":"5d44795e27151d83800079b8"},"masv":"8907654000","hosv":"Phạm Ngọc Thoại","tensv":"Kỳ","sdt":"0907534222","ngaysinh":"1992-01-05","malop":["CD16KM1","CDHLCSDL1"]}
+{"_id":{"$oid":"5d44795e27151d83800079bb"},"masv":"8907654045","hosv":"Nguyễn Phúc","tensv":"Thịnh","sdt":"0907534185","ngaysinh":"1998-02-04","malop":["CD16KM1","CDHLCSDL1"]}
+{"_id":{"$oid":"5d44795e27151d83800079bc"},"masv":"8907654111","hosv":"Nguyễn Văn","tensv":"Còn","sdt":"0907534100","ngaysinh":"1997-02-02","malop":["CD16KM1","CDHLCSDL1"]}
+{"_id":{"$oid":"5d44795e27151d83800079bd"},"masv":"8907654642","hosv":"Hà Văn","tensv":"Rớt","sdt":"0907534120","ngaysinh":"1997-12-07","malop":["CD16KM1","CDHLCSDL1"]}
+{"_id":{"$oid":"5d447dc527151d83800079ca"},"masv":"8907656755","hosv":"Lưu","tensv":"Bị","sdt":"0907534123","ngaysinh":"1995-02-14","malop":["CD16KP1","CDHLCSDL1"]}
+{"_id":{"$oid":"5d447dc527151d83800079cb"},"masv":"8907654666","hosv":"Lữ","tensv":"Bố","sdt":" 0907532414","ngaysinh":"1995-02-22","malop":["CD16KP1","CDHLCSDL1"]}
+{"_id":{"$oid":"5d447dc527151d83800079cc"},"masv":"8932654789","hosv":"Quá Trời","tensv":"Tên","sdt":"0904114270","ngaysinh":"1997-07-27","malop":["CD16KP1"]}
+{"_id":{"$oid":"5d447dc527151d83800079cd"},"masv":"8907654151","hosv":"Gia Cát","tensv":"Lượng","sdt":"0907534564","ngaysinh":"1995-07-07","malop":["CD16KP1","CDHLCSDL1"]}
+{"_id":{"$oid":"5d447dc527151d83800079ce"},"masv":"8907658790","hosv":"Điêu","tensv":"Thuyền","sdt":" 0907534134","ngaysinh":"1995-01-22","malop":["CD16KP1","CDHLCSDL1"]}
+{"_id":{"$oid":"5d447dd227151d83800079cf"},"masv":"8907654344","hosv":"Tên Đại","tensv":"Diện","sdt":"0907534134","ngaysinh":"1997-07-27","malop":["CDHLCSDL1"]}

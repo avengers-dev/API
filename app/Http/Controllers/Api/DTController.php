@@ -67,7 +67,7 @@ class DTController extends Controller
         $string .= "</tbody></table>";
         echo $string;
     }
-    public function loaddanhsachmonhoc()
+    public function loadDanhSachMonHoc()
     {
         $ds_monhoc =  MonHocs::orderBy('tenmh')->get()->toArray();
         $data = [];
@@ -135,13 +135,13 @@ class DTController extends Controller
         $string .= "<table class='table display table-bordered table-hover main2-table dataTable'>"
             . "<thead>"
             . " <tr>"
-            . " <th style='width:20%;'>STT</th>"
-            . " <th style='width:20%;'>Mã</th>"
-            . " <th style='width:30%;'>Họ</th>"
-            . "<th style='width:15%;'>Tên</th>"
-            . " <th style='width:15%;'>Email</th>"
-            . " <th style='width:15%;'>SĐT</th>"
-            . " <th style='width:15%;'></th>"
+            . " <th>STT</th>"
+            . " <th>Mã</th>"
+            . " <th>Họ</th>"
+            . " <th>Tên</th>"
+            . " <th>Email</th>"
+            . " <th>SĐT</th>"
+            . " <th></th>"
             . " </tr>"
             . "</thead>"
             . "<tbody id='danhsach_quanli'>";
@@ -155,8 +155,9 @@ class DTController extends Controller
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['tengv'] . "</td>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['email'] . "</td>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['sdt'] . "</td>"
-                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>
+                . "<td style='text-align: center;border:0.1px solid rgba(0,0,0,0.1);'>
                 <a data-hogv=\"".$value['hogv']."\" data-tengv=\"" .$value['tengv']. "\" data-magv=\"" . $value['magv'] . "\" class=\"edit-gv\"><i class=\"material-icons\">edit</i></a>
+                <br>
                 <a data-magv='" . $value['magv'] . "' class='delete-gv'><i class='material-icons'>delete</i></a>
                 <br>
                 <a data-hogv=\"".$value['hogv']."\" data-tengv=\"" .$value['tengv']. "\" data-magv=\"" . $value['magv'] . "\" class=\"add-mon-day\"><i class=\"material-icons\">playlist_add</i> <span class=\"icon-name\"></span></a>
@@ -176,7 +177,7 @@ class DTController extends Controller
             <div class='card'>
                 <div class='header'>
                     <h2 id='ten_lophoc_search'>
-                        Thay Đổi Thông Tin Giảng Viên
+                        Thay Đổi Thông Tin Giảng Viên - " .$giangvien['hogv']. " " .$giangvien['tengv']. " - " .$giangvien['magv']. "
                         <button style='float:right' data-magv='" . $giangvien['magv'] . "' class='reset-pass-gv btn btn-primary waves-effect'>Đặt lại mật khẩu</button>
                     </h2>
                 </div>
@@ -185,30 +186,34 @@ class DTController extends Controller
                     <form action='" . route('save-gv') . "' id='form_validation' method='POST'>
                     <div class='form-group form-float'>
                             <div class='form-line'>
-                                <input class='form-control' value='"
+                                <input type='hidden' class='form-control' value='"
             . $giangvien['magv'] . "' name='magv' required>
                             </div>
                         </div>
                         <div class='form-group form-float'>
                             <div class='form-line'>
+                            <label>Họ</label>
                                 <input type='text' class='form-control' value='"
             . $giangvien['hogv'] . "' name='hogv' required>
                             </div>
                         </div>
                         <div class='form-group form-float'>
                             <div class='form-line'>
+                            <label>Tên</label>
                                 <input type='text' class='form-control' value='"
             . $giangvien['tengv'] . "'name='tengv' required>
                             </div>
                         </div>
                         <div class='form-group form-float'>
                             <div class='form-line'>
+                            <label>Email</label>
                                 <input type='email' class='form-control' value='"
             . $giangvien['email'] . "'name='email' required>
                             </div>
                         </div>
                         <div class='form-group form-float'>
                             <div class='form-line'>
+                            <label>Số điện thoại</label>
                                 <input type='number' class='form-control' value='"
             . $giangvien['sdt'] . "'name='sdt' required>
                             </div>
@@ -536,9 +541,33 @@ class DTController extends Controller
             $buoiday = $request->chonthu - 1;
             $danh_sach_mon_day = GiangViens::where('magv',$request->magv)->first();
             $data = [];
-            if($request->chonca != ""){ 
-                if($request->chonmon != ""){ 
-                    if($request->chonlop != ""){ 
+            if($danh_sach_mon_day->monday != ""){
+                if($request->chonca != ""){ 
+                    if($request->chonmon != ""){ 
+                        if($request->chonlop != ""){ 
+                            foreach($danh_sach_mon_day->monday as $key => $value){
+                                if($key == $buoiday){
+                                    foreach($value as $x => $y){
+                                        foreach($y as $i => $j){
+                                            if($i != $request->chonca){
+                                                $data[$key][$x][$i]=$j;
+                                            }
+                                        }
+                                    }
+                                }
+                                else{
+                                    $data[$key]=$value;
+                                }
+                            }
+                            foreach($chonlop as $k => $v){
+                                $data[$buoiday][$request->chonmon][$request->chonca][]=$v;
+                            }
+                        }
+                        else{   //Ko add
+                            return redirect()->route('dt');
+                        }
+                    }
+                    else{   //Xóa ca
                         foreach($danh_sach_mon_day->monday as $key => $value){
                             if($key == $buoiday){
                                 foreach($value as $x => $y){
@@ -553,36 +582,19 @@ class DTController extends Controller
                                 $data[$key]=$value;
                             }
                         }
-                        foreach($chonlop as $k => $v){
-                            $data[$buoiday][$request->chonmon][$request->chonca][]=$v;
-                        }
-                    }
-                    else{   //Ko add
-                        return redirect()->route('dt');
                     }
                 }
-                else{   //Xóa ca
+                else{   //Xóa thứ
                     foreach($danh_sach_mon_day->monday as $key => $value){
-                        if($key == $buoiday){
-                            foreach($value as $x => $y){
-                                foreach($y as $i => $j){
-                                    if($i != $request->chonca){
-                                        $data[$key][$x][$i]=$j;
-                                    }
-                                }
-                            }
-                        }
-                        else{
+                        if($key!=$buoiday){
                             $data[$key]=$value;
                         }
                     }
                 }
             }
-            else{   //Xóa thứ
-                foreach($danh_sach_mon_day->monday as $key => $value){
-                    if($key!=$buoiday){
-                        $data[$key]=$value;
-                    }
+            else{
+                foreach($chonlop as $k => $v){
+                    $data[$buoiday][$request->chonmon][$request->chonca][]=$v;
                 }
             }
             // echo "<pre>";
@@ -651,5 +663,84 @@ class DTController extends Controller
     public function deleteQuanTri($taikhoan){
         Admins::where('taikhoan',$taikhoan)->delete();
         return redirect()->route('load-quan-tri');
+    }
+    public function addLop(Request $request){
+        Lops::insert([
+            'malop' => $request->malop,
+            'tenlop' => $request->tenlop,
+            'tinhtrang' => $request->chontinhtrang,
+        ]);
+        return redirect()->route('dt');
+    }
+    public function loadDanhSachCacLop()
+    {
+        $ds_lop =  Lops::orderBy('tenlop')->get()->toArray();
+        $data = [];
+        foreach ($ds_lop as $key => $value) {
+            $data[] = $ds_lop[$key];
+        }
+        $stt = 0;
+        $string = '';
+        $string .= "<table class='table display table-bordered table-hover main7-table dataTable'>"
+            . "<thead>"
+            . " <tr>"
+            . " <th>STT</th>"
+            . " <th>Mã</th>"
+            . " <th>Tên</th>"
+            . " <th>Tình trạng</th>"
+            . " <th></th>"
+            . " </tr>"
+            . "</thead>"
+            . "<tbody id='danhsach_quanli'>";
+        foreach ($data as $key => $value) {
+            $stt++;
+            $string .= "<tr>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>$stt</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['malop'] . "</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['tenlop'] . "</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['tinhtrang'] . "</td>"
+                . "<td style='text-align: center;border:0.1px solid rgba(0,0,0,0.1);'>
+                    <a data-malop='" . $value['malop'] . "' class='delete-lop'><i class='material-icons'>delete</i></a>
+                </td>"
+                . "</tr>";
+        }
+        $string .= "</tbody></table>";
+        echo $string;
+    }
+    public function deleteLop($malop)
+    {
+        Lops::where('malop',$malop)->delete();
+        $ds_lop =  Lops::orderBy('tenlop')->get()->toArray();
+        $data = [];
+        foreach ($ds_lop as $key => $value) {
+            $data[] = $ds_lop[$key];
+        }
+        $stt = 0;
+        $string = '';
+        $string .= "<table class='table display table-bordered table-hover main7-table dataTable'>"
+        . "<thead>"
+        . " <tr>"
+        . " <th>STT</th>"
+        . " <th>Mã</th>"
+        . " <th>Tên</th>"
+        . " <th>Tình trạng</th>"
+        . " <th></th>"
+        . " </tr>"
+        . "</thead>"
+        . "<tbody id='danhsach_quanli'>";
+    foreach ($data as $key => $value) {
+        $stt++;
+        $string .= "<tr>"
+            . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>$stt</td>"
+            . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['malop'] . "</td>"
+            . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['tenlop'] . "</td>"
+            . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['tinhtrang'] . "</td>"
+            . "<td style='text-align: center;border:0.1px solid rgba(0,0,0,0.1);'>
+                <a data-malop='" . $value['malop'] . "' class='delete-lop'><i class='material-icons'>delete</i></a>
+            </td>"
+            . "</tr>";
+    }
+    $string .= "</tbody></table>";
+    echo $string;
     }
 }

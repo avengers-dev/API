@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="header">
                     <h2 id="ten_lophoc_search">
-                        Sinh Viên Vi Phạm Toàn Trường
+                        Sinh Viên Vắng Toàn Trường
                     </h2>
                     <script>
                         function isNumber(event) {
@@ -29,9 +29,9 @@
                             <thead>
                                 <tr>
                                     <th style="width:20%;">STT</th>
-                                    <th style="width:20%;">Mã Số Sinh Viên</th>
-                                    <th style="width:30%;">Họ Sinh Viên</th>
-                                    <th style="width:15%;">Tên Sinh Viên</th>
+                                    <th style="width:20%;">Mã</th>
+                                    <th style="width:30%;">Họ</th>
+                                    <th style="width:15%;">Tên</th>
                                     <th style="width:15%;">Số Điện Thoại</th>
                                 </tr>
                             </thead>
@@ -88,9 +88,9 @@
                             <thead style="display: none">
                                 <tr>
                                     <th style="width:20%;">STT</th>
-                                    <th style="width:20%;">Mã Số Sinh Viên</th>
-                                    <th style="width:30%;">Họ Sinh Viên</th>
-                                    <th style="width:15%;">Tên Sinh Viên</th>
+                                    <th style="width:20%;">Mã</th>
+                                    <th style="width:30%;">Họ</th>
+                                    <th style="width:15%;">Tên</th>
                                     <th style="width:15%;">Số Điện Thoại</th>
                                 </tr>
                             </thead>

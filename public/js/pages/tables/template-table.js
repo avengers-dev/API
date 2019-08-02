@@ -23,7 +23,7 @@ $(function () {
             {
                 extend: 'excel',
                 text: 'Excel all',
-                filename: 'Sinh Viên Vi Phạm Toàn Trường'
+                filename: 'Sinh Viên Vắng Toàn Trường - Chi Tiết'
             },
             {
                 extend: 'print',
@@ -33,16 +33,9 @@ $(function () {
                     stripNewlines: false,
                     // orthogonal: 'abc'
                 },
-                title: "Sinh Viên Vi Phạm Toàn Trường"
+                title: "Sinh Viên Vắng Toàn Trường - Chi Tiết"
             }
-        ],
-        "columns": [
-            { "width": "10%" },
-            null,
-            null,
-            null,
-            null
-          ]
+        ]
     });
     $('.main2-table').DataTable({
         ordering: false,
@@ -185,6 +178,35 @@ $(function () {
             }
         ],
     });
+    $('.main7-table').DataTable({
+        ordering: false,
+        dom: 'Bfrtip',
+        responsive: true,
+        "paging": false,
+        "bInfo": false,
+        "searching": true,
+        language: {
+            searchPlaceholder: "Tìm kiếm . . .",
+            search : '' /*Empty to remove the label*/
+        },
+        buttons: [
+            'copy',
+            {
+                extend: 'excel',
+                text: 'Excel all',
+                filename: 'Danh Sách Các Lớp'
+            },
+            {
+                extend: 'print',
+                text: 'Print all',
+                exportOptions: {
+                    stripHtml: false,
+                    stripNewlines: false,
+                },
+                title: "Danh Sách Các Lớp"
+            }
+        ],
+    });
     $('.testt').DataTable({
         dom: 'Bfrtip',
         "paging":   false,
@@ -195,11 +217,11 @@ $(function () {
         buttons: [
             {
                 extend: 'excel',
-                filename: 'Sinh Viên Vi Phạm Toàn Trường'
+                filename: 'Sinh Viên Vắng Toàn Trường'
             },
             {
                 extend: 'print',
-                title: "Sinh Viên Vi Phạm Toàn Trường"
+                title: "Sinh Viên Vắng Toàn Trường"
             }
         ],
     })

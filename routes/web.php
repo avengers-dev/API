@@ -29,7 +29,7 @@ Route::get('template-table', function () {
 })->name('template-table');
 Route::get('/search-danh-sach-sinh-vien-vi-pham-theo-mssv', 'Api\CTSVController@searchDanhSachSinhVienViPhamTheoMssv')->name('search_msv');
 Route::get('/search-danh-sach-sinh-vien-theo-malop/{malop}', 'Api\DTController@searchDanhSachSinhVienTheoMalop');
-Route::get('/load-danh-sach-mon-hoc','Api\DTController@loaddanhsachmonhoc')->name('dannh_sach_mon_hoc');
+Route::get('/load-danh-sach-mon-hoc','Api\DTController@loadDanhSachMonHoc')->name('dannh_sach_mon_hoc');
 Route::get('/delete-gv/{magv}', 'Api\DTController@deleteGV');
 Route::get('/edit-gv/{magv}', 'Api\DTController@editGV')->name('edit-gv');
 Route::post('/save-gv', 'Api\DTController@saveGV')->name('save-gv');
@@ -53,3 +53,9 @@ Route::get('/quan-tri-vien',function(){
 Route::post('/addQTV','Api\DTController@addQTV')->name('addQTV');
 Route::get('/load-quan-tri','Api\DTController@loadQuanTri')->name('load-quan-tri');
 Route::get('/delete-quan-tri/{taikhoan}','Api\DTController@deleteQuanTri')->name('delete-quan-tri');
+Route::get('/add-lop',function(){
+    return view('add-lop');
+})->name('add-lop');
+Route::post('/addLop','Api\DTController@addLop')->name('addLop');
+Route::get('/load-danh-sach-cac-lop','Api\DTController@loadDanhSachCacLop')->name('load-danh-sach-cac-lop');
+Route::get('/delete-lop/{malop}','Api\DTController@deleteLop')->name('delete-lop');

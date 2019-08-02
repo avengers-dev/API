@@ -149,11 +149,17 @@
                                     </a>
                                 </li>
                                 <li class="menu_itc">
-                                    <a class="menu-toggle">
+                                    <a  class="menu-toggle">
                                         <i class="material-icons">view_list</i>
                                         <span>Lớp</span>
                                     </a>
                                     <ul class="ml-menu">
+                                        <li class="danh-sach-cac-lop">
+                                                <a>
+                                                    <i class="material-icons">school</i>
+                                                    <span style="font-size:12px;">Toàn Bộ Lớp</span>
+                                                </a>
+                                        </li>
                                         @foreach($lops as $lop)
                                         <li class="malop" data-malop="{{$lop->malop}}">
                                             <a>

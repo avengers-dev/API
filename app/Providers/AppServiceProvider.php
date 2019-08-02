@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('menu',function($view){
-            $lops = Lops::all();
+            $lops = Lops::orderBy('tenlop')->get();
             $view->with(compact('lops'));
         });
     }

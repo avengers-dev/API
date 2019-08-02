@@ -13,8 +13,8 @@ class CTSVController extends Controller
     public function index()
     {
         $ds_sinhvien_vipham = ViPhams::orderBy('tensv')->get();
-        $lops = Lops::all();
-        $monhocs = Monhocs::all();
+        $lops = Lops::orderBy('tenlop')->get();
+        $monhocs = Monhocs::orderBy('tenmh')->get();
         session()->put('chon_lop_hoc', "");
         return view('ctsv', compact('ds_sinhvien_vipham', 'lops', 'monhocs'));
     }
@@ -37,10 +37,10 @@ class CTSVController extends Controller
         $string .= "<table class='table display table-bordered table-hover main-table dataTable'>"
             . "<thead>"
             . " <tr>"
-            . " <th style='width:20%;'>Số Thứ Tự</th>"
-            . " <th style='width:20%;'>Mã Số Sinh Viên</th>"
-            . " <th style='width:30%;'>Họ Sinh Viên</th>"
-            . "<th style='width:15%;'>Tên Sinh Viên</th>"
+            . " <th style='width:20%;'>STT</th>"
+            . " <th style='width:20%;'>Mã</th>"
+            . " <th style='width:30%;'>Họ</th>"
+            . "<th style='width:15%;'>Tên</th>"
             . " <th style='width:15%;'>Số Điện Thoại</th>"
             . " </tr>"
             . "</thead>"
@@ -85,10 +85,10 @@ class CTSVController extends Controller
         $string .= "<table class='table display table-bordered table-hover testt dataTable'>"
             . "<thead style='display: none'>"
             . " <tr>"
-            . " <th style='width:20%;'>Số Thứ Tự</th>"
-            . " <th style='width:20%;'>Mã Số Sinh Viên</th>"
-            . " <th style='width:30%;'>Họ Sinh Viên</th>"
-            . "<th style='width:15%;'>Tên Sinh Viên</th>"
+            . " <th style='width:20%;'>STT</th>"
+            . " <th style='width:20%;'>Mã</th>"
+            . " <th style='width:30%;'>Họ</th>"
+            . "<th style='width:15%;'>Tên</th>"
             . " <th style='width:15%;'>Số Điện Thoại</th>"
             . " </tr>"
             . "</thead>"

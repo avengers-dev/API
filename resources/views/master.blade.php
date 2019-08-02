@@ -194,6 +194,44 @@
                     }
                 });
             })
+            $(document).on('click', '.delete-lop', function() {
+                $.ajax({
+                    url: '/delete-lop/' + $(this).attr('data-malop'),
+                    type: 'GET',
+                    success: function(result) {
+                        $('.table-responsive').html(result);
+                        $('.main7-table').DataTable({
+                            ordering: false,
+                            dom: 'Bfrtip',
+                            responsive: true,
+                            "paging": false,
+                            "bInfo": false,
+                            "searching": true,
+                            language: {
+                                searchPlaceholder: "Tìm kiếm . . .",
+                                search: '' /*Empty to remove the label*/
+                            },
+                            buttons: [
+                                'copy',
+                                {
+                                    extend: 'excel',
+                                    text: 'Excel all',
+                                    filename: 'Danh Sách Các Lớp'
+                                },
+                                {
+                                    extend: 'print',
+                                    text: 'Print all',
+                                    exportOptions: {
+                                        stripHtml: false,
+                                        stripNewlines: false,
+                                    },
+                                    title: "Danh Sách Các Lớp"
+                                }
+                            ],
+                        });
+                    }
+                });
+            })
             $(document).on('click', '.delete-mh', function() {
                 $.ajax({
                     url: '/delete-mh/' + $(this).attr('data-mamh'),
@@ -432,6 +470,43 @@
                     });
                 })
             })
+            $(document).on('click', '.danh-sach-cac-lop', function() {
+                $('.malop').removeClass('active');
+                $(this).addClass('active');
+                $('#ten_lophoc_search').html("Danh Sách Các Lớp <a href=\"{{route('add-lop')}}\"><button style=\"float:right; margin-right:10px;\" type=\"button\" class=\"btn btn-primary waves-effect\">Thêm Lớp</button></a>");
+                $.get('/load-danh-sach-cac-lop', function(data) {
+                    $('.table-responsive').html(data);
+                    $('.main7-table').DataTable({
+                        ordering: false,
+                        dom: 'Bfrtip',
+                        responsive: true,
+                        "paging": false,
+                        "bInfo": false,
+                        "searching": true,
+                        language: {
+                            searchPlaceholder: "Tìm kiếm . . .",
+                            search: '' /*Empty to remove the label*/
+                        },
+                        buttons: [
+                            'copy',
+                            {
+                                extend: 'excel',
+                                text: 'Excel all',
+                                filename: 'Danh Sách Các Lớp'
+                            },
+                            {
+                                extend: 'print',
+                                text: 'Print all',
+                                exportOptions: {
+                                    stripHtml: false,
+                                    stripNewlines: false,
+                                },
+                                title: "Danh Sách Các Lớp"
+                            }
+                        ],
+                    });
+                })
+            })
             $(document).on('click', '.monhoc', function() {
                 $('#ten_lophoc_search').html("Danh Sách Môn Học <a href='{{route('add-monhoc')}}'><button style='float:right' type='button' class='btn btn-primary waves-effect'>Thêm Môn Học</button></a>");
                 $.get('/load-danh-sach-mon-hoc', function(data) {
@@ -469,6 +544,7 @@
             })
             $('body').on('click', '.malop', function() {
                 $('.malop').removeClass('active');
+                $('.danh-sach-cac-lop').removeClass('active');
                 $(this).addClass('active');
                 const ten_lophoc = $(this).find('span').html();
                 $.ajax({
@@ -478,7 +554,7 @@
                     success: function(result) {
 
                         $('.table-responsive').html(result);
-                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc + "<a href=\"{{route('add-gv')}}\"><button style=\"float:right\" type=\"button\" class=\"btn btn-primary waves-effect\">Thêm Sinh Viên</button></a>");
+                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc + "<a href=\"{{route('add-gv')}}\"><button style=\"float:right\" type=\"button\" class=\"btn btn-primary waves-effect\">Thêm Sinh Viên</button></a> <a href=\"{{route('add-lop')}}\"><button style=\"float:right; margin-right:10px;\" type=\"button\" class=\"btn btn-primary waves-effect\">Thêm Lớp</button></a>");
                         $('.main3-table').DataTable({
                             ordering: false,
                             dom: 'Bfrtip',
@@ -515,7 +591,7 @@
                 $('.lop').removeClass('active');
                 $(this).addClass('active');
                 const ten_lophoc = $(this).find('span').html();
-                const title = "Lớp: " + ten_lophoc;
+                const title = "Vắng - Lớp: " + ten_lophoc;
                 $.ajax({
                     url: '/search-danh-sach-sinh-vien-vi-pham-theo-malop/' + $(this).attr(
                         'data-malop'),
@@ -536,7 +612,7 @@
                                 {
                                     extend: 'excel',
                                     text: 'Excel all',
-                                    filename: title
+                                    filename: title + " - Chi tiết"
                                 },
                                 {
                                     extend: 'print',
@@ -545,7 +621,7 @@
                                         stripHtml: false,
                                         stripNewlines: false,
                                     },
-                                    title: title
+                                    title: title + " - Chi tiết"
                                 }
                             ],
                         });
@@ -558,6 +634,7 @@
                             "searching": false,
                             buttons: [{
                                     extend: 'excel',
+                                    filename: title
                                 },
                                 {
                                     extend: 'print',

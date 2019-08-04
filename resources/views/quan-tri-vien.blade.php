@@ -6,7 +6,7 @@
       <div class='card'>
         <div class='header'>
           <h2 id='ten_lophoc_search'>
-            Thêm User
+            Thêm Quản Trị Viên
           </h2>
         </div>
         <div class='body'>
@@ -22,14 +22,20 @@
               </div>
               <div class='form-group form-float'>
                 <div class='form-line'>
+                  <input type='text' class='form-control' name='magv' required>
+                  <label class='form-label'>Mã</label>
+                </div>
+              </div>
+              <div class='form-group form-float'>
+                <div class='form-line'>
                   <input type='text' class='form-control' name='hogv' required>
-                  <label class='form-label'>Họ giảng viên</label>
+                  <label class='form-label'>Họ</label>
                 </div>
               </div>
               <div class='form-group form-float'>
                 <div class='form-line'>
                   <input type='text' class='form-control' name='tengv' required>
-                  <label class='form-label'>Tên giảng viên</label>
+                  <label class='form-label'>Tên</label>
                 </div>
               </div>
               <div class='form-group form-float'>

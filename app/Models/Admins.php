@@ -8,5 +8,5 @@ class Admins extends Eloquent
 {
     protected $connection = 'mongodb';
     protected $collection = 'admins';
-   
+    public $timestamps = false;
 }

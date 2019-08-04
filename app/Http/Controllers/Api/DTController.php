@@ -437,11 +437,12 @@ class DTController extends Controller
                                         <table class=\"table display table-bordered table-hover main5-table dataTable\">
                                             <thead>
                                                 <tr>
-                                                    <th>Thứ</th>";
-                                            for ($i = 1; $i <= 5; $i++) {
-                                                $string .= "<th>Ca $i</th>";
-                                            }
-                                            $string .= "
+                                                    <th>Thứ</th>
+                                                    <th>Ca 1 ( 07:00 - 09:15 )</th>
+                                                    <th>Ca 2 ( 09:30 - 11:45 )</th>
+                                                    <th>Ca 3 ( 13:00 - 15:15 )</th>
+                                                    <th>Ca 4 ( 15:30 - 17:45 )</th>
+                                                    <th>Ca 5 ( 18:00 - 21:00 )</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -623,6 +624,7 @@ class DTController extends Controller
             . "<thead>"
             . " <tr>"
             . " <th>STT</th>"
+            . " <th>Mã</th>"
             . " <th>Họ</th>"
             . " <th>Tên</th>"
             . " <th>Tài khoản</th>"
@@ -636,6 +638,7 @@ class DTController extends Controller
             $stt++;
             $string .= "<tr>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>$stt</td>"
+                . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['magv'] . "</td>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['hogv'] . "</td>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['tengv'] . "</td>"
                 . "<td style='border:0.1px solid rgba(0,0,0,0.1);'>" . $value['taikhoan'] . "</td>"
@@ -656,6 +659,7 @@ class DTController extends Controller
             $token .= $temp[rand(0, strlen($temp)-1)];
         }
         Admins::insert([
+            'magv' => $request->magv,
             'hogv' => $request->hogv,
             'tengv' => $request->tengv,
             'token' => $token,

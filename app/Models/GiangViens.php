@@ -9,7 +9,8 @@ class GiangViens extends Eloquent
 {
     protected $connection = 'mongodb';
     protected $collection = 'giangviens';
-
+    public $timestamps = false;
+    
     public static function validateToken($token){
         if ($token != "") {
             $flag = GiangViens::where('token', $token)->count();

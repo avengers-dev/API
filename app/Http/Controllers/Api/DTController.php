@@ -350,69 +350,69 @@ class DTController extends Controller
         );
         return redirect()->route('dt');
     }
-    public function deleteBuoiDay($magv, $buoiday )
-    {
-        $buoiday-=1;
-        $danh_sach_mon_day = GiangViens::where('magv',$magv)->first();
-        $data = [];
-        foreach($danh_sach_mon_day->monday as $key => $value){
-            if($key!=$buoiday){
-                $data[$key]=$value;
-            }
-        }
-        GiangViens::where('magv', $magv)->update([
-            'monday' => $data
-        ]);
-        $string = "";
-        $giangvien = GiangViens::where('magv',$magv)->first();
-        $string.="<h3>
-        Lịch dạy -  " . $giangvien['hogv'] . " " . $giangvien['tengv'] ." - ". $giangvien['magv'] ."
-        </h3>
-        <table class=\"table display table-bordered table-hover main5-table dataTable\">
-            <thead>
-                <tr>
-                    <th>Thứ</th>";
-            for ($i = 1; $i <= 5; $i++) {
-                $string .= "<th>Ca $i</th>";
-            }
-            $string .= "<th></th>
-                </tr>
-            </thead>
-            <tbody class=\"lich-day-giang-vien\">
-                ";
-                    if ($giangvien['monday'] != "") {
-                        foreach ($giangvien->monday as $thuday => $value) {
-                            $thuday+=1;
-                            $string.= "<tr><td style=\"border:0.1px solid rgba(0,0,0,0.1);\"><b>$thuday</b></td>";
-                            for($ca = 1 ; $ca <= 5 ; $ca++){
-                            $flag=false;
-                                foreach ($value as $tenmon => $v) {
-                                    foreach ($v as $caday => $x) {
-                                        if($caday==$ca){
-                                            $flag=true;
-                                            $string.= "<td style=\"border:0.1px solid rgba(0,0,0,0.1);\">
-                                            <b> $tenmon  </b>:<br>";
-                                            foreach ($x as $lopday) {
-                                                $string.= "&rsaquo; $lopday <br>";
-                                            }
-                                            $string.= "</td>";
-                                        }
-                                    }
-                                } 
-                                if(!$flag){
-                                    $string.= "<td style=\"border:0.1px solid rgba(0,0,0,0.1);\"> </td>";
-                                }
-                            }
-                        $string.= "<td style=\"text-align: center;border:0.1px solid rgba(0,0,0,0.1);\">
-                        <a data-ma-gv='".$giangvien['magv']."' data-buoi-day='".$thuday."' class=\"delete-buoiday\"><i class=\"material-icons\">delete</i></a>
-                        </td></tr>";
-                        }
-                    }
-            $string.="
-            </tbody>
-        </table>";
-        echo $string;
-    }
+    // public function deleteBuoiDay($magv, $buoiday )
+    // {
+    //     $buoiday-=1;
+    //     $danh_sach_mon_day = GiangViens::where('magv',$magv)->first();
+    //     $data = [];
+    //     foreach($danh_sach_mon_day->monday as $key => $value){
+    //         if($key!=$buoiday){
+    //             $data[$key]=$value;
+    //         }
+    //     }
+    //     GiangViens::where('magv', $magv)->update([
+    //         'monday' => $data
+    //     ]);
+    //     $string = "";
+    //     $giangvien = GiangViens::where('magv',$magv)->first();
+    //     $string.="<h3>
+    //     Lịch dạy -  " . $giangvien['hogv'] . " " . $giangvien['tengv'] ." - ". $giangvien['magv'] ."
+    //     </h3>
+    //     <table class=\"table display table-bordered table-hover main5-table dataTable\">
+    //         <thead>
+    //             <tr>
+    //                 <th>Thứ</th>";
+    //         for ($i = 1; $i <= 5; $i++) {
+    //             $string .= "<th>Ca $i</th>";
+    //         }
+    //         $string .= "<th></th>
+    //             </tr>
+    //         </thead>
+    //         <tbody class=\"lich-day-giang-vien\">
+    //             ";
+    //                 if ($giangvien['monday'] != "") {
+    //                     foreach ($giangvien->monday as $thuday => $value) {
+    //                         $thuday+=1;
+    //                         $string.= "<tr><td style=\"border:0.1px solid rgba(0,0,0,0.1);\"><b>$thuday</b></td>";
+    //                         for($ca = 1 ; $ca <= 5 ; $ca++){
+    //                         $flag=false;
+    //                             foreach ($value as $tenmon => $v) {
+    //                                 foreach ($v as $caday => $x) {
+    //                                     if($caday==$ca){
+    //                                         $flag=true;
+    //                                         $string.= "<td style=\"border:0.1px solid rgba(0,0,0,0.1);\">
+    //                                         <b> $tenmon  </b>:<br>";
+    //                                         foreach ($x as $lopday) {
+    //                                             $string.= "&rsaquo; $lopday <br>";
+    //                                         }
+    //                                         $string.= "</td>";
+    //                                     }
+    //                                 }
+    //                             } 
+    //                             if(!$flag){
+    //                                 $string.= "<td style=\"border:0.1px solid rgba(0,0,0,0.1);\"> </td>";
+    //                             }
+    //                         }
+    //                     $string.= "<td style=\"text-align: center;border:0.1px solid rgba(0,0,0,0.1);\">
+    //                     <a data-ma-gv='".$giangvien['magv']."' data-buoi-day='".$thuday."' class=\"delete-buoiday\"><i class=\"material-icons\">delete</i></a>
+    //                     </td></tr>";
+    //                     }
+    //                 }
+    //         $string.="
+    //         </tbody>
+    //     </table>";
+    //     echo $string;
+    // }
     public function addMonDay($magv){
         $giangvien = GiangViens::where('magv',$magv)->first();
         $string = "";

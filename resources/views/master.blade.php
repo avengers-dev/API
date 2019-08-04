@@ -159,41 +159,41 @@
                     }
                 });
             })
-            $(document).on('click', '.delete-buoiday', function() {
-                title = $(this).attr('data-hogv') + " " + $(this).attr('data-tengv') + " - " + $(this).attr('data-ma-gv');
-                $.ajax({
-                    url: '/delete-buoiday/' + $(this).attr('data-ma-gv') + '/' + $(this).attr('data-buoi-day'),
-                    type: 'GET',
-                    success: function(result) {
-                        $('.lich-day-giang-vien').html(result);
-                        $('.main5-table').DataTable({
-                            ordering: false,
-                            dom: 'Bfrtip',
-                            responsive: true,
-                            "paging": false,
-                            "bInfo": false,
-                            "searching": false,
-                            buttons: [
-                                'copy',
-                                {
-                                    extend: 'excel',
-                                    text: 'Excel all',
-                                    filename: 'Lịch dạy - ' + title
-                                },
-                                {
-                                    extend: 'print',
-                                    text: 'Print all',
-                                    exportOptions: {
-                                        stripHtml: false,
-                                        stripNewlines: false,
-                                    },
-                                    title: 'Lịch dạy - ' + title
-                                }
-                            ],
-                        });
-                    }
-                });
-            })
+            // $(document).on('click', '.delete-buoiday', function() {
+            //     title = $(this).attr('data-hogv') + " " + $(this).attr('data-tengv') + " - " + $(this).attr('data-ma-gv');
+            //     $.ajax({
+            //         url: '/delete-buoiday/' + $(this).attr('data-ma-gv') + '/' + $(this).attr('data-buoi-day'),
+            //         type: 'GET',
+            //         success: function(result) {
+            //             $('.lich-day-giang-vien').html(result);
+            //             $('.main5-table').DataTable({
+            //                 ordering: false,
+            //                 dom: 'Bfrtip',
+            //                 responsive: true,
+            //                 "paging": false,
+            //                 "bInfo": false,
+            //                 "searching": false,
+            //                 buttons: [
+            //                     'copy',
+            //                     {
+            //                         extend: 'excel',
+            //                         text: 'Excel all',
+            //                         filename: 'Lịch dạy - ' + title
+            //                     },
+            //                     {
+            //                         extend: 'print',
+            //                         text: 'Print all',
+            //                         exportOptions: {
+            //                             stripHtml: false,
+            //                             stripNewlines: false,
+            //                         },
+            //                         title: 'Lịch dạy - ' + title
+            //                     }
+            //                 ],
+            //             });
+            //         }
+            //     });
+            // })
             $(document).on('click', '.delete-lop', function() {
                 $.ajax({
                     url: '/delete-lop/' + $(this).attr('data-malop'),

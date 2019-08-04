@@ -11,7 +11,11 @@
             if ($taikhoan['chucvu'] == "CTSV") {
                 echo "Phòng Công Tác Sinh Viên ";
             } else {
-                echo "Phòng Quản Lí Đào Tạo ";
+                if ($taikhoan['chucvu'] == "DT") {
+                    echo "Phòng Đào Tạo ";
+                } else {
+                    echo "Admin - Phòng Đào Tạo ";
+                }
             }
         }
         ?>

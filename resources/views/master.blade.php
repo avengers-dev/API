@@ -129,12 +129,13 @@
     <script>
         $(document).ready(function() {
             $(document).on('click', '.add-mon-day', function() {
+                $('#ten_lophoc_search').html('Môn dạy');
                 title = $(this).attr('data-hogv') + " " + $(this).attr('data-tengv') + " - " + $(this).attr('data-magv');
                 $.ajax({
                     url: '/add-mon-day/' + $(this).attr('data-magv'),
                     type: 'GET',
                     success: function(result) {
-                        $('.clearfix').html(result);
+                        $('.table-responsive').html(result);
                         $('.main5-table').DataTable({
                             ordering: false,
                             dom: 'Bfrtip',
@@ -338,12 +339,13 @@
                 });
             })
             $(document).on('click', '.edit-gv', function() {
+                $('#ten_lophoc_search').html("Thay Đổi Thông Tin Giảng Viên - " + $(this).attr('data-hogv') + " " + $(this).attr('data-tengv') + " - "+ $(this).attr('data-magv') + "<button style='float:right' data-magv='"+ $(this).attr('data-magv') + "' class='reset-pass-gv btn btn-primary waves-effect'>Đặt lại mật khẩu</button>");
                 title = $(this).attr('data-hogv') + " " + $(this).attr('data-tengv') + " - " + $(this).attr('data-magv');
                 $.ajax({
                     url: '/edit-gv/' + $(this).attr('data-magv'),
                     type: 'GET',
                     success: function(result) {
-                        $('.clearfix').html(result);
+                        $('.table-responsive').html(result);
                         $('.main5-table').DataTable({
                             ordering: false,
                             dom: 'Bfrtip',

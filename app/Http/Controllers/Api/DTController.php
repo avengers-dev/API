@@ -226,18 +226,7 @@ class DTController extends Controller
     {
         $giangvien = GiangViens::where('magv', $magv)->first();
         $string = "";
-        $string .= "<div class='container-fluid'>
-        <div class='row clearfix'>
-        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-            <div class='card'>
-                <div class='header'>
-                    <h2 id='ten_lophoc_search'>
-                        Thay Đổi Thông Tin Giảng Viên - " .$giangvien['hogv']. " " .$giangvien['tengv']. " - " .$giangvien['magv']. "
-                        <button style='float:right' data-magv='" . $giangvien['magv'] . "' class='reset-pass-gv btn btn-primary waves-effect'>Đặt lại mật khẩu</button>
-                    </h2>
-                </div>
-                <div class='body'>
-                    <div class='table-responsive get_data_sinhvien'>
+        $string .= "
                     <form action='" . route('save-gv') . "' id='form_validation' method='POST'>
                     <div class='form-group form-float'>
                             <div class='form-line'>
@@ -275,14 +264,7 @@ class DTController extends Controller
                         </div>
                         <button class='btn btn-primary waves-effect' type='submit'>Lưu</button>
                         <button onclick=\"window.location.href='".route('dt')."'\" class='btn btn-danger waves-effect' type='button'>Hủy</button>
-                    </form>
-                    <br>
-                   </div>
-                 </div>
-             </div>
-          </div>
-       </div>
-       </div>";
+                    </form>";
         echo $string;
     }
     public function saveGV(Request $request)
@@ -435,125 +417,108 @@ class DTController extends Controller
         $string = "";
         $string.=
         "
-            <div class='container-fluid'>
-            <div class='row clearfix'>
-                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-                    <div class='card'>
-                        <div class='header'>
-                            <h2 id='ten_lophoc_search'>
-                                Môn Dạy
-                            </h2>
-                        </div>
-                        <div class='body'>
-                            <div class='table-responsive get_data_sinhvien'>
-                                <form id='form_validation'>
-                                <div class=\"container-fluid lich-day-giang-vien\">
-                                        <h3>
-                                        Lịch dạy -  " . $giangvien['hogv'] . " " . $giangvien['tengv'] ." - ". $giangvien['magv'] ."
-                                        </h3>
-                                        <table class=\"table display table-bordered table-hover main5-table dataTable\">
-                                            <thead>
-                                                <tr>
-                                                    <th>Thứ</th>
-                                                    <th>Ca 1 ( 07:00 - 09:15 )</th>
-                                                    <th>Ca 2 ( 09:30 - 11:45 )</th>
-                                                    <th>Ca 3 ( 13:00 - 15:15 )</th>
-                                                    <th>Ca 4 ( 15:30 - 17:45 )</th>
-                                                    <th>Ca 5 ( 18:00 - 21:00 )</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                ";
-                                                    if ($giangvien['monday'] != "") {
-                                                        foreach ($giangvien->monday as $thuday => $value) {
-                                                            $thuday+=1;
-                                                            $string.= "<tr><td style=\"border:0.1px solid rgba(0,0,0,0.1);\"><b>$thuday</b></td>";
-                                                            for($ca = 1 ; $ca <= 5 ; $ca++){
-                                                            $flag=false;
-                                                                foreach ($value as $tenmon => $v) {
-                                                                    foreach ($v as $caday => $x) {
-                                                                        if($caday==$ca){
-                                                                            $flag=true;
-                                                                            $string.= "<td style=\"border:0.1px solid rgba(0,0,0,0.1);\">
-                                                                            <b> $tenmon  </b>:<br>";
-                                                                            foreach ($x as $lopday) {
-                                                                                $string.= "&rsaquo; $lopday <br>";
-                                                                            }
-                                                                            $string.= "</td>";
-                                                                        }
-                                                                    }
-                                                                } 
-                                                                if(!$flag){
-                                                                    $string.= "<td style=\"border:0.1px solid rgba(0,0,0,0.1);\"> </td>";
-                                                                }
-                                                            }
-                                                        // $string.= "<td style=\"text-align: center;border:0.1px solid rgba(0,0,0,0.1);\">
-                                                        // <a data-tengv='".$giangvien['tengv']."' data-hogv='".$giangvien['hogv']."' data-ma-gv='".$giangvien['magv']."' data-buoi-day='".$thuday."' class=\"delete-buoiday\"><i class=\"material-icons\">delete</i></a>
-                                                        // </td></tr>";
+            <form id='form_validation'>
+            <div class=\"container-fluid lich-day-giang-vien\">
+                    <h3>
+                    Lịch dạy -  " . $giangvien['hogv'] . " " . $giangvien['tengv'] ." - ". $giangvien['magv'] ."
+                    </h3>
+                    <table class=\"table display table-bordered table-hover main5-table dataTable\">
+                        <thead>
+                            <tr>
+                                <th>Thứ</th>
+                                <th>Ca 1 ( 07:00 - 09:15 )</th>
+                                <th>Ca 2 ( 09:30 - 11:45 )</th>
+                                <th>Ca 3 ( 13:00 - 15:15 )</th>
+                                <th>Ca 4 ( 15:30 - 17:45 )</th>
+                                <th>Ca 5 ( 18:00 - 21:00 )</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ";
+                                if ($giangvien['monday'] != "") {
+                                    foreach ($giangvien->monday as $thuday => $value) {
+                                        $thuday+=1;
+                                        $string.= "<tr><td style=\"border:0.1px solid rgba(0,0,0,0.1);\"><b>$thuday</b></td>";
+                                        for($ca = 1 ; $ca <= 5 ; $ca++){
+                                        $flag=false;
+                                            foreach ($value as $tenmon => $v) {
+                                                foreach ($v as $caday => $x) {
+                                                    if($caday==$ca){
+                                                        $flag=true;
+                                                        $string.= "<td style=\"border:0.1px solid rgba(0,0,0,0.1);\">
+                                                        <b> $tenmon  </b>:<br>";
+                                                        foreach ($x as $lopday) {
+                                                            $string.= "&rsaquo; $lopday <br>";
                                                         }
+                                                        $string.= "</td>";
                                                     }
-                                            $string.="
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </form>";
-                                $danh_sach_mon = MonHocs::orderBy('tenmh')->get();
-                                $danh_sach_lop = Lops::orderBy('tenlop')->get();
-                                $string.="<form action='" . route('save-mon-day') . "'   method='POST'>
-                                        <div class='form-group form-float'>
-                                        <div class='form-line'>
-                                            <input value='"
-                                            . $giangvien['magv'] . "' type='hidden' class='form-control' name='magv' required>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label for='sel1'>Thứ :</label>
-                                        <select multiple class='form-control' id='sel2' name='chonthu'>";
-                                            for($i=2; $i<=7; $i++){
-                                                $string.="<option>".$i."</option>";
+                                                }
+                                            } 
+                                            if(!$flag){
+                                                $string.= "<td style=\"border:0.1px solid rgba(0,0,0,0.1);\"> </td>";
                                             }
-                                        $string.="</select>
-                                    </div>
-                                    <br>
-                                    <div>
-                                        <label for='sel1'>Ca :</label>
-                                        <select multiple class='form-control' id='sel2' name='chonca'>";
-                                            for($i=1; $i<=5; $i++){
-                                                $string.="<option>".$i."</option>";
-                                            }
-                                        $string.="</select>
-                                    </div>
-                                    <br>
-                                    <div>
-                                        <label for='sel1'>Môn :</label>
-                                        <select multiple class='form-control' id='sel2' name='chonmon'>";
-                                            foreach($danh_sach_mon as $k => $v){
-                                                $string.="<option>".$v['mamh']."</option>";
-                                            }
-                                        $string.="</select>
-                                    </div>
-                                    <br>
-                                    <div class=\"alert alert-info\">
-                                        <h5> * Giữ phím Ctrl (Windows) / Command (Mac) để chọn nhiều lớp </h5>
-                                    </div>
-                                    <label for='sel1'>Lớp :</label>
-                                    <div>
-                                        <select name='chonlop[]' id='chonlop' multiple>";
-                                        foreach($danh_sach_lop as $k => $v){
-                                            $string.="<option>".$v['malop']."</option>";
                                         }
-                                        $string.="</select>
-                                    </div>
-                                    <br>
-                                    <button class='btn btn-primary waves-effect' type='submit'>Lưu</button>
-                                    <button onclick=\"window.location.href='".route('dt')."'\" class='btn btn-danger waves-effect' type='button'>Hủy</button>
-                                </form>
-                            </div>
-                        </div>
+                                    // $string.= "<td style=\"text-align: center;border:0.1px solid rgba(0,0,0,0.1);\">
+                                    // <a data-tengv='".$giangvien['tengv']."' data-hogv='".$giangvien['hogv']."' data-ma-gv='".$giangvien['magv']."' data-buoi-day='".$thuday."' class=\"delete-buoiday\"><i class=\"material-icons\">delete</i></a>
+                                    // </td></tr>";
+                                    }
+                                }
+                        $string.="
+                        </tbody>
+                    </table>
+                </div>
+            </form>";
+            $danh_sach_mon = MonHocs::orderBy('tenmh')->get();
+            $danh_sach_lop = Lops::orderBy('tenlop')->get();
+            $string.="<form action='" . route('save-mon-day') . "'   method='POST'>
+                    <div class='form-group form-float'>
+                    <div class='form-line'>
+                        <input value='"
+                        . $giangvien['magv'] . "' type='hidden' class='form-control' name='magv' required>
                     </div>
                 </div>
-            </div>
-        </div>
+                <div>
+                    <label for='sel1'>Thứ :</label>
+                    <select multiple class='form-control' id='sel2' name='chonthu'>";
+                        for($i=2; $i<=7; $i++){
+                            $string.="<option>".$i."</option>";
+                        }
+                    $string.="</select>
+                </div>
+                <br>
+                <div>
+                    <label for='sel1'>Ca :</label>
+                    <select multiple class='form-control' id='sel2' name='chonca'>";
+                        for($i=1; $i<=5; $i++){
+                            $string.="<option>".$i."</option>";
+                        }
+                    $string.="</select>
+                </div>
+                <br>
+                <div>
+                    <label for='sel1'>Môn :</label>
+                    <select multiple class='form-control' id='sel2' name='chonmon'>";
+                        foreach($danh_sach_mon as $k => $v){
+                            $string.="<option>".$v['mamh']."</option>";
+                        }
+                    $string.="</select>
+                </div>
+                <br>
+                <div class=\"alert alert-info\">
+                    <h5> * Giữ phím Ctrl (Windows) / Command (Mac) để chọn nhiều lớp </h5>
+                </div>
+                <label for='sel1'>Lớp :</label>
+                <div>
+                    <select name='chonlop[]' id='chonlop' multiple>";
+                    foreach($danh_sach_lop as $k => $v){
+                        $string.="<option>".$v['malop']."</option>";
+                    }
+                    $string.="</select>
+                </div>
+                <br>
+                <button class='btn btn-primary waves-effect' type='submit'>Lưu</button>
+                <button onclick=\"window.location.href='".route('dt')."'\" class='btn btn-danger waves-effect' type='button'>Hủy</button>
+            </form>
         
         ";
         echo $string;

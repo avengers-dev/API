@@ -41,27 +41,20 @@ Route::get('/edit-gv/{magv}', 'Api\DTController@editGV')->name('edit-gv');
 Route::post('/save-gv', 'Api\DTController@saveGV')->name('save-gv');
 Route::get('/reset-pass-gv/{magv}', 'Api\DTController@resetPassGV')->name('reset-pass-gv');
 //Thêm giảng viên
-Route::get('/add-gv',function(){
-    return view('add-gv');
-})->name('add-gv');
+Route::get('/add-gv','Api\DTController@getAddGV')->name('add-gv');
 Route::post('/addGV', 'Api\DTController@addGV')->name('addGV');
 //Xóa sinh viên
 Route::get('/delete-sv/{malop}/{magv}', 'Api\DTController@deleteSV');
 //Xóa môn học
 Route::get('/delete-mh/{mamh}', 'Api\DTController@deleteMonHoc');
 //Thêm môn học
-Route::get('/add-monhoc',function(){
-    return view('add-monhoc');
-})->name('add-monhoc');
+Route::get('/add-monhoc','Api\DTController@getAddMH')->name('add-monhoc');
 Route::post('/addMH', 'Api\DTController@addMH')->name('addMH');
 //Thay đổi lịch giảng viên
-// Route::get('/delete-buoiday/{magv}/{buoiday}', 'Api\DTController@deleteBuoiDay');
 Route::get('/add-mon-day/{magv}','Api\DTController@addMonDay')->name('add-mon-day');
 Route::post('/save-mon-day','Api\DTController@saveMonDay')->name('save-mon-day');
 //Thêm lớp
-Route::get('/add-lop',function(){
-    return view('add-lop');
-})->name('add-lop');
+Route::get('/add-lop','Api\DTController@getAddLop')->name('add-lop');
 Route::post('/addLop','Api\DTController@addLop')->name('addLop');
 //Load danh sách các lớp
 Route::get('/load-danh-sach-cac-lop','Api\DTController@loadDanhSachCacLop')->name('load-danh-sach-cac-lop');
@@ -71,10 +64,8 @@ Route::get('/delete-lop/{malop}','Api\DTController@deleteLop')->name('delete-lop
 Route::post('/import-excel','Api\DTController@importExcel');
 
 //Admin
-Route::get('/quan-tri-vien',function(){
-    return view('quan-tri-vien');
-})->name('quan-tri-vien');
 //Thêm quản trị viên
+Route::get('/add-qtv','Api\DTController@getAddQTV')->name('add-qtv');
 Route::post('/addQTV','Api\DTController@addQTV')->name('addQTV');
 //Load danh sách quản trị viên
 Route::get('/load-quan-tri','Api\DTController@loadQuanTri')->name('load-quan-tri');

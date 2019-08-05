@@ -102,6 +102,59 @@ class DTController extends Controller
         $string .= "</tbody></table>";
         echo $string;
     }
+    public function getAddGV()
+    {
+        $string = "";
+        $string .="
+        <form action='".route('addGV')."' id='form_validation' method='POST'>
+        <div class=\"alert alert-info\">
+            <h4> Mật khẩu được khởi tạo mặc định !</h4>
+            * Ví dụ :<br>
+            - Tên giảng viên: ABC <br>
+            - Mã giảng viên: 123 <br>
+            <h5> => Mật khẩu: A123 </h5>
+        </div>
+        <div class='form-group form-float'>
+            <div class='form-line'>
+                <input type='hidden' class='form-control' name='magv' required>
+            </div>
+        </div>
+        <div class='form-group form-float'>
+            <div class='form-line'>
+                <label>Mã</label>
+                <input type='text' class='form-control' name='magv' required>
+            </div>
+        </div>
+        <div class='form-group form-float'>
+            <div class='form-line'>
+                <label>Họ</label>
+                <input type='text' class='form-control' name='hogv' required>
+            </div>
+        </div>
+        <div class='form-group form-float'>
+            <div class='form-line'>
+                <label>Tên</label>
+                <input type='text' class='form-control' name='tengv' required>
+            </div>
+        </div>
+        <div class='form-group form-float'>
+            <div class='form-line'>
+                <label>Email</label>
+                <input type='email' class='form-control' name='email' required>
+            </div>
+        </div>
+        <div class='form-group form-float'>
+            <div class='form-line'>
+                <label>Số điện thoại</label>
+                <input type='number' class='form-control' name='sdt' required>
+            </div>
+        </div>
+        <button class='btn btn-primary waves-effect' type='submit'>Thêm</button>
+        <button onclick=\"window.location.href='".route('dt')."'\" class='btn btn-danger waves-effect' type='button'>Hủy</button>
+    </form>
+        ";
+        echo $string;
+    }
     public function addGV(Request $request)
     {
         $matkhau = $request->tengv[0] . $request->magv;
@@ -340,6 +393,33 @@ class DTController extends Controller
         $string .= "</tbody></table>";
         echo $string;
     }
+    public function getAddMH()
+    {
+        $string="
+            <form action='".route('addMH')."' id='form_validation' method='POST'>
+            <div class='form-group form-float'>
+                <div class='form-line'>
+                    <input type='hidden' class='form-control' name='mamh' required>
+                </div>
+            </div>
+            <div class='form-group form-float'>
+                <div class='form-line'>
+                    <label>Mã</label>
+                    <input type='text' class='form-control' name='mamh' required>
+                </div>
+            </div>
+            <div class='form-group form-float'>
+                <div class='form-line'>
+                    <label>Tên</label>
+                    <input type='text' class='form-control' name='tenmh' required>
+                </div>
+            </div>
+            <button class='btn btn-primary waves-effect' type='submit'>Thêm</button>
+            <button onclick=\"window.location.href='".route('dt')."'\" class='btn btn-danger waves-effect' type='button'>Hủy</button>
+        </form>
+        ";
+        echo $string;
+    }
     public function addMH(Request $request)
     {
         MonHocs::insert(
@@ -350,69 +430,6 @@ class DTController extends Controller
         );
         return redirect()->route('dt');
     }
-    // public function deleteBuoiDay($magv, $buoiday )
-    // {
-    //     $buoiday-=1;
-    //     $danh_sach_mon_day = GiangViens::where('magv',$magv)->first();
-    //     $data = [];
-    //     foreach($danh_sach_mon_day->monday as $key => $value){
-    //         if($key!=$buoiday){
-    //             $data[$key]=$value;
-    //         }
-    //     }
-    //     GiangViens::where('magv', $magv)->update([
-    //         'monday' => $data
-    //     ]);
-    //     $string = "";
-    //     $giangvien = GiangViens::where('magv',$magv)->first();
-    //     $string.="<h3>
-    //     Lịch dạy -  " . $giangvien['hogv'] . " " . $giangvien['tengv'] ." - ". $giangvien['magv'] ."
-    //     </h3>
-    //     <table class=\"table display table-bordered table-hover main5-table dataTable\">
-    //         <thead>
-    //             <tr>
-    //                 <th>Thứ</th>";
-    //         for ($i = 1; $i <= 5; $i++) {
-    //             $string .= "<th>Ca $i</th>";
-    //         }
-    //         $string .= "<th></th>
-    //             </tr>
-    //         </thead>
-    //         <tbody class=\"lich-day-giang-vien\">
-    //             ";
-    //                 if ($giangvien['monday'] != "") {
-    //                     foreach ($giangvien->monday as $thuday => $value) {
-    //                         $thuday+=1;
-    //                         $string.= "<tr><td style=\"border:0.1px solid rgba(0,0,0,0.1);\"><b>$thuday</b></td>";
-    //                         for($ca = 1 ; $ca <= 5 ; $ca++){
-    //                         $flag=false;
-    //                             foreach ($value as $tenmon => $v) {
-    //                                 foreach ($v as $caday => $x) {
-    //                                     if($caday==$ca){
-    //                                         $flag=true;
-    //                                         $string.= "<td style=\"border:0.1px solid rgba(0,0,0,0.1);\">
-    //                                         <b> $tenmon  </b>:<br>";
-    //                                         foreach ($x as $lopday) {
-    //                                             $string.= "&rsaquo; $lopday <br>";
-    //                                         }
-    //                                         $string.= "</td>";
-    //                                     }
-    //                                 }
-    //                             } 
-    //                             if(!$flag){
-    //                                 $string.= "<td style=\"border:0.1px solid rgba(0,0,0,0.1);\"> </td>";
-    //                             }
-    //                         }
-    //                     $string.= "<td style=\"text-align: center;border:0.1px solid rgba(0,0,0,0.1);\">
-    //                     <a data-ma-gv='".$giangvien['magv']."' data-buoi-day='".$thuday."' class=\"delete-buoiday\"><i class=\"material-icons\">delete</i></a>
-    //                     </td></tr>";
-    //                     }
-    //                 }
-    //         $string.="
-    //         </tbody>
-    //     </table>";
-    //     echo $string;
-    // }
     public function addMonDay($magv){
         $giangvien = GiangViens::where('magv',$magv)->first();
         $string = "";
@@ -519,8 +536,8 @@ class DTController extends Controller
                                     <div class=\"alert alert-info\">
                                         <h5> * Giữ phím Ctrl (Windows) / Command (Mac) để chọn nhiều lớp </h5>
                                     </div>
+                                    <label for='sel1'>Lớp :</label>
                                     <div>
-                                        <label for='sel1'>Lớp :</label>
                                         <select name='chonlop[]' id='chonlop' multiple>";
                                         foreach($danh_sach_lop as $k => $v){
                                             $string.="<option>".$v['malop']."</option>";
@@ -652,6 +669,53 @@ class DTController extends Controller
         $string .= "</tbody></table>";
         echo $string;
     }
+    public function getAddQTV(){
+        $string = "
+                <form action='".route('addQTV')."' method='POST'>
+                <div style='margin-bottom:15px;'>
+                <select class='form-control' name='chonchucvu'>
+                    <option disabled selected>- - Chọn chức vụ - -</option>
+                    <option>AD</option>
+                    <option>DT</option>
+                    <option>CTSV</option>
+                </select>
+                </div>
+                <div class='form-group form-float'>
+                <div class='form-line'>
+                    <label>Mã</label>
+                    <input type='text' class='form-control' name='magv' required>
+                </div>
+                </div>
+                <div class='form-group form-float'>
+                <div class='form-line'>
+                    <label>Họ</label>
+                    <input type='text' class='form-control' name='hogv' required>
+                </div>
+                </div>
+                <div class='form-group form-float'>
+                <div class='form-line'>
+                    <label>Tên</label>
+                    <input type='text' class='form-control' name='tengv' required>
+                </div>
+                </div>
+                <div class='form-group form-float'>
+                <div class='form-line'>
+                    <label>Tài khoản</label>
+                    <input type='text' class='form-control' name='taikhoan' required>
+                </div>
+                </div>
+                <div class='form-group form-float'>
+                <div class='form-line'>
+                    <label>Mật khẩu</label>
+                    <input type='password' class='form-control' name='matkhau' required>
+                </div>
+                </div>
+                <button class='btn btn-primary waves-effect' type='submit'>Thêm</button>
+                <button onclick=\"window.location.href='".route('dt')."'\" class='btn btn-danger waves-effect' type='button'>Hủy</button>
+            </form>
+        ";
+        echo $string;
+    }
     public function addQTV(Request $request){
         $temp = 'qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM';
         $token = "";
@@ -672,6 +736,35 @@ class DTController extends Controller
     public function deleteQuanTri($taikhoan){
         Admins::where('taikhoan',$taikhoan)->delete();
         return redirect()->route('load-quan-tri');
+    }
+    public function getAddLop(){
+        $string = "
+            <form action='".route('addLop')."' id='form_validation' method='POST'>
+            <div>
+                <select class='form-control' id='sel2' name='chontinhtrang'>';
+                    <option selected disabled>--Chọn tình trạng-</option>
+                    <option value='TC'>Theo tín chỉ</option>
+                    <option value='HL'>Học lại</option>
+                </select>
+            </div>
+            <br>
+            <div class='form-group form-float'>
+                <div class='form-line'>
+                <label>Mã</label>
+                    <input type='text' class='form-control' name='malop' required>
+                </div>
+            </div>
+            <div class='form-group form-float'>
+                <div class='form-line'>
+                <label>Tên</label>
+                    <input type='text' class='form-control' name='tenlop' required>
+                </div>
+            </div>
+            <button class='btn btn-primary waves-effect' type='submit'>Thêm</button>
+            <button onclick=\"window.location.href='".route('dt')."'\" class='btn btn-danger waves-effect' type='button'>Hủy</button>
+        </form>
+        ";
+        echo $string;
     }
     public function addLop(Request $request){
         Lops::insert([
@@ -781,14 +874,6 @@ class DTController extends Controller
             $flag = 0;
             foreach ($workSheet->toArray() as $key => $value) {
                 if($flag > 0){
-                    // $sinhvien = new Sinhviens();
-                    // $sinhvien->masv = $value[1]."";
-                    // $sinhvien->hosv = $value[2];
-                    // $sinhvien->tensv = $value[3];
-                    // $sinhvien->sdt = $value[5];
-                    // $sinhvien->ngaysinh = $value[4];
-                    // $sinhvien->malop = [session()->get('chon_lop_hoc')];
-                    // $sinhvien->save();
                     $masv = $value[1]."";
                     $sv = SinhViens::where('masv',$masv)->get()->toArray();
                     $check = true;
@@ -828,7 +913,6 @@ class DTController extends Controller
                 }
                 $flag++;
             }
-            // echo json_encode($workSheet->toArray());
         }
     }
 }

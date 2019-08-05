@@ -8,13 +8,13 @@
                 <div class="header">
                     <h2 id="ten_lophoc_search">
                         Danh Sách Giảng Viên
-                        <a href="{{route('add-gv')}}"><button style="float:right" type="button" class="btn btn-primary waves-effect">Thêm giảng viên</button></a>
+                        <button style="float:right" type="button" class="add-gv btn btn-primary waves-effect">Thêm giảng viên</button>
                     </h2>
                 </div>
                 <div class="body">
                     <div>
                     <form method="POST" enctype="multipart/form-data">
-                        <input type="file" id="file-excel" name="file" style="display:none;">
+                        <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="file-excel" name="file" style="display:none;">
                     </form>
                     </div>
                     <div class="table-responsive get_data_sinhvien">

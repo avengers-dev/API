@@ -163,41 +163,12 @@
                     }
                 });
             })
-            // $(document).on('click', '.delete-buoiday', function() {
-            //     title = $(this).attr('data-hogv') + " " + $(this).attr('data-tengv') + " - " + $(this).attr('data-ma-gv');
-            //     $.ajax({
-            //         url: '/delete-buoiday/' + $(this).attr('data-ma-gv') + '/' + $(this).attr('data-buoi-day'),
-            //         type: 'GET',
-            //         success: function(result) {
-            //             $('.lich-day-giang-vien').html(result);
-            //             $('.main5-table').DataTable({
-            //                 ordering: false,
-            //                 dom: 'Bfrtip',
-            //                 responsive: true,
-            //                 "paging": false,
-            //                 "bInfo": false,
-            //                 "searching": false,
-            //                 buttons: [
-            //                     'copy',
-            //                     {
-            //                         extend: 'excel',
-            //                         text: 'Excel all',
-            //                         filename: 'Lịch dạy - ' + title
-            //                     },
-            //                     {
-            //                         extend: 'print',
-            //                         text: 'Print all',
-            //                         exportOptions: {
-            //                             stripHtml: false,
-            //                             stripNewlines: false,
-            //                         },
-            //                         title: 'Lịch dạy - ' + title
-            //                     }
-            //                 ],
-            //             });
-            //         }
-            //     });
-            // })
+            $(document).on('click','.add-gv',function(){
+                $('#ten_lophoc_search').html('Thêm giảng viên');
+                $.get('/add-lop', function(data) {
+                    $('.table-responsive').html(data);
+                })
+            })
             $(document).on('click', '.delete-lop', function() {
                 $.ajax({
                     url: '/delete-lop/' + $(this).attr('data-malop'),
@@ -440,7 +411,7 @@
                 });
             })
             $(document).on('click', '.quan-tri-vien', function() {
-                $('#ten_lophoc_search').html("Danh Sách Quản Trị Viên <a href='{{ route('quan-tri-vien') }}'><button style='float:right' type='button' class='btn btn-primary waves-effect'>Thêm Quản Trị Viên</button></a>");
+                $('#ten_lophoc_search').html("Danh Sách Quản Trị Viên <button style='float:right' type='button' class='add-qtv btn btn-primary waves-effect'>Thêm Quản Trị Viên</button>");
                 $.get('/load-quan-tri', function(data) {
                     $('.table-responsive').html(data);
                     $('.main6-table').DataTable({
@@ -474,10 +445,16 @@
                     });
                 })
             })
+            $(document).on('click', '.add-qtv', function() {
+                $('#ten_lophoc_search').html("Thêm Quản Trị Viên");
+                $.get('/add-qtv', function(data) {
+                    $('.table-responsive').html(data);
+                })
+            })
             $(document).on('click', '.danh-sach-cac-lop', function() {
                 $('.malop').removeClass('active');
                 $(this).addClass('active');
-                $('#ten_lophoc_search').html("Danh Sách Các Lớp <a href=\"{{route('add-lop')}}\"><button style=\"float:right; margin-right:10px;\" type=\"button\" class=\"btn btn-primary waves-effect\">Thêm Lớp</button></a>");
+                $('#ten_lophoc_search').html("Danh Sách Các Lớp <button style=\"float:right; margin-right:10px;\" type=\"button\" class=\"add-lop btn btn-primary waves-effect\">Thêm Lớp</button>");
                 $.get('/load-danh-sach-cac-lop', function(data) {
                     $('.table-responsive').html(data);
                     $('.main7-table').DataTable({
@@ -511,8 +488,14 @@
                     });
                 })
             })
+            $(document).on('click', '.add-lop', function(){
+                $('#ten_lophoc_search').html("Thêm Lớp Học");
+                $.get('/add-lop', function(data) {
+                    $('.table-responsive').html(data);
+                })
+            })
             $(document).on('click', '.monhoc', function() {
-                $('#ten_lophoc_search').html("Danh Sách Môn Học <a href='{{route('add-monhoc')}}'><button style='float:right' type='button' class='btn btn-primary waves-effect'>Thêm Môn Học</button></a>");
+                $('#ten_lophoc_search').html("Danh Sách Môn Học <button style='float:right' type='button' class='add-monhoc btn btn-primary waves-effect'>Thêm Môn Học</button>");
                 $.get('/load-danh-sach-mon-hoc', function(data) {
                     $('.table-responsive').html(data);
                     $('.main4-table').DataTable({
@@ -546,7 +529,12 @@
                     });
                 })
             })
-            
+            $(document).on('click', '.add-monhoc', function(){
+                $('#ten_lophoc_search').html("Thêm Môn Học");
+                $.get('/add-monhoc', function(data) {
+                    $('.table-responsive').html(data);
+                })
+            })
             $(document).on('click', '.malop', function() {
                 $('.malop').removeClass('active');
                 $('.danh-sach-cac-lop').removeClass('active');
@@ -559,7 +547,7 @@
                     success: function(result) {
 
                         $('.table-responsive').html(result);
-                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc + "<a href='javascript:void(0)'><button style=\"float:right\" type=\"button\" class=\"add-sv btn btn-primary waves-effect\">Thêm Sinh Viên</button></a> <a href=\"{{route('add-lop')}}\"><button style=\"float:right; margin-right:10px;\" type=\"button\" class=\"btn btn-primary waves-effect\">Thêm Lớp</button></a>");
+                        $('#ten_lophoc_search').html('Lớp : ' + ten_lophoc + "<button style=\"float:right\" type=\"button\" class=\"add-sv btn btn-primary waves-effect\">Thêm Sinh Viên</button> <button style=\"float:right; margin-right:10px;\" type=\"button\" class=\"add-lop btn btn-primary waves-effect\">Thêm Lớp</button>");
                         $('.main3-table').DataTable({
                             ordering: false,
                             dom: 'Bfrtip',
@@ -598,20 +586,28 @@
             $(document).on('change','#file-excel',function(){
                 const ten_lophoc = $('.malop').find('span').html();
                 var fileData = $('#file-excel')[0].files[0];
-                console.log(fileData)
-                var formData = new FormData();
-                formData.append('file',fileData);
-                $.ajax({
-                    url : '/import-excel',
-                    type : 'POST',
-                    processData : false,
-                    contentType : false,
-                    data : formData,
-                    // dataType :'json',
-                    success : function(result){
-                        window.location.href='/dt';
-                    }
-                })
+                // console.log(fileData)
+                var validExts = new Array(".xlsx", ".xls");
+                var fileExt = fileData.name;
+                fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
+                if (validExts.indexOf(fileExt) < 0){
+                    swal("File không hợp lệ", "Chỉ nhận file có đuôi .xlsx hoặc .xls", "error")
+                }
+                else{
+                    var formData = new FormData();
+                    formData.append('file',fileData);
+                    $.ajax({
+                        url : '/import-excel',
+                        type : 'POST',
+                        processData : false,
+                        contentType : false,
+                        data : formData,
+                        // dataType :'json',
+                        success : function(result){
+                            window.location.href='/dt';
+                        }
+                    })
+                }
             })
             $('body').on('click', '.lop', function() {
                 $('.lop').removeClass('active');

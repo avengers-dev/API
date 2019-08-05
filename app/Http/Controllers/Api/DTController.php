@@ -424,7 +424,7 @@ class DTController extends Controller
                     <div class='card'>
                         <div class='header'>
                             <h2 id='ten_lophoc_search'>
-                                Thêm Môn Dạy
+                                Môn Dạy
                             </h2>
                         </div>
                         <div class='body'>
@@ -528,7 +528,7 @@ class DTController extends Controller
                                         $string.="</select>
                                     </div>
                                     <br>
-                                    <button class='btn btn-primary waves-effect' type='submit'>Thêm</button>
+                                    <button class='btn btn-primary waves-effect' type='submit'>Lưu</button>
                                     <button onclick=\"window.location.href='".route('dt')."'\" class='btn btn-danger waves-effect' type='button'>Hủy</button>
                                 </form>
                             </div>

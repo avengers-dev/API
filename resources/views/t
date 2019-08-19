@@ -1,2 +1,0 @@
-Thay Đổi Thông Tin Giảng Viên - ' .$giangvien['hogv']. ' ' .$giangvien['tengv']. ' - ' .$giangvien['magv']. '
-                        <button style='float:right' data-magv='' . $giangvien['magv'] . '' class='reset-pass-gv btn btn-primary waves-effect'>Đặt lại mật khẩu</button>

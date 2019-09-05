@@ -65,7 +65,8 @@ class CTSVController extends Controller
                 if (count($v) >= 3) {
                     $string .=  'rgba(255,48,48);
                                         font-weight:bold;
-                                        color:#f1f1f1';
+                                        color:#f1f1f1;
+                                        background: linear-gradient(90deg, rgba(0,14,36,0.6982143199076505) 0%, rgba(255,0,0,0.7990546560421043) 100%);';
                 } else {
                     $string .=  'rgba(127,196,249,0.3)';
                 }
@@ -146,7 +147,8 @@ class CTSVController extends Controller
                         if (count($v) >= 3) {
                             $string .=  'rgba(255,48,48);
                                   font-weight:bold;
-                                  color:#f1f1f1';
+                                  color:#f1f1f1;
+                                  background: linear-gradient(90deg, rgba(0,14,36,0.6982143199076505) 0%, rgba(255,0,0,0.7990546560421043) 100%);';
                         } else {
                             $string .=  'rgba(127,196,249,0.3)';
                         }
@@ -188,7 +190,8 @@ class CTSVController extends Controller
                         if (count($v) >= 3) {
                             $string .=  'rgba(255,48,48);
                                   font-weight:bold;
-                                  color:#f1f1f1';
+                                  color:#f1f1f1;
+                                  background: linear-gradient(90deg, rgba(0,14,36,0.6982143199076505) 0%, rgba(255,0,0,0.7990546560421043) 100%);';
                         } else {
                             $string .=  'rgba(127,196,249,0.3)';
                         }
@@ -255,7 +258,8 @@ class CTSVController extends Controller
                         if (count($v) >= 3) {
                             $string .=  'rgba(255,48,48);
                                         font-weight:bold;
-                                        color:#f1f1f1';
+                                        color:#f1f1f1;
+                                        background: linear-gradient(90deg, rgba(0,14,36,0.6982143199076505) 0%, rgba(255,0,0,0.7990546560421043) 100%);';
                         } else {
                             $string .=  'rgba(127,196,249,0.3)';
                         }
@@ -307,7 +311,8 @@ class CTSVController extends Controller
                         if (count($v) >= 3) {
                             $string .=  'rgba(255,48,48);
                                         font-weight:bold;
-                                        color:#f1f1f1';
+                                        color:#f1f1f1;
+                                        background: linear-gradient(90deg, rgba(0,14,36,0.6982143199076505) 0%, rgba(255,0,0,0.7990546560421043) 100%);';
                         } else {
                             $string .=  'rgba(127,196,249,0.3)';
                         }
